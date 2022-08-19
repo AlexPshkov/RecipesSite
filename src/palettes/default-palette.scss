@@ -1,0 +1,36 @@
+/*
+  Main color palette
+ */
+$light-palette: (
+  0: #000000, //simple black
+  50: #808080, //fonts
+  100: #25292D, //fonts
+  200: #4A525A, //fonts
+  300: #FBF9F4, //footer background
+  400: #FFEFCC, //icons background
+  500: #fdbf07,
+  600: #FDB100, //primary
+  700: #fd9e00,
+  800: #F29E1F, //icon color and some fonts
+  900: #fd6d01,
+  W100: #ff0000, //warn color
+
+  contrast: (
+    0: #ffffff, //simple white
+    50: #FEFEFB,
+    100: #E5E5E5,
+    200: #9196A1, //fonts color TOO
+    300: #3A3C41, //fonts color TOO
+    400: #fdc828,
+    500: #fdbf07,
+    600: #ffffff, //primary contrast
+    700: #fd9e00,
+    800: #fd8d00,
+    900: #fd6d01,
+  )
+
+);
+
+
+
+

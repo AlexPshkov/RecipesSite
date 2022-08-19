@@ -1,0 +1,93 @@
+<div class="container mat-typography ">
+
+  <header>
+    <div class="landing-block">
+      <h2>Готовь и делись<br>рецептами</h2>
+      <h4>Никаких кулинарных книг и блокнотов! Храни все<br>любимые рецепты в одном месте.</h4>
+
+
+      <div class="buttons">
+        <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="addRecipe()">
+          <img class="label" src="../../../assets/images/main-page/svg/plus-icon.svg" alt="+">
+          Добавить рецепт
+        </button>
+        <button mat-flat-button id="join-profile-button" class="mat-display-4" (click)="openRegisterDialog()">Войти</button>
+      </div>
+
+    </div>
+    <img id="landing-image" src="../../../assets/images/main-page/landing-image.png" alt="">
+  </header>
+
+  <div class="advantages">
+    <h2>Умная сортировка по тегам</h2>
+    <h4>Добавляй рецепты и указывай наиболее популярные теги. Это позволит<br>быстро находить любые категории.</h4>
+
+    <div class="filters">
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/book-icon.svg" alt="">
+        <h2>Простые блюда</h2>
+        <h4>Время приготвления таких блюд не более 1 часа</h4>
+      </div>
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/toy-icon.svg" alt="">
+        <h2>Детское</h2>
+        <h4>Самые полезные блюда которые можно детям любого возраста</h4>
+      </div>
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/hat-icon.svg" alt="">
+        <h2>От шеф-поваров</h2>
+        <h4>Требуют умения, времени и терпения, зато как в ресторане</h4>
+      </div>
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/firework-icon.svg" alt="">
+        <h2>На праздник</h2>
+        <h4>Чем удивить гостей, чтобы все были сыты за праздничным столом</h4>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="best-recipe">
+    <div class="image">
+      <div class="author-tag">@glazest</div>
+    </div>
+
+    <div class="content">
+      <div class="labels">
+        <div class="buttons">
+          <div>
+            <img src="../../../assets/images/main-page/svg/favorite-icon.svg" alt="">
+            <h4>356</h4>
+          </div>
+          <div>
+            <img src="../../../assets/images/main-page/svg/timer-icon.svg" alt="">
+            <h4>35 минут</h4>
+          </div>
+        </div>
+        <img id="recipe-of-the-day-icon" src="../../../assets/images/main-page/svg/best-recipe/recipe-of-the-day.svg" alt="">
+      </div>
+      <div class="about">
+        <h2>Тыквенный супчик на кокосовом молоке</h2>
+        <h4>Если у вас осталась тыква, и вы не знаете что с ней сделать, то это решение для вас! Ароматный, согревающий суп-пюре на кокосовом молоке. Можно даже в Пост!</h4>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="search">
+    <h2>Поиск рецептов</h2>
+    <h4>Введите примерное название блюда, а мы по тегам найдем его</h4>
+
+    <search-form></search-form>
+
+  </div>
+
+</div>
+
+
+
+
+
+

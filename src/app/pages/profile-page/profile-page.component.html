@@ -1,0 +1,40 @@
+<div class="container mat-typography ">
+
+
+  <header>
+    <!--First block-->
+    <div class="title-block">
+      <h2>Мой профиль</h2>
+    </div>
+  </header>
+
+  <div class="data-change">
+    <img id="make-edit" src="assets/images/svg/pen-icon.svg" alt="">
+
+    <div class="content">
+      <div class="left-part">
+        <div class="input-field">
+          <h4>Имя</h4>
+          <input class="mat-h4" type="text" placeholder="Введите новое имя" [value]="(userService.userAccount | async)?.userName">
+        </div>
+
+        <div class="input-field">
+          <h4>Логин</h4>
+          <input class="mat-h4" type="text" placeholder="Введите новый логин" [value]="(userService.userAccount | async)?.login">
+        </div>
+
+        <div class="input-field">
+          <h4>Пароль</h4>
+          <input class="mat-h4" type="password" placeholder="Введите новый пароль" [value]="(userService.userAccount | async)?.role">
+        </div>
+      </div>
+
+      <div class="input-field big">
+        <input class="mat-h4" type="text" placeholder="Напишите немного о себе" [value]="(userService.userAccount | async)?.description">
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

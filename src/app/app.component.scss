@@ -1,0 +1,115 @@
+@use './src/styles' as main-style;
+
+
+//===============[NAV-BAR]====================
+.header-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 14px 120px;
+  height: 5rem;
+
+  .left-part {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+
+    h1 {
+      color: main-style.get-color(); //Apply main color
+      margin: 0;
+    }
+
+    h3 {
+      color: main-style.get-color('200-contrast');
+      cursor: pointer;
+      margin: 0;
+      transition: all 0.1s;
+    }
+
+    h3:hover {
+      transform: translateY(2px);
+      transition: all 0.2s;
+    }
+  }
+
+  .right-part {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    h3 {
+      color: main-style.get-color();
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .user-icon-block {
+      border-radius: 50%;
+      background-color: main-style.get-color();
+      cursor: pointer;
+
+      img {
+        padding: 11px;
+        display: block;
+      }
+    }
+
+    .user-icon-block:hover {
+      box-shadow: 0 0 15px 0 rgba(34, 60, 80, 0.17);
+    }
+
+    .logged-info {
+      height: 25%;
+      display: flex;
+      align-items: center;
+      gap: 27px;
+
+      .line-separator {
+        height: 100%;
+        width: 2px;
+        background-color: main-style.get-color();
+        opacity: 0.72;
+      }
+
+      img:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+}
+
+.active-tab {
+  color: main-style.get-color('300-contrast') !important;
+}
+//===============[NAV-BAR]====================
+
+
+
+//===============[FOOTER]====================
+footer {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: main-style.get-color(300);
+  height: 7.85%;
+
+  h1 {
+    margin-bottom: 0 !important;
+    padding: 0 120px;
+    color: main-style.get-color();
+    font-size: 32px !important;
+    line-height: 39px !important;
+  }
+  span {
+    padding: 0 120px;
+    margin-left: auto;
+    color: main-style.get-color(200);
+    margin-bottom: 0 !important;
+  }
+}
+//===============[FOOTER]====================

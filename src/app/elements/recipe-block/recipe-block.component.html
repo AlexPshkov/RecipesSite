@@ -1,0 +1,55 @@
+<div class="recipe-block">
+  <div class="image" style="background-image: url({{recipeObject.imageURL}});">
+    <div class="author-tag">@{{recipeObject.authorName}}</div>
+  </div>
+
+<!--  <div class="image-block">-->
+<!--    <img class="recipe-image" src="{{recipeObject.imageURL}}" alt="">-->
+<!--  </div>-->
+
+  <div class="content">
+
+    <div class="upper-part">
+      <div class="tags-list">
+<!--        Here must be *ngFor-->
+        <h4>десерты</h4>
+      </div>
+
+      <div class="buttons">
+        <div class="mat-display-4" id="favorite-button">
+          <img src="assets/images/svg/star-icon.svg" alt="">
+          {{recipeObject.favoritesAmount}}
+        </div>
+        <div class="mat-display-4" id="like-button">
+          <img src="assets/images/svg/heart-icon.svg" alt="">
+          {{recipeObject.likesAmount}}
+        </div>
+      </div>
+    </div>
+
+    <div class="about">
+      <h2>{{recipeObject.recipeName}}</h2>
+      <h4>{{recipeObject.recipeDescription}}</h4>
+    </div>
+
+    <div class="info-part">
+
+      <div class="info-block">
+        <img src="assets/images/recipes/svg/timer-icon.svg" alt="">
+        <div class="info">
+          <h4 class="info-tag">Время приготовления:</h4>
+          <h4 class="info-value">{{recipeObject.requiredTime}}</h4>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <img src="assets/images/recipes/svg/two-persons-icon.svg" alt="">
+        <div class="info">
+          <h4 class="info-tag">Рецепт на:</h4>
+          <h4 class="info-value">{{recipeObject.servingsAmount}}</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

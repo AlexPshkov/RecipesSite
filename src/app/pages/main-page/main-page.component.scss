@@ -1,0 +1,224 @@
+@use '../../../styles' as main-style;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  //Image at the right top corner
+  #landing-image {
+    position: relative;
+    top: -220px;
+    right: -120px;
+    min-width: 300px;
+    max-width: 602px;
+    max-height: 800px;
+    z-index: -1;
+  }
+
+  //Block at the center with landing logo
+  .landing-block {
+    h2 {
+      color: main-style.get-color(100);
+      font-size: 72px !important;
+      line-height: 88px !important;
+    }
+
+    h4 {
+      color: main-style.get-color(200);
+      line-height: 28px !important;
+    }
+
+    .buttons {
+      display: flex;
+      margin-top: 39px;
+      gap: 24px;
+
+      #add-recipe-button { //Add button
+        .label {
+          margin-right: 23px;
+        }
+        padding: 16px 35px;
+        border-radius: 16px;
+      }
+
+      #join-profile-button { //Join button
+        color: main-style.get-color();
+        border: 1px solid;
+        padding: 16px 78px;
+        border-radius: 16px;
+        background-color: transparent;
+      }
+    }
+  }
+
+}
+
+.advantages {
+  h2 {
+    color: main-style.get-color(100);
+    font-size: 42px !important;
+    line-height: 62px !important;
+  }
+
+  h4 {
+    color: main-style.get-color(200);
+    line-height: 32px !important;
+  }
+
+  .filters {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 29px;
+
+    div { //Box with filter example
+      width: 25%;;
+      padding: 32px 24px;
+      background: main-style.get-color('0-contrast');
+      box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+      border-radius: 24px;
+
+      img {
+        padding: 13px 14px;
+        background-color: main-style.get-color(400);
+        fill: main-style.get-color(800);
+        border-radius: 12px;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        color: main-style.get-color(100);
+        font-size: 24px !important;
+        line-height: 30px !important;
+      }
+
+      h4 {
+        color: main-style.get-color(200);
+        font-size: 18px !important;
+        line-height: 30px !important;
+      }
+    }
+
+    div:hover {
+      box-shadow: -3px -6px 11px 7px rgba(34, 60, 80, 0.17);
+    }
+  }
+}
+
+.best-recipe {
+  width: 100%;
+  margin-top: 157px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 73px;
+  height: 543px;
+
+  .image {
+    display: flex;
+    align-items: flex-end;
+    flex-shrink: 0;
+    width: 48.1%;
+    background: url(../../../assets/images/main-page/soup.webp) no-repeat center;
+    background-size: cover;
+    border-radius: 72px 0;
+
+    .author-tag {
+      display: inline;
+      padding: 2px 16px;
+      background-color: main-style.get-color("0-contrast");
+      margin-bottom: 38px;
+      font-size: 16px !important;
+      line-height: 28px !important;
+      color: main-style.get-color();
+      border-radius: 0 7px 7px 0;
+      cursor: pointer;
+    }
+
+    .author-tag:hover {
+      color: main-style.get-color(800);
+      background-color: main-style.get-color('50-contrast');
+    }
+  }
+
+  .content {
+    .labels {
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+
+        div {
+          align-items: flex-start;
+          display: flex;
+          gap: 10px;
+        }
+
+        img {
+          //TODO Make color change by css
+          opacity: 0.5;
+        }
+
+        h4 {
+          color: main-style.get-color(100);
+          font-size: 16px !important;
+          line-height: 28px !important;
+        }
+
+      }
+
+      #recipe-of-the-day-icon {
+        margin-top: 23px;
+        //TODO Make color change by css
+      }
+    }
+
+    .about {
+      margin-top: 32px;
+
+      h2 {
+        color: main-style.get-color(100);
+        font-size: 42px !important;
+        line-height: 60px !important;
+        text-transform: capitalize !important;
+      }
+
+      h4 {
+        color: main-style.get-color(200);
+        font-size: 18px !important;
+        line-height: 32px !important;
+        font-feature-settings: 'case' on !important;
+      }
+    }
+  }
+}
+
+
+.search {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+
+  h2 {
+    color: main-style.get-color(100);
+    font-size: 42px !important;
+    line-height: 51px !important;
+  }
+
+  h4 {
+    color: main-style.get-color(200);
+    //font-family: 'Mulish'; //TODO ONLY HERE
+    font-size: 18px !important;
+    line-height: 32px !important;
+    font-feature-settings: 'case' on !important;
+  }
+
+  search-form {
+    width: 100%;
+    margin-top: 64px;
+  }
+}
+

@@ -1,0 +1,40 @@
+<div class="container mat-typography">
+  <img id="cross-exit" src="assets/images/svg/cross-exit-icon.svg" alt="" (click)="dialogRef.close()">
+  <h1 mat-dialog-title>Регистрация</h1>
+
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div mat-dialog-content class="content">
+      <div class="input-field">
+        <input class="mat-h4" type="text" placeholder="Имя" formControlName="name">
+        <!--      <h4>Подпись снизу</h4>-->
+      </div>
+
+      <div class="input-field">
+        <input class="mat-h4" type="text" placeholder="Логин" formControlName="login">
+        <!--      <h4>Подпись снизу</h4>-->
+      </div>
+
+      <div class="passes-block">
+        <div class="input-field">
+          <input class="mat-h4" type="text" placeholder="Пароль" formControlName="password">
+          <h4>Минимум 8 символов</h4>
+        </div>
+        <div class="input-field">
+          <input class="mat-h4" type="text" placeholder="Повторите пароль" formControlName="password_repeat">
+          <!--        <h4 class="warn">Подпись снизу</h4>-->
+        </div>
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="buttons">
+      <button [disabled]="form.invalid" type="submit" mat-flat-button color="primary" id="join-profile-button" class="mat-display-4">
+        Зарегистрироваться
+      </button>
+      <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="dialogRef.close()">Отмена</button>
+    </div>
+  </form>
+
+  <span id="choose-another" class="mat-display-4" (click)="openLoginDialog()">У меня уже есть аккаунт</span>
+</div>
+
+

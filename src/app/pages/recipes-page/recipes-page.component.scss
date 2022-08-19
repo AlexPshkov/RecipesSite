@@ -1,0 +1,109 @@
+@use '../../../styles' as main-style;
+
+header {
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .title-block {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    h2 {
+      color: main-style.get-color(100);
+      font-size: 42px !important;
+      line-height: 62px !important;
+    }
+
+    h4 {
+      color: main-style.get-color(200);
+      font-size: 18px !important;
+      line-height: 32px !important;
+      font-feature-settings: 'case' on !important;
+    }
+
+    #add-recipe-button {
+      margin-left: 111px;
+
+      .label {
+        margin-right: 23px;
+      }
+
+      padding: 16px 35px;
+      border-radius: 16px;
+    }
+  }
+
+
+  .filters-block {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 29px;
+
+    div {
+      width: 25%;
+      max-height: 164px;
+      padding: 36px 24px;
+      background: main-style.get-color('0-contrast');
+      box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+      border-radius: 24px;
+
+      img {
+        padding: 13px 14px;
+        background-color: main-style.get-color(400);
+        fill: main-style.get-color(800);
+        border-radius: 12px;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        font-size: 24px !important;
+        line-height: 30px !important;
+        margin-bottom: 0 !important;
+      }
+    }
+
+    div:hover {
+      box-shadow: -3px -6px 11px 7px rgba(34, 60, 80, 0.17);
+    }
+  }
+
+  .search-block {
+    width: 100%;
+    display: flex;
+    gap: 56px;
+    align-items: baseline;
+
+    search-form {
+      width: 100%;
+    }
+  }
+}
+
+.recipes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  margin-top: 80px;
+}
+
+
+#load-more-button {
+  align-self: center;
+  margin-top: 65px;
+  color: main-style.get-color();
+  border: 1px solid;
+  border-radius: 16px;
+
+  line-height: 22px !important;
+  width: 309px;
+  padding: 22px 65px;
+  background-color: transparent;
+}
+
+

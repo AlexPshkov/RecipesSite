@@ -1,0 +1,51 @@
+<div class="container mat-typography ">
+
+
+  <header>
+
+    <!--First block-->
+    <div class="title-block">
+      <h2>Рецепты</h2>
+      <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4">
+        <img class="label" src="../../../assets/images/main-page/svg/plus-icon.svg" alt="+">
+        Добавить рецепт
+      </button>
+    </div>
+
+    <!--Second block [Filters]-->
+    <div class="filters-block">
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/book-icon.svg" alt="">
+        <h2>Простые блюда</h2>
+      </div>
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/toy-icon.svg" alt="">
+        <h2>Детское</h2>
+      </div>
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/hat-icon.svg" alt="">
+        <h2>От шеф-поваров</h2>
+      </div>
+      <div>
+        <img src="../../../assets/images/main-page/svg/filters/firework-icon.svg" alt="">
+        <h2>На праздник</h2>
+      </div>
+    </div>
+
+
+    <div class="search-block">
+      <h2>Поиск рецепта</h2>
+      <search-form></search-form>
+    </div>
+
+
+  </header>
+
+
+  <div class="recipes-list">
+    <recipe-block *ngFor="let recipe of availableRecipes | async" [recipeObject]="recipe"></recipe-block>
+  </div>
+
+  <button mat-flat-button id="load-more-button" class="mat-display-4">Загрузить еще</button>
+
+</div>
