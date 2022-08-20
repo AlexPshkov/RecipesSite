@@ -4,7 +4,10 @@ import {LoginDialogComponent} from "../login-dialog/login-dialog.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
-import {checkTheSamePassword} from "../../validators/CustomValidators";
+import {ErrorSnackbarComponent} from "../error-snackbar/error-snackbar.component";
+import {ErrorMessages} from "../../utils/ErrorMessages";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {checkPasswordMatch} from "../../validators/CustomValidators";
 
 
 @Component({
@@ -16,28 +19,17 @@ export class RegisterDialogComponent implements OnInit {
 
 
   public form: FormGroup = new FormGroup({
-    name: new FormControl("", [
-      Validators.required
-    ]),
-    login: new FormControl("", [
-      Validators.required,
-      Validators.pattern("[a-z]+")
-    ]),
-    password: new FormControl("", [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
-    password_repeat: new FormControl("", [
-      Validators.required,
-      Validators.minLength(8),
-      checkTheSamePassword()
-    ]),
+    name: new FormControl("", Validators.required),
+    login: new FormControl("", Validators.required),
+    password: new FormControl("", [Validators.minLength(8), Validators.required]),
+    password_repeat: new FormControl("", checkPasswordMatch()),
   });
 
   constructor(
     public userService: UserService,
     public router: Router,
     public dialog: MatDialog,
+    public snack: MatSnackBar,
     public dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
@@ -46,12 +38,22 @@ export class RegisterDialogComponent implements OnInit {
 
   }
 
-
+  isSuchErrors(controlName: string, errorNames: string[]) : boolean {
+    const control = this.form.controls[controlName];
+    for (let errorName of errorNames)
+      if (control.errors?.[errorName] != null) return true;
+    return false;
+  }
 
   onSubmit() {
-    this.userService.authService.register(this.form.value).subscribe(() => {
-      this.userService.updateProfile();
-      this.dialogRef.close();
+    this.userService.authService.register(this.form.value).subscribe({
+      complete: () => {
+        this.userService.updateProfile();
+        this.dialogRef.close();
+      },
+      error: err => {
+        this.snack.openFromComponent(ErrorSnackbarComponent, { data: ErrorMessages.getTextMessage(err) })
+      }
     });
   }
 

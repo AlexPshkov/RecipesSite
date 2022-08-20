@@ -26,6 +26,9 @@ import { AddRecipeWarnDialogComponent } from './modals/add-recipe-warn-dialog/ad
 import {TOKEN_KEY} from "./services/auth.service";
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import {AuthGuard} from "./guards/auth.guard";
+import { ErrorSnackbarComponent } from './modals/error-snackbar/error-snackbar.component';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
+import { OnlyLowerCaseDirective } from './directives/only-lower-case.directive';
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -55,11 +58,15 @@ export function tokenGetter() {
         LoginDialogComponent,
         AddRecipeWarnDialogComponent,
         ProfilePageComponent,
+        ErrorSnackbarComponent,
+        OnlyLowerCaseDirective,
+
     ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatSnackBarModule,
     MatToolbarModule,
     MatButtonModule,
     RouterModule.forRoot(routes),
@@ -76,7 +83,14 @@ export function tokenGetter() {
     MatDialogModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 5000
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

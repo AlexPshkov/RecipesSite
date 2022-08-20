@@ -34,10 +34,9 @@ h4.simple-text {
   line-height: 28px !important;
 }
 
-.warn {
-  opacity: 1;
-  font-weight: 600;
-  color: main-style.get-color(W100);
+.invalid-field > * {
+  opacity: 1 !important;
+  color: main-style.get-color(W100) !important;
 }
 
 .content {
@@ -73,6 +72,9 @@ h4.simple-text {
       margin: 0;
     }
 
+    input::placeholder {
+      color: inherit;
+    }
 
     input:not(:placeholder-shown) {
       opacity: 1;

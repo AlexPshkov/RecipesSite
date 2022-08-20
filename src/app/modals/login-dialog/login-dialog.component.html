@@ -5,16 +5,15 @@
 
   <form [formGroup]="form" (submit)="onSubmit()">
     <div mat-dialog-content class="content">
-      <div class="input-field">
-        <input class="mat-h4" type="text" placeholder="Логин" formControlName="login">
+      <div class="input-field" [class.invalid-field]="this.form.errors?.['wrongData']">
+        <input onlyLowerCase class="mat-h4" type="text" placeholder="Логин" formControlName="login" (ngModelChange)="onChange()">
         <!--      <h4>Подпись снизу</h4>-->
       </div>
 
-      <div class="input-field">
-        <input class="mat-h4" type="text" placeholder="Пароль" formControlName="password">
+      <div class="input-field" [class.invalid-field]="this.form.errors?.['wrongData']">
+        <input class="mat-h4" type="text" placeholder="Пароль" formControlName="password" (ngModelChange)="onChange()">
         <!--      <h4>Подпись снизу</h4>-->
       </div>
-
     </div>
 
     <div mat-dialog-actions class="buttons">

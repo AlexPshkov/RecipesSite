@@ -1,10 +1,18 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 
-export function checkTheSamePassword(): ValidatorFn {
+
+/**
+ * Checks if current filed value matches with 'password' field value
+ */
+export function checkPasswordMatch(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden =  control.parent?.value.password != control.value
-    return forbidden ? {forbiddenName: {value: control.value}} : null;
+    const controls = control?.parent?.controls as { [key: string]: AbstractControl; };
+    if (!controls) return null;
+
+    const forbidden = (controls['password'].value != control.value);
+    return forbidden ? {checkPasswordMatch: true} : null;
   };
 }
+
 
 

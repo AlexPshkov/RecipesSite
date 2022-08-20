@@ -10,16 +10,16 @@
       </div>
 
       <div class="input-field">
-        <input class="mat-h4" type="text" placeholder="Логин" formControlName="login">
+        <input onlyLowerCase class="mat-h4" type="text" placeholder="Логин" formControlName="login">
         <!--      <h4>Подпись снизу</h4>-->
       </div>
 
       <div class="passes-block">
-        <div class="input-field">
-          <input class="mat-h4" type="text" placeholder="Пароль" formControlName="password">
+        <div class="input-field" [class.invalid-field]="isSuchErrors('password', ['minlength'])">
+          <input class="mat-h4" type="text" placeholder="Пароль" formControlName="password" (ngModelChange)="form.controls['password_repeat'].updateValueAndValidity()">
           <h4>Минимум 8 символов</h4>
         </div>
-        <div class="input-field">
+        <div class="input-field"  [class.invalid-field]="isSuchErrors('password_repeat', ['checkPasswordMatch'])">
           <input class="mat-h4" type="text" placeholder="Повторите пароль" formControlName="password_repeat">
           <!--        <h4 class="warn">Подпись снизу</h4>-->
         </div>
