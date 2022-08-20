@@ -25,7 +25,7 @@
 
         <div class="input-field">
           <h4>Пароль</h4>
-          <input class="mat-h4" type="password" placeholder="Введите новый пароль" [value]="(userService.userAccount | async)?.role">
+          <input class="mat-h4" type="text" placeholder="Введите новый пароль" [value]="(userService.userAccount | async)?.password">
         </div>
       </div>
 
