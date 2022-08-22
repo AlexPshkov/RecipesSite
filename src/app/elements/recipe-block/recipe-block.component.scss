@@ -40,7 +40,6 @@
   }
 
 
-
   .content {
     width: 100%;
     background-color: main-style.get-color("0-contrast");
@@ -51,6 +50,7 @@
 
     .upper-part { //Buttons and tags
       display: flex;
+      align-items: center;
       justify-content: space-between;
 
       .tags-list {
@@ -62,10 +62,16 @@
           color: main-style.get-color(800);
           font-size: 14px !important;
           line-height: 30px !important;
+          cursor: pointer;
           z-index: 5;
           padding: 0 10px;
+          margin: 0;
           background-color: rgba(main-style.get-color(), 0.2);
           border-radius: 5px;
+        }
+
+        h4:hover {
+          background-color: rgba(main-style.get-color(), 0.25);
         }
       }
 
@@ -83,6 +89,18 @@
           padding: 11px 32px;
           border: 1px solid main-style.get-color();
           border-radius: 16px;
+        }
+
+        div.checked {
+          background-color: rgba(main-style.get-color(), 0.2);
+        }
+
+        div:hover {
+          background-color: rgba(main-style.get-color(), 0.05);
+
+          img {
+            //TODO Some styles for color change
+          }
         }
       }
     }
