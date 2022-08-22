@@ -1,0 +1,316 @@
+@use '../../../styles' as main-style;
+
+header {
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .title-block {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    h2 {
+      color: main-style.get-color(100);
+      font-size: 42px !important;
+      line-height: 62px !important;
+    }
+
+    h4 {
+      color: main-style.get-color(200);
+      font-size: 18px !important;
+      line-height: 32px !important;
+      font-feature-settings: 'case' on !important;
+    }
+
+    #add-recipe-button {
+      margin-left: 111px;
+
+      .label {
+        margin-right: 23px;
+      }
+
+      padding: 16px 35px;
+      border-radius: 16px;
+    }
+  }
+}
+
+
+.recipe-edit-block {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  .image {
+    display: flex;
+    align-items: flex-end;
+    flex-shrink: 0;
+    width: 35.83%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: main-style.get-color(400);
+
+    background-image: url("../../../assets/images/svg/download-zone.svg");
+
+    resize: both;
+    border-radius: 72px 0;
+    z-index: 5;
+  }
+
+
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: main-style.get-color("0-contrast");
+    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+    border-radius: 24px;
+    padding: 36px 70px 53px 200px;
+    margin-left: -146px;
+
+    .input-field {
+      width: 100%;
+      padding: 11px 24px;
+      box-sizing: border-box;
+      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
+      border-radius: 16px;
+
+      input, textarea {
+        width: 100%;
+        opacity: 0.5;
+        font-size: 16px !important;
+        line-height: 28px !important;
+        color: main-style.get-color(100);
+        margin: 0;
+      }
+
+      textarea {
+        min-height: 117px;
+      }
+
+      input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
+        opacity: 1;
+      }
+    }
+
+    .input-field.big {
+
+
+      input {
+        padding: 11px 24px 78px 24px;
+      }
+    }
+
+    .select-buttons {
+      width: 100%;
+      display: flex;
+      gap: 64px;
+
+      .select-field {
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+        gap: 11px;
+
+        mat-select {
+          width: 100%;
+          padding: 11px 24px;
+          box-sizing: border-box;
+          border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
+          border-radius: 16px;
+          color: main-style.get-color(100);
+          font-size: 16px !important;
+          line-height: 28px !important;
+        }
+
+        h4 {
+          color: main-style.get-color(100);
+          font-size: 16px !important;
+          line-height: 28px !important;
+        }
+      }
+    }
+  }
+}
+
+
+.input-field {
+  width: 100%;
+  padding: 11px 24px;
+  box-sizing: border-box;
+  border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
+  border-radius: 16px;
+
+  input, textarea {
+    width: 100%;
+    opacity: 0.5;
+    font-size: 16px !important;
+    line-height: 28px !important;
+    color: main-style.get-color(100);
+    margin: 0;
+  }
+
+  textarea {
+    min-height: 117px;
+  }
+
+  input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
+    opacity: 1;
+  }
+}
+
+
+.main-content {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+
+  .add-button {
+    width: 380px;
+    min-width: 380px;
+    align-self: center;
+    text-align: center;
+    color: main-style.get-color();
+    border: 1px solid;
+    padding: 16px 78px;
+    border-radius: 16px;
+    background-color: transparent;
+
+    .label {
+      margin-right: 54px;
+      margin-left: -30px;
+    }
+  }
+
+}
+
+.ingredients-column {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .column-title {
+    font-size: 20px !important;
+    line-height: 30px !important;
+    color: main-style.get-color(200);
+  }
+
+  .ingredient-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 36px 30px;
+    background: main-style.get-color("0-contrast");
+    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+    border-radius: 24px;
+    margin-top: 25px;
+
+    .cross-remove {
+      position: absolute;
+      margin-top: -60px;
+      margin-left: 20px;
+      align-self: flex-end;
+    }
+
+    .cross-remove:hover {
+      transform: rotate(5deg);
+    }
+
+    .input-title {
+      width: 100%;
+      padding: 11px 24px;
+      box-sizing: border-box;
+      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
+      border-radius: 16px;
+
+      input {
+        width: 100%;
+        opacity: 0.5;
+        font-size: 16px !important;
+        line-height: 28px !important;
+        color: main-style.get-color(100);
+        margin: 0;
+      }
+
+      input:not(:placeholder-shown) {
+        opacity: 1;
+      }
+    }
+
+    .input-ingredients-list {
+      width: 100%;
+      padding: 11px 15px 10px 24px;
+      box-sizing: border-box;
+      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
+      border-radius: 16px;
+
+      textarea {
+        width: 100%;
+        opacity: 0.5;
+        min-height: 229px;
+        font-size: 16px !important;
+        line-height: 28px !important;
+        color: main-style.get-color(100);
+        margin: 0;
+      }
+
+      textarea:not(:placeholder-shown) {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.steps-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .step-block {
+    padding: 50px 70px 70px 70px;
+    background: main-style.get-color("0-contrast");
+    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+    border-radius: 24px;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      color: main-style.get-color(200);
+      font-size: 18px !important;
+      line-height: 30px !important;
+    }
+
+    .cross-remove:hover {
+      transform: rotate(5deg);
+    }
+
+    .step-description {
+      padding: 11px 10px 0 24px;
+      border: 1px solid rgba(main-style.get-color("200-contrast"), 0.4);
+      border-radius: 16px;
+
+      textarea {
+        min-height: 127px;
+        width: 100%;
+        font-size: 16px;
+        line-height: 28px;
+        opacity: 0.5;
+      }
+
+      textarea:not(:placeholder-shown) {
+        opacity: 1;
+      }
+    }
+
+  }
+}
