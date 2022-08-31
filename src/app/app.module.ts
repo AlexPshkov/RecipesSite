@@ -33,6 +33,7 @@ import {AddRecipeGuard} from "./guards/add-recipe.guard";
 import { AddRecipePageComponent } from './pages/add-recipe-page/add-recipe-page.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import { CustomSvgComponent } from './elements/custom-svg/custom-svg.component';
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -66,7 +67,7 @@ export function tokenGetter() {
         OnlyLowerCaseDirective,
         AuthRequiredComponent,
         AddRecipePageComponent,
-
+        CustomSvgComponent,
     ],
   imports: [
     BrowserModule,
