@@ -1,16 +1,16 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {RegisterDialogComponent} from "../register-dialog/register-dialog.component";
 import {LoginDialogComponent} from "../login-dialog/login-dialog.component";
+import {RegisterDialogComponent} from "../register-dialog/register-dialog.component";
 
 @Component({
-  selector: 'app-add-recipe-warn-dialog',
-  templateUrl: './add-recipe-warn-dialog.component.html',
-  styleUrls: ['./add-recipe-warn-dialog.component.scss']
+  selector: 'app-auth-required',
+  templateUrl: './auth-required.component.html',
+  styleUrls: ['./auth-required.component.scss']
 })
-export class AddRecipeWarnDialogComponent implements OnInit {
+export class AuthRequiredComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<LoginDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<LoginDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
 
   ngOnInit(): void {
   }

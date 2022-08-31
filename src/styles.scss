@@ -122,3 +122,11 @@ mat-dialog-container {
   color: get-color(100) !important;
   max-width: none !important;
 }
+
+textarea {
+  overflow: auto;
+  outline: none;
+  border: none;
+  resize: vertical;
+}
+

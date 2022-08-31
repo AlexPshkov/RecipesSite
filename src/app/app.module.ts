@@ -22,19 +22,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterDialogComponent } from './modals/register-dialog/register-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { LoginDialogComponent } from './modals/login-dialog/login-dialog.component';
-import { AddRecipeWarnDialogComponent } from './modals/add-recipe-warn-dialog/add-recipe-warn-dialog.component';
 import {TOKEN_KEY} from "./services/auth.service";
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import {AuthGuard} from "./guards/auth.guard";
 import { ErrorSnackbarComponent } from './modals/error-snackbar/error-snackbar.component';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 import { OnlyLowerCaseDirective } from './directives/only-lower-case.directive';
+import { AuthRequiredComponent } from './modals/auth-required/auth-required.component';
+import {AddRecipeGuard} from "./guards/add-recipe.guard";
+import { AddRecipePageComponent } from './pages/add-recipe-page/add-recipe-page.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
   {path: "recipes", component: RecipesPageComponent, title: "Рецепты"},
   {path: "favorite", component: FavoritesPageComponent, title: "Избранное", canActivate: [AuthGuard]},
   {path: "profile", component: ProfilePageComponent, title: "Профиль", canActivate: [AuthGuard]},
+  {path: "add-recipe", component: AddRecipePageComponent, title: "Добавить рецепт", canActivate: [AddRecipeGuard]},
   {path: '**', redirectTo: 'main-page'}
 ];
 
@@ -56,10 +61,11 @@ export function tokenGetter() {
         TagBlockComponent,
         RegisterDialogComponent,
         LoginDialogComponent,
-        AddRecipeWarnDialogComponent,
         ProfilePageComponent,
         ErrorSnackbarComponent,
         OnlyLowerCaseDirective,
+        AuthRequiredComponent,
+        AddRecipePageComponent,
 
     ],
   imports: [
@@ -82,6 +88,8 @@ export function tokenGetter() {
     HttpClientModule,
     MatDialogModule,
     FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [
     {

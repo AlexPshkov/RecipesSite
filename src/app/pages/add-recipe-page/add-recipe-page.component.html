@@ -1,0 +1,90 @@
+<div class="container mat-typography ">
+
+
+  <header>
+
+    <!--First block-->
+    <div class="title-block">
+      <h2>Добавить новый рецепт</h2>
+      <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="onSubmit()">
+        Опубликовать
+      </button>
+    </div>
+
+  </header>
+
+
+  <form class="recipe-edit-block" [formGroup]="form">
+    <div class="image"></div>
+
+    <div class="content">
+      <div class="input-field">
+        <input class="mat-h4" type="text" placeholder="Название рецепта" formControlName="recipeName">
+      </div>
+      <div class="input-field big">
+        <textarea class="mat-h4" placeholder="Краткое описание рецепта (150 символов)" formControlName="recipeDescription"></textarea>
+      </div>
+      <div class="input-field">
+        <input class="mat-h4" type="text" placeholder="Добавить теги" formControlName="tags">
+      </div>
+
+      <div class="select-buttons">
+        <div class="select-field">
+          <mat-select class="mat-h4" placeholder="Время готовки" formControlName="requiredTime">
+            <mat-option *ngFor="let time of availableTimes" value="{{time}}">{{time}}</mat-option>
+          </mat-select>
+          <h4>Минут</h4>
+        </div>
+
+        <div class="select-field">
+          <mat-select class="mat-h4" placeholder="Порций в блюде" formControlName="servingsAmount">
+            <mat-option *ngFor="let amount of availableServings" value="{{amount}}">{{amount}}</mat-option>
+          </mat-select>
+          <h4>Персон</h4>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+
+  <div class="main-content">
+    <div class="ingredients-column">
+      <h2 class="column-title">Ингредиенты</h2>
+
+      <div class="ingredient-block">
+        <img class="cross-remove" src="assets/images/svg/cross-exit-icon.svg" alt="">
+        <div class="input-title">
+          <input class="mat-h4" type="text" placeholder="Заголовок для ингридиентов">
+        </div>
+        <div class="input-ingredients-list">
+          <textarea class="mat-h4" placeholder="Список подуктов для категории"></textarea>
+        </div>
+      </div>
+
+      <button mat-flat-button class="add-button mat-display-4">
+        <img class="label" src="assets/images/svg/plus-checked-icon.svg" alt="+">
+        Добавить заголовок
+      </button>
+    </div>
+
+    <div class="steps-column">
+
+      <div class="step-block">
+        <div class="title">
+          <h3>Шаг 1</h3>
+          <img class="cross-remove" src="assets/images/svg/cross-exit-icon.svg" alt="">
+        </div>
+        <div class="step-description">
+          <textarea class="mat-h4" placeholder="Описание шага"></textarea>
+        </div>
+      </div>
+
+      <button mat-flat-button class="add-button mat-display-4">
+        <img class="label" src="assets/images/svg/plus-checked-icon.svg" alt="+">
+        Добавить шаг
+      </button>
+    </div>
+  </div>
+
+</div>

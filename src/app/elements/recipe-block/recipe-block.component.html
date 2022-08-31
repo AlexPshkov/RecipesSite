@@ -1,28 +1,22 @@
 <div class="recipe-block">
   <div class="image" style="background-image: url({{recipeObject.imageURL}});">
-    <div class="author-tag">@{{recipeObject.authorName}}</div>
+    <div class="author-tag">@{{recipeObject.user.login}}</div>
   </div>
 
-<!--  <div class="image-block">-->
-<!--    <img class="recipe-image" src="{{recipeObject.imageURL}}" alt="">-->
-<!--  </div>-->
-
   <div class="content">
-
     <div class="upper-part">
       <div class="tags-list">
-<!--        Here must be *ngFor-->
-        <h4>десерты</h4>
+        <h4 *ngFor="let tag of recipeObject.tags">{{tag.tagName}}</h4>
       </div>
 
       <div class="buttons">
-        <div class="mat-display-4" id="favorite-button">
-          <img src="assets/images/svg/star-icon.svg" alt="">
-          {{recipeObject.favoritesAmount}}
+        <div class="mat-display-4" id="favorite-button" (click)="favoriteButton()" [class.checked]="isFavorite">
+          <img src="assets/images/svg/star-icon.svg" alt=""  >
+          {{recipeObject.favorites.length}}
         </div>
-        <div class="mat-display-4" id="like-button">
+        <div class="mat-display-4" id="like-button" (click)="likeButton()" [class.checked]="isLike">
           <img src="assets/images/svg/heart-icon.svg" alt="">
-          {{recipeObject.likesAmount}}
+          {{recipeObject.likes.length}}
         </div>
       </div>
     </div>
