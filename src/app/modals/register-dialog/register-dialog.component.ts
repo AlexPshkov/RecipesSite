@@ -45,8 +45,13 @@ export class RegisterDialogComponent implements OnInit {
     return false;
   }
 
+
+
   onSubmit() {
     this.userService.authService.register(this.form.value).subscribe({
+      next: token => {
+        this.userService.authService.saveToken(token)
+      },
       complete: () => {
         this.userService.updateProfile();
         this.dialogRef.close();

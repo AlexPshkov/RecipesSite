@@ -36,6 +36,9 @@ export class LoginDialogComponent implements OnInit {
 
   onSubmit() {
     this.userService.authService.login(this.form.value).subscribe({
+      next: token => {
+        this.userService.authService.saveToken(token)
+      },
       complete: () => {
         this.userService.updateProfile();
         this.dialogRef.close();

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {Router} from "@angular/router";
-import {Observable, tap} from "rxjs";
+import {Observable} from "rxjs";
 import {Token} from "../shared/objects/Token";
 import {apiUrl} from "../app.component";
 import {LoginRequest} from "../shared/requests/LoginRequest";
@@ -24,19 +24,11 @@ export class AuthService {
   }
 
   login(loginRequest: LoginRequest): Observable<Token> {
-    return this.http.post<Token>(`${apiUrl}/auth/login`, loginRequest).pipe(
-      tap(token => {
-        localStorage.setItem(TOKEN_KEY, token.access_token);
-      })
-    )
+    return this.http.post<Token>(`${apiUrl}/auth/login`, loginRequest);
   }
 
   register(registerRequest : RegisterRequest): Observable<Token> {
-    return this.http.post<Token>(`${apiUrl}/auth/register`, registerRequest).pipe(
-      tap(token => {
-        localStorage.setItem(TOKEN_KEY, token.access_token);
-      })
-    )
+    return this.http.post<Token>(`${apiUrl}/auth/register`, registerRequest);
   }
 
   isAuthenticated(): boolean {
@@ -46,7 +38,10 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(TOKEN_KEY);
-    this.router.navigate(['']).then(r => {})
+    this.router.navigate(['']);
   }
 
+  saveToken(token: Token): void {
+    localStorage.setItem(TOKEN_KEY, token.access_token);
+  }
 }
