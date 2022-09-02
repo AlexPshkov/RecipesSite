@@ -80,27 +80,24 @@
         flex-wrap: nowrap;
         gap: 15px;
         color: main-style.get-color();
-        align-items: center;
+        align-items: flex-start;
 
-        div {
+        .button {
           display: flex;
           gap: 17px;
           margin-bottom: 0;
           padding: 11px 32px;
           border: 1px solid main-style.get-color();
           border-radius: 16px;
-        }
 
-        div.checked {
-          background-color: rgba(main-style.get-color(), 0.2);
-        }
-
-        div:hover {
-          background-color: rgba(main-style.get-color(), 0.05);
-
-          img {
-            //TODO Some styles for color change
+          custom-svg {
+            margin-top: 1.7px;
           }
+        }
+
+        .button:hover {
+          background-color: rgba(main-style.get-color(), 0.05);
+          color: main-style.get-color();
         }
       }
     }
@@ -135,6 +132,11 @@
         display: flex;
         align-items: center;
         gap: 20px;
+
+        custom-svg {
+          opacity: 0.5;
+          color: main-style.get-color();
+        }
 
         .info {
           display: flex;

@@ -1,6 +1,5 @@
 <div class="container mat-typography ">
 
-
   <header>
 
     <!--First block-->
@@ -15,14 +14,20 @@
 
 
   <form class="recipe-edit-block" [formGroup]="form">
-    <div class="image"></div>
+    <div class="image">
+      <div class="download-area">
+        <custom-svg name="download-cloud-icon"></custom-svg>
+        <h4>Загрузите фото<br>готового блюда</h4>
+      </div>
+
+    </div>
 
     <div class="content">
       <div class="input-field">
         <input class="mat-h4" type="text" placeholder="Название рецепта" formControlName="recipeName">
       </div>
-      <div class="input-field big">
-        <textarea class="mat-h4" placeholder="Краткое описание рецепта (150 символов)" formControlName="recipeDescription"></textarea>
+      <div class="input-field big no-resize">
+        <textarea [maxLength]="149" class="mat-h4" placeholder="Краткое описание рецепта (150 символов)" formControlName="recipeDescription"></textarea>
       </div>
       <div class="input-field">
         <input class="mat-h4" type="text" placeholder="Добавить теги" formControlName="tags">
@@ -47,13 +52,14 @@
     </div>
   </form>
 
+<!--  svgRef="assets/images/svg/cross-exit-icon.svg"-->
 
   <div class="main-content">
     <div class="ingredients-column">
       <h2 class="column-title">Ингредиенты</h2>
 
       <div class="ingredient-block">
-        <img class="cross-remove" src="assets/images/svg/cross-exit-icon.svg" alt="">
+        <custom-svg name="cross-exit-icon" class="cross-remove"></custom-svg>
         <div class="input-title">
           <input class="mat-h4" type="text" placeholder="Заголовок для ингридиентов">
         </div>
@@ -63,7 +69,7 @@
       </div>
 
       <button mat-flat-button class="add-button mat-display-4">
-        <img class="label" src="assets/images/svg/plus-checked-icon.svg" alt="+">
+        <custom-svg class="label" name="plus-icon"></custom-svg>
         Добавить заголовок
       </button>
     </div>
@@ -73,7 +79,7 @@
       <div class="step-block">
         <div class="title">
           <h3>Шаг 1</h3>
-          <img class="cross-remove" src="assets/images/svg/cross-exit-icon.svg" alt="">
+          <custom-svg class="cross-remove" name="cross-exit-icon"></custom-svg>
         </div>
         <div class="step-description">
           <textarea class="mat-h4" placeholder="Описание шага"></textarea>
@@ -81,7 +87,7 @@
       </div>
 
       <button mat-flat-button class="add-button mat-display-4">
-        <img class="label" src="assets/images/svg/plus-checked-icon.svg" alt="+">
+        <custom-svg class="label" name="plus-icon"></custom-svg>
         Добавить шаг
       </button>
     </div>

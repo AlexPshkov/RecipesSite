@@ -15,7 +15,6 @@ export class ExternalHtmlService {
   }
 
   public getHtml(url: string): Observable<SafeHtml> {
-    console.warn("USE GET HTML. WARN");
     return this.http.get("http://localhost:4200/" + url, { responseType: 'text'}).pipe(
       map((value) => this.sanitizer.bypassSecurityTrustHtml(value))
     );

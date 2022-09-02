@@ -1,26 +1,31 @@
-<div class="header-nav-bar">
-  <div class="left-part">
-    <h1>Recipes</h1>
-    <span class="spacer"></span>
-    <h3 *ngFor="let page of availablePages" routerLink="{{page.path}}" [ngClass]="{'active-tab': isCurrentPage(page.path)}">{{page.title}}</h3>
+<div class="site-content">
+  <div class="header-nav-bar">
+    <div class="left-part">
+      <h1>Recipes</h1>
+      <span class="spacer"></span>
+      <h3 *ngFor="let page of availablePages" routerLink="{{page.path}}"
+          [ngClass]="{'active-tab': isCurrentPage(page.path)}">{{page.title}}</h3>
+    </div>
+
+    <div class="right-part">
+      <div class="user-icon-block">
+        <custom-svg name="one-person-icon" (click)="profileButton()"></custom-svg>
+      </div>
+      <h3 *ngIf="!this.userService.isAuthed" (click)="joinButton()">Войти</h3>
+      <div class="logged-info" (click)="profileButton()" *ngIf="this.userService.isAuthed">
+        <h3>Привет, {{(this.userService.userAccount | async)?.userName}}</h3>
+        <div class="line-separator"></div>
+        <custom-svg (click)="logoutButton()" name="logout-icon"></custom-svg>
+      </div>
+    </div>
   </div>
 
-  <div class="right-part">
-    <div class="user-icon-block">
-      <img src="assets/images/svg/one-person-icon.svg" alt="" (click)="profileButton()">
-    </div>
-    <h3 *ngIf="!this.userService.isAuthed" (click)="joinButton()">Войти</h3>
-    <div class="logged-info" (click)="profileButton()" *ngIf="this.userService.isAuthed">
-      <h3>Привет, {{(this.userService.userAccount | async)?.userName}}</h3>
-      <div class="line-separator"></div>
-      <img (click)="logoutButton()" src="assets/images/svg/logout-icon.svg" alt="">
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
 
 <footer class="mat-typography">
   <h1>Recipes</h1>
   <span class="mat-display-3">© Recipes 2021</span>
 </footer>
+

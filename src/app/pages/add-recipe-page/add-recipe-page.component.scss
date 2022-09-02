@@ -47,7 +47,9 @@ header {
 
   .image {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     width: 35.83%;
     background-position: center;
@@ -55,11 +57,38 @@ header {
     background-size: cover;
     background-color: main-style.get-color(400);
 
-    background-image: url("../../../assets/images/svg/download-zone.svg");
-
+    //background-image: url("../../../assets/images/svg/download-zone.svg");
     resize: both;
+
     border-radius: 72px 0;
     z-index: 5;
+
+    .download-area {
+      cursor: pointer;
+      padding: 80px 0;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+
+      width: 62.56%;
+      color: main-style.get-color(800);
+      border: 1px dashed;
+      border-radius: 20px;
+
+
+      h4 {
+        font-size: 16px !important;
+        line-height: 20px !important;
+        margin-bottom: 0;
+        text-align: center;
+      }
+    }
+
+    .download-area:hover {
+      color: main-style.get-color();
+    }
   }
 
 
@@ -100,9 +129,11 @@ header {
       }
     }
 
+    .no-resize > * {
+      resize: none;
+    }
+
     .input-field.big {
-
-
       input {
         padding: 11px 24px 78px 24px;
       }
@@ -214,6 +245,7 @@ header {
     margin-top: 25px;
 
     .cross-remove {
+      opacity: 0.4;
       position: absolute;
       margin-top: -60px;
       margin-left: 20px;
@@ -221,6 +253,7 @@ header {
     }
 
     .cross-remove:hover {
+      color: main-style.get-color();
       transform: rotate(5deg);
     }
 
@@ -290,7 +323,12 @@ header {
       line-height: 30px !important;
     }
 
+    .cross-remove {
+      opacity: 0.4;
+    }
+
     .cross-remove:hover {
+      color: main-style.get-color();
       transform: rotate(5deg);
     }
 

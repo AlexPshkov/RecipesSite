@@ -4,6 +4,7 @@ import {UserService} from "../../services/user.service";
 import {RecipesService} from "../../services/recipes.service";
 import {Recipe} from "../../shared/objects/Recipe";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ExternalHtmlService} from "../../services/external-html.service";
 
 @Component({
   selector: 'app-add-recipe-page',
@@ -31,7 +32,6 @@ export class AddRecipePageComponent implements OnInit {
     public router: Router,
     public usersService: UserService,
     public recipesService: RecipesService) {
-
   }
 
   ngOnInit(): void {

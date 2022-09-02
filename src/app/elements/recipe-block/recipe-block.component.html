@@ -10,12 +10,16 @@
       </div>
 
       <div class="buttons">
-        <div class="mat-display-4" id="favorite-button" (click)="favoriteButton()" [class.checked]="isFavorite">
-          <img src="assets/images/svg/star-icon.svg" alt=""  >
+        <div class="button mat-display-4" id="favorite-button" (click)="favoriteButton()">
+          <div *ngIf="isFavorite; then favorite else nonFavorite"></div>
+          <ng-template #favorite><custom-svg name="star-filled-icon"></custom-svg></ng-template>
+          <ng-template #nonFavorite><custom-svg name="star-icon"></custom-svg></ng-template>
           {{recipeObject.favorites.length}}
         </div>
-        <div class="mat-display-4" id="like-button" (click)="likeButton()" [class.checked]="isLike">
-          <img src="assets/images/svg/heart-icon.svg" alt="">
+        <div class="button mat-display-4" id="like-button" (click)="likeButton()">
+          <div *ngIf="isLike; then liked else nonLiked"></div>
+          <ng-template #liked><custom-svg name="heart-filled-icon"></custom-svg></ng-template>
+          <ng-template #nonLiked><custom-svg name="heart-icon"></custom-svg></ng-template>
           {{recipeObject.likes.length}}
         </div>
       </div>
@@ -29,7 +33,7 @@
     <div class="info-part">
 
       <div class="info-block">
-        <img src="assets/images/recipes/svg/timer-icon.svg" alt="">
+        <custom-svg name="timer-big-icon"></custom-svg>
         <div class="info">
           <h4 class="info-tag">Время приготовления:</h4>
           <h4 class="info-value">{{recipeObject.requiredTime}}</h4>
@@ -37,7 +41,7 @@
       </div>
 
       <div class="info-block">
-        <img src="assets/images/recipes/svg/two-persons-icon.svg" alt="">
+        <custom-svg name="two-persons-icon"></custom-svg>
         <div class="info">
           <h4 class="info-tag">Рецепт на:</h4>
           <h4 class="info-value">{{recipeObject.servingsAmount}}</h4>

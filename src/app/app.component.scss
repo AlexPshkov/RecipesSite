@@ -50,7 +50,8 @@
       background-color: main-style.get-color();
       cursor: pointer;
 
-      img {
+      custom-svg {
+        color: main-style.get-color("0-contrast");
         padding: 11px;
         display: block;
       }
@@ -73,8 +74,12 @@
         opacity: 0.72;
       }
 
-      img:hover {
-        transform: scale(1.1);
+      custom-svg {
+        color: main-style.get-color("200-contrast");
+      }
+
+      custom-svg:hover {
+        color: main-style.get-color("300-contrast");
       }
     }
   }
@@ -96,7 +101,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   background-color: main-style.get-color(300);
-  height: 7.85%;
+  height: 113px;
 
   h1 {
     margin-bottom: 0 !important;
