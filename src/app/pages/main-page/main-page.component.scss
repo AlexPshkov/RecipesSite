@@ -150,9 +150,9 @@ header {
         gap: 30px;
 
         .recipe-value-amount {
-          align-items: flex-start;
           display: flex;
           gap: 10px;
+          align-items: center;
 
           custom-svg {
             opacity: 0.5;
@@ -163,6 +163,7 @@ header {
           color: main-style.get-color(100);
           font-size: 16px !important;
           line-height: 28px !important;
+          margin-bottom: 0;
         }
 
       }

@@ -1,6 +1,6 @@
 <div class="recipe-block">
-  <div class="image" style="background-image: url({{recipeObject.imageURL}});">
-    <div class="author-tag">@{{recipeObject.user.login}}</div>
+  <div class="image" style="background-image: url({{recipeObject.imagePath}});">
+    <div class="author-tag">@{{recipeObject.userLogin}}</div>
   </div>
 
   <div class="content">
@@ -11,16 +11,16 @@
 
       <div class="buttons">
         <div class="button mat-display-4" id="favorite-button" (click)="favoriteButton()">
-          <div *ngIf="isFavorite; then favorite else nonFavorite"></div>
+          <div *ngIf="recipeObject.isFavorite then favorite else nonFavorite"></div>
           <ng-template #favorite><custom-svg name="star-filled-icon"></custom-svg></ng-template>
           <ng-template #nonFavorite><custom-svg name="star-icon"></custom-svg></ng-template>
-          {{recipeObject.favorites.length}}
+          {{recipeObject.favoritesAmount}}
         </div>
         <div class="button mat-display-4" id="like-button" (click)="likeButton()">
-          <div *ngIf="isLike; then liked else nonLiked"></div>
+          <div *ngIf="recipeObject.isLiked then liked else nonLiked"></div>
           <ng-template #liked><custom-svg name="heart-filled-icon"></custom-svg></ng-template>
           <ng-template #nonLiked><custom-svg name="heart-icon"></custom-svg></ng-template>
-          {{recipeObject.likes.length}}
+          {{recipeObject.likesAmount}}
         </div>
       </div>
     </div>

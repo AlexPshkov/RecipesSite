@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {User} from "../shared/objects/User";
 import {apiUrl} from "../app.component";
 import {AuthService} from "./auth.service";
+import {Recipe} from "../shared/objects/Recipe";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,7 @@ export class UserService {
 
   constructor(
     public authService: AuthService,
-    private http: HttpClient,
-    private router: Router) {
+    private http: HttpClient) {
   }
 
   public updateProfile() {
@@ -30,4 +29,7 @@ export class UserService {
     return this.http.get<User>(`${apiUrl}/user/${login}`);
   }
 
+  getFavorites(): Observable<Array<Recipe>> {
+    return this.http.get<Array<Recipe>>(`${apiUrl}/user/favorites`);
+  }
 }

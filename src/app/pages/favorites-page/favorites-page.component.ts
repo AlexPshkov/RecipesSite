@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RecipesService} from "../../services/recipes.service";
 import {Recipe} from "../../shared/objects/Recipe";
 import {Observable} from "rxjs";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-favorites-page',
@@ -13,11 +13,11 @@ export class FavoritesPageComponent implements OnInit {
   public favorites: Observable<Recipe[]> | undefined;
 
   constructor(
-    public recipeService: RecipesService
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.favorites = this.recipeService.getFavorites();
+    this.favorites = this.userService.getFavorites();
   }
 
 }
