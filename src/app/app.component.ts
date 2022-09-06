@@ -9,6 +9,7 @@ import {UserService} from "./services/user.service";
  * Api url. (Backend IP)
  */
 export const apiUrl: string = "http://localhost:4200/api"
+export const imagesUrl: string = "http://localhost:4200/images/"
 
 @Component({
   selector: 'app-root',

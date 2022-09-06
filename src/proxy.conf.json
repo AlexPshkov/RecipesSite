@@ -4,4 +4,9 @@
     "secure": false,
     "changeOrigin": true
   },
+  "/images": {
+    "target": "http://localhost:5204",
+    "secure": false,
+    "changeOrigin": true
+  }
 }
