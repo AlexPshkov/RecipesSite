@@ -2,7 +2,6 @@
 
   <header>
 
-    <!--First block-->
     <div class="title-block">
       <h2>Добавить новый рецепт</h2>
       <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="onSubmit()">
@@ -14,12 +13,8 @@
 
 
   <form class="recipe-edit-block" [formGroup]="form">
-    <div class="image">
-      <div class="download-area">
-        <custom-svg name="download-cloud-icon"></custom-svg>
-        <h4>Загрузите фото<br>готового блюда</h4>
-      </div>
-
+    <div class="image" style="background-image: url({{imageUrl}}{{form.controls['imagePath'].value}});">
+      <image-upload class="download-area" (imageUpload)="onImageChange($event)"></image-upload>
     </div>
 
     <div class="content">
@@ -27,10 +22,11 @@
         <input class="mat-h4" type="text" placeholder="Название рецепта" formControlName="recipeName">
       </div>
       <div class="input-field big no-resize">
-        <textarea [maxLength]="149" class="mat-h4" placeholder="Краткое описание рецепта (150 символов)" formControlName="recipeDescription"></textarea>
+        <textarea [maxLength]="149" class="mat-h4" placeholder="Краткое описание рецепта (150 символов)"
+                  formControlName="recipeDescription"></textarea>
       </div>
-      <div class="input-field">
-        <input class="mat-h4" type="text" placeholder="Добавить теги" formControlName="tags">
+      <div class="input-field small no-resize">
+        <textarea rows="1" class="mat-h4" placeholder="Добавить теги"></textarea>
       </div>
 
       <div class="select-buttons">
@@ -52,23 +48,14 @@
     </div>
   </form>
 
-<!--  svgRef="assets/images/svg/cross-exit-icon.svg"-->
 
   <div class="main-content">
     <div class="ingredients-column">
       <h2 class="column-title">Ингредиенты</h2>
 
-      <div class="ingredient-block">
-        <custom-svg name="cross-exit-icon" class="cross-remove"></custom-svg>
-        <div class="input-title">
-          <input class="mat-h4" type="text" placeholder="Заголовок для ингридиентов">
-        </div>
-        <div class="input-ingredients-list">
-          <textarea class="mat-h4" placeholder="Список подуктов для категории"></textarea>
-        </div>
-      </div>
+      <ingredient-edit-block *ngFor="let ingredient of recipeIngredients; let ind = index" [ingredient]="ingredient" [number]="ind" (blockRemove)="removeIngredient($event)"></ingredient-edit-block>
 
-      <button mat-flat-button class="add-button mat-display-4">
+      <button mat-flat-button class="add-button mat-display-4" (click)="addNewIngredient()">
         <custom-svg class="label" name="plus-icon"></custom-svg>
         Добавить заголовок
       </button>
@@ -76,17 +63,9 @@
 
     <div class="steps-column">
 
-      <div class="step-block">
-        <div class="title">
-          <h3>Шаг 1</h3>
-          <custom-svg class="cross-remove" name="cross-exit-icon"></custom-svg>
-        </div>
-        <div class="step-description">
-          <textarea class="mat-h4" placeholder="Описание шага"></textarea>
-        </div>
-      </div>
+      <step-edit-block *ngFor="let step of recipeSteps; let ind = index" [number]="ind" [step]="step" (blockRemove)="removeStep($event)"></step-edit-block>
 
-      <button mat-flat-button class="add-button mat-display-4">
+      <button mat-flat-button class="add-button mat-display-4" (click)="addNewStep()">
         <custom-svg class="label" name="plus-icon"></custom-svg>
         Добавить шаг
       </button>

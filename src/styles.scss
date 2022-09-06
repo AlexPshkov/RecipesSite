@@ -97,8 +97,6 @@ body {
   max-width: 1440px;
 }
 
-
-
 .container {
   padding: 50px 120px;
   display: flex;
@@ -108,7 +106,7 @@ body {
   align-items: stretch;
 }
 
-input {
+input, .input {
   padding: 0;
   background: none;
   border: none;
@@ -132,7 +130,7 @@ mat-dialog-container {
   max-width: none !important;
 }
 
-textarea {
+textarea, .input {
   overflow: auto;
   outline: none;
   border: none;

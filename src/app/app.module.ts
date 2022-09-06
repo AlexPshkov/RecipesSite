@@ -34,6 +34,10 @@ import { AddRecipePageComponent } from './pages/add-recipe-page/add-recipe-page.
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { CustomSvgComponent } from './elements/custom-svg/custom-svg.component';
+import { TagsHighlightDirective } from './directives/tags-highlight.directive';
+import { ImageUploadComponent } from './elements/image-upload/image-upload.component';
+import { StepEditBlockComponent } from './elements/step-edit-block/step-edit-block.component';
+import { IngredientEditBlockComponent } from './elements/ingredient-edit-block/ingredient-edit-block.component';
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -68,6 +72,10 @@ export function tokenGetter() {
         AuthRequiredComponent,
         AddRecipePageComponent,
         CustomSvgComponent,
+        TagsHighlightDirective,
+        ImageUploadComponent,
+        StepEditBlockComponent,
+        IngredientEditBlockComponent,
     ],
   imports: [
     BrowserModule,

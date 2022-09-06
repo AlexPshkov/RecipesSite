@@ -64,26 +64,8 @@ header {
     z-index: 5;
 
     .download-area {
-      cursor: pointer;
-      padding: 80px 0;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-
-      width: 62.56%;
       color: main-style.get-color(800);
-      border: 1px dashed;
-      border-radius: 20px;
-
-
-      h4 {
-        font-size: 16px !important;
-        line-height: 20px !important;
-        margin-bottom: 0;
-        text-align: center;
-      }
+      width: 62.56%;
     }
 
     .download-area:hover {
@@ -104,6 +86,10 @@ header {
     padding: 36px 70px 53px 200px;
     margin-left: -146px;
 
+    .no-resize > * {
+      resize: none;
+    }
+
     .input-field {
       width: 100%;
       padding: 11px 24px;
@@ -111,7 +97,7 @@ header {
       border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
       border-radius: 16px;
 
-      input, textarea {
+      input, textarea, .input {
         width: 100%;
         opacity: 0.5;
         font-size: 16px !important;
@@ -120,22 +106,28 @@ header {
         margin: 0;
       }
 
-      textarea {
+      textarea.big {
         min-height: 117px;
       }
 
-      input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
+      .editable {
         opacity: 1;
       }
-    }
 
-    .no-resize > * {
-      resize: none;
-    }
+      .editable > * {
+        padding: 5px;
+        color: main-style.get-color(800);
+        background-color: rgba(main-style.get-color(), 0.2);
+      }
 
-    .input-field.big {
-      input {
-        padding: 11px 24px 78px 24px;
+      .editable:empty:before {
+        opacity: 0.5;
+        content: attr(data-placeholder);
+      }
+
+
+      input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
+        opacity: 1;
       }
     }
 
@@ -170,33 +162,6 @@ header {
     }
   }
 }
-
-
-.input-field {
-  width: 100%;
-  padding: 11px 24px;
-  box-sizing: border-box;
-  border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
-  border-radius: 16px;
-
-  input, textarea {
-    width: 100%;
-    opacity: 0.5;
-    font-size: 16px !important;
-    line-height: 28px !important;
-    color: main-style.get-color(100);
-    margin: 0;
-  }
-
-  textarea {
-    min-height: 117px;
-  }
-
-  input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
-    opacity: 1;
-  }
-}
-
 
 .main-content {
   display: flex;
@@ -233,73 +198,6 @@ header {
     line-height: 30px !important;
     color: main-style.get-color(200);
   }
-
-  .ingredient-block {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 36px 30px;
-    background: main-style.get-color("0-contrast");
-    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
-    border-radius: 24px;
-    margin-top: 25px;
-
-    .cross-remove {
-      opacity: 0.4;
-      position: absolute;
-      margin-top: -60px;
-      margin-left: 20px;
-      align-self: flex-end;
-    }
-
-    .cross-remove:hover {
-      color: main-style.get-color();
-      transform: rotate(5deg);
-    }
-
-    .input-title {
-      width: 100%;
-      padding: 11px 24px;
-      box-sizing: border-box;
-      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
-      border-radius: 16px;
-
-      input {
-        width: 100%;
-        opacity: 0.5;
-        font-size: 16px !important;
-        line-height: 28px !important;
-        color: main-style.get-color(100);
-        margin: 0;
-      }
-
-      input:not(:placeholder-shown) {
-        opacity: 1;
-      }
-    }
-
-    .input-ingredients-list {
-      width: 100%;
-      padding: 11px 15px 10px 24px;
-      box-sizing: border-box;
-      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
-      border-radius: 16px;
-
-      textarea {
-        width: 100%;
-        opacity: 0.5;
-        min-height: 229px;
-        font-size: 16px !important;
-        line-height: 28px !important;
-        color: main-style.get-color(100);
-        margin: 0;
-      }
-
-      textarea:not(:placeholder-shown) {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 .steps-column {
@@ -307,48 +205,4 @@ header {
   display: flex;
   flex-direction: column;
   gap: 40px;
-
-  .step-block {
-    padding: 50px 70px 70px 70px;
-    background: main-style.get-color("0-contrast");
-    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
-    border-radius: 24px;
-
-    .title {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      color: main-style.get-color(200);
-      font-size: 18px !important;
-      line-height: 30px !important;
-    }
-
-    .cross-remove {
-      opacity: 0.4;
-    }
-
-    .cross-remove:hover {
-      color: main-style.get-color();
-      transform: rotate(5deg);
-    }
-
-    .step-description {
-      padding: 11px 10px 0 24px;
-      border: 1px solid rgba(main-style.get-color("200-contrast"), 0.4);
-      border-radius: 16px;
-
-      textarea {
-        min-height: 127px;
-        width: 100%;
-        font-size: 16px;
-        line-height: 28px;
-        opacity: 0.5;
-      }
-
-      textarea:not(:placeholder-shown) {
-        opacity: 1;
-      }
-    }
-
-  }
 }
