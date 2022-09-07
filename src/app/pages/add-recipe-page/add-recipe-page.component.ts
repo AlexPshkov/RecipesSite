@@ -23,14 +23,13 @@ export class AddRecipePageComponent implements OnInit {
     imagePath: new FormControl<string>("", Validators.required),
     requiredTime: new FormControl<string>("", Validators.required),
     servingsAmount: new FormControl<string>("", Validators.required),
+    tags: new FormControl<string>(""),
   });
   public imageUrl = imagesUrl;
-
 
   public availableTimes: number[] = [];
   public availableServings: number[] = [];
 
-  public recipeTags: Tag[] = [];
   public recipeIngredients: Ingredient[] = [{id: 0, title: "", description: "", recipeId: 0}];
   public recipeSteps: Step[] = [{id: 0, description: "", recipeId: 0}];
 
@@ -48,13 +47,22 @@ export class AddRecipePageComponent implements OnInit {
 
   onSubmit() {
     const rec: Recipe = this.form.value;
+    const tagsString: string = this.form.controls["tags"].value;
+
     rec.ingredients = this.recipeIngredients;
     rec.steps = this.recipeSteps;
-    rec.tags = this.recipeTags;
-    console.log(rec);
+    rec.tags = this.convertStringToTags(tagsString);
+
     this.recipesService.uploadRecipe(rec).subscribe(res => {
       console.log(res);
     });
+  }
+
+  convertStringToTags(tagsString: string) : Tag[] {
+    let tags: Tag[] = [];
+    tagsString.trim().split(" ")
+      .forEach(elem => tags.push( { id: 0, tagName: elem } ))
+    return tags;
   }
 
   onImageChange(image: File) {

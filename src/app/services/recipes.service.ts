@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Recipe} from "../shared/objects/Recipe";
 import {apiUrl} from "../app.component";
 import {ImageLoaded} from "../shared/responses/ImageLoaded";
+import {RecipeCreated} from "../shared/responses/RecipeCreated";
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class RecipesService {
     return this.http.post<ImageLoaded>(`${apiUrl}/images`, data);
   }
 
-  uploadRecipe(recipe: Recipe): Observable<any> {
-    return this.http.post<any>(`${apiUrl}/recipes/save`, recipe);
+  uploadRecipe(recipe: Recipe): Observable<RecipeCreated> {
+    return this.http.post<RecipeCreated>(`${apiUrl}/recipes/save`, recipe);
   }
 
   //====LIKES=====

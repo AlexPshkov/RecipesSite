@@ -4,7 +4,7 @@
 
     <div class="title-block">
       <h2>Добавить новый рецепт</h2>
-      <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="onSubmit()">
+      <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="onSubmit()" [disabled]="form.invalid">
         Опубликовать
       </button>
     </div>
@@ -26,7 +26,7 @@
                   formControlName="recipeDescription"></textarea>
       </div>
       <div class="input-field small no-resize">
-        <textarea rows="1" class="mat-h4" placeholder="Добавить теги"></textarea>
+        <textarea rows="1" class="mat-h4" placeholder="Добавить теги" formControlName="tags"></textarea>
       </div>
 
       <div class="select-buttons">
