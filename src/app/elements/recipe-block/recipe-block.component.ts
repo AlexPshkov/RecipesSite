@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {RecipesService} from "../../services/recipes.service";
 import {AuthRequiredComponent} from "../../modals/auth-required/auth-required.component";
 import {imagesUrl} from "../../app.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'recipe-block[recipeObject]',
@@ -19,12 +20,17 @@ export class RecipeBlockComponent implements OnInit {
 
   constructor(
     public recipesService: RecipesService,
+    public router: Router,
     public userService: UserService,
     public dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
+  }
+
+  openRecipePage() {
+    this.router.navigate(['/recipe', { recipeId: this.recipeObject.id }])
   }
 
   likeButton() {

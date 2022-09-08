@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {RecipesService} from "../../services/recipes.service";
 import {Recipe} from "../../shared/objects/Recipe";
@@ -18,12 +18,21 @@ import {imagesUrl} from "../../app.component";
 export class AddRecipePageComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({
+    id: new FormControl<number>(0),
+    favoritesAmount: new FormControl<number>(0),
+    likesAmount: new FormControl<number>(0),
+    userLogin: new FormControl<string>(""),
+    isCreator: new FormControl<boolean>(true),
+    isLiked: new FormControl<boolean>(false),
+    isFavorite: new FormControl<boolean>(false),
+    ingredients: new FormControl<Ingredient[]>([]),
+    steps: new FormControl<Step[]>([]),
     recipeName: new FormControl<string>("", Validators.required),
     recipeDescription: new FormControl<string>("", Validators.required),
     imagePath: new FormControl<string>("", Validators.required),
     requiredTime: new FormControl<string>("", Validators.required),
     servingsAmount: new FormControl<string>("", Validators.required),
-    tags: new FormControl<string>(""),
+    tags: new FormControl<Tag[]>([]),
   });
   public imageUrl = imagesUrl;
 
@@ -33,9 +42,9 @@ export class AddRecipePageComponent implements OnInit {
   public recipeIngredients: Ingredient[] = [{id: 0, title: "", description: "", recipeId: 0}];
   public recipeSteps: Step[] = [{id: 0, description: "", recipeId: 0}];
 
-
   constructor(
     public router: Router,
+    public activatedRoute: ActivatedRoute,
     public usersService: UserService,
     public recipesService: RecipesService) {
   }
@@ -43,26 +52,28 @@ export class AddRecipePageComponent implements OnInit {
   ngOnInit(): void {
     for (let i = 5; i <= 120; i += 5) this.availableTimes.push(i);
     for (let i = 1; i <= 5; i++) this.availableServings.push(i);
+
+    this.activatedRoute.params.subscribe(params => {
+      if (params["recipeJson"]) {
+        let recipeObject : Recipe = JSON.parse(params["recipeJson"]);
+        this.form.setValue(recipeObject);
+        this.recipeIngredients = recipeObject.ingredients;
+        this.recipeSteps = recipeObject.steps;
+      }
+    });
   }
 
   onSubmit() {
     const rec: Recipe = this.form.value;
-    const tagsString: string = this.form.controls["tags"].value;
 
     rec.ingredients = this.recipeIngredients;
     rec.steps = this.recipeSteps;
-    rec.tags = this.convertStringToTags(tagsString);
+
+    console.warn(rec);
 
     this.recipesService.uploadRecipe(rec).subscribe(res => {
-      console.log(res);
+      this.router.navigate(['recipe', { recipeId: res.recipeId }])
     });
-  }
-
-  convertStringToTags(tagsString: string) : Tag[] {
-    let tags: Tag[] = [];
-    tagsString.trim().split(" ")
-      .forEach(elem => tags.push( { id: 0, tagName: elem } ))
-    return tags;
   }
 
   onImageChange(image: File) {

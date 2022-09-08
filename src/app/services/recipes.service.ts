@@ -19,6 +19,10 @@ export class RecipesService {
     return this.http.get<Recipe>(`${apiUrl}/recipes/${recipeId}`);
   }
 
+  remove(recipeId: number): Observable<any> {
+    return this.http.delete<any>(`${apiUrl}/recipes/${recipeId}`);
+  }
+
   getAllRecipes(): Observable<Array<Recipe>> {
     return this.http.get<Array<Recipe>>(`${apiUrl}/recipes`);
   }
@@ -30,7 +34,7 @@ export class RecipesService {
   }
 
   uploadRecipe(recipe: Recipe): Observable<RecipeCreated> {
-    return this.http.post<RecipeCreated>(`${apiUrl}/recipes/save`, recipe);
+    return this.http.post<RecipeCreated>(`${apiUrl}/recipes`, recipe);
   }
 
   //====LIKES=====

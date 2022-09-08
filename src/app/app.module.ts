@@ -38,6 +38,11 @@ import { TagsHighlightDirective } from './directives/tags-highlight.directive';
 import { ImageUploadComponent } from './elements/image-upload/image-upload.component';
 import { StepEditBlockComponent } from './elements/step-edit-block/step-edit-block.component';
 import { IngredientEditBlockComponent } from './elements/ingredient-edit-block/ingredient-edit-block.component';
+import { RecipePageComponent } from './pages/recipe-page/recipe-page.component';
+import { NlToBrPipe } from './pipes/nl-to-br.pipe';
+import { RecipeDeleteDialogComponent } from './modals/recipe-delete-dialog/recipe-delete-dialog.component';
+import { TagsInputComponent } from './elements/tags-input/tags-input.component';
+import {MatChipsModule} from "@angular/material/chips";
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -45,6 +50,7 @@ export const routes: Routes = [
   {path: "favorite", component: FavoritesPageComponent, title: "Избранное", canActivate: [AuthGuard]},
   {path: "profile", component: ProfilePageComponent, title: "Профиль", canActivate: [AuthGuard]},
   {path: "add-recipe", component: AddRecipePageComponent, title: "Добавить рецепт", canActivate: [AddRecipeGuard]},
+  {path: "recipe", component: RecipePageComponent, title: "Рецепт"},
   {path: '**', redirectTo: 'main-page'}
 ];
 
@@ -76,30 +82,35 @@ export function tokenGetter() {
         ImageUploadComponent,
         StepEditBlockComponent,
         IngredientEditBlockComponent,
+        RecipePageComponent,
+        NlToBrPipe,
+        RecipeDeleteDialogComponent,
+        TagsInputComponent,
     ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatButtonModule,
-    RouterModule.forRoot(routes),
-    JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        allowedDomains: [environment.backendApi]
-      }
-    }),
-    MatRippleModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    HttpClientModule,
-    MatDialogModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatButtonModule,
+        RouterModule.forRoot(routes),
+        JwtModule.forRoot({
+            config: {
+                tokenGetter,
+                allowedDomains: [environment.backendApi]
+            }
+        }),
+        MatRippleModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        HttpClientModule,
+        MatDialogModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatChipsModule,
+    ],
   providers: [
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,

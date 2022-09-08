@@ -21,12 +21,12 @@
       <div class="input-field">
         <input class="mat-h4" type="text" placeholder="Название рецепта" formControlName="recipeName">
       </div>
-      <div class="input-field big no-resize">
-        <textarea [maxLength]="149" class="mat-h4" placeholder="Краткое описание рецепта (150 символов)"
+      <div class="input-field no-resize">
+        <textarea [maxLength]="149" rows="4" class="mat-h4 big" placeholder="Краткое описание рецепта (150 символов)"
                   formControlName="recipeDescription"></textarea>
       </div>
       <div class="input-field small no-resize">
-        <textarea rows="1" class="mat-h4" placeholder="Добавить теги" formControlName="tags"></textarea>
+        <tags-input class="mat-h4" formControlName="tags"></tags-input>
       </div>
 
       <div class="select-buttons">

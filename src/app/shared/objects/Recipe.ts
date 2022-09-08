@@ -12,6 +12,7 @@ export interface Recipe {
   userLogin: string;
   favoritesAmount: number;
   likesAmount: number;
+  isCreator: boolean;
   isLiked: boolean;
   isFavorite: boolean;
   tags: Array<Tag>;

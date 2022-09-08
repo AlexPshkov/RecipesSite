@@ -3,11 +3,13 @@
 header {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
 
   //Image at the right top corner
   #landing-image {
+    flex-wrap: nowrap;
     position: relative;
     top: -160px;
     right: -90px;
