@@ -34,7 +34,6 @@ import { AddRecipePageComponent } from './pages/add-recipe-page/add-recipe-page.
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { CustomSvgComponent } from './elements/custom-svg/custom-svg.component';
-import { TagsHighlightDirective } from './directives/tags-highlight.directive';
 import { ImageUploadComponent } from './elements/image-upload/image-upload.component';
 import { StepEditBlockComponent } from './elements/step-edit-block/step-edit-block.component';
 import { IngredientEditBlockComponent } from './elements/ingredient-edit-block/ingredient-edit-block.component';
@@ -43,6 +42,9 @@ import { NlToBrPipe } from './pipes/nl-to-br.pipe';
 import { RecipeDeleteDialogComponent } from './modals/recipe-delete-dialog/recipe-delete-dialog.component';
 import { TagsInputComponent } from './elements/tags-input/tags-input.component';
 import {MatChipsModule} from "@angular/material/chips";
+import { IngredientsInputComponent } from './elements/ingredients-input/ingredients-input.component';
+import { StepsInputComponent } from './elements/steps-input/steps-input.component';
+import { ImageUrlPipe } from './pipes/image-url.pipe';
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -78,7 +80,6 @@ export function tokenGetter() {
         AuthRequiredComponent,
         AddRecipePageComponent,
         CustomSvgComponent,
-        TagsHighlightDirective,
         ImageUploadComponent,
         StepEditBlockComponent,
         IngredientEditBlockComponent,
@@ -86,6 +87,9 @@ export function tokenGetter() {
         NlToBrPipe,
         RecipeDeleteDialogComponent,
         TagsInputComponent,
+        IngredientsInputComponent,
+        StepsInputComponent,
+        ImageUrlPipe,
     ],
     imports: [
         BrowserModule,

@@ -1,4 +1,4 @@
-<div class="container mat-typography ">
+<div class="container mat-typography">
 
   <header>
 
@@ -13,7 +13,7 @@
 
 
   <form class="recipe-edit-block" [formGroup]="form">
-    <div class="image" style="background-image: url({{imageUrl}}{{form.controls['imagePath'].value}});">
+    <div class="image" [style.background-image]="form.controls['imagePath'].value | imageUrl">
       <image-upload class="download-area" (imageUpload)="onImageChange($event)"></image-upload>
     </div>
 
@@ -49,27 +49,25 @@
   </form>
 
 
-  <div class="main-content">
+  <div class="main-content" [formGroup]="form">
+
     <div class="ingredients-column">
       <h2 class="column-title">Ингредиенты</h2>
-
-      <ingredient-edit-block *ngFor="let ingredient of recipeIngredients; let ind = index" [ingredient]="ingredient" [number]="ind" (blockRemove)="removeIngredient($event)"></ingredient-edit-block>
-
-      <button mat-flat-button class="add-button mat-display-4" (click)="addNewIngredient()">
+      <ingredients-input formControlName="ingredients" #ingredientsInput></ingredients-input>
+      <button mat-flat-button class="add-button mat-display-4" (click)="ingredientsInput.add()">
         <custom-svg class="label" name="plus-icon"></custom-svg>
         Добавить заголовок
       </button>
     </div>
 
     <div class="steps-column">
-
-      <step-edit-block *ngFor="let step of recipeSteps; let ind = index" [number]="ind" [step]="step" (blockRemove)="removeStep($event)"></step-edit-block>
-
-      <button mat-flat-button class="add-button mat-display-4" (click)="addNewStep()">
+      <steps-input formControlName="steps" #stepsInput></steps-input>
+      <button mat-flat-button class="add-button mat-display-4" (click)="stepsInput.add()">
         <custom-svg class="label" name="plus-icon"></custom-svg>
         Добавить шаг
       </button>
     </div>
+
   </div>
 
 </div>

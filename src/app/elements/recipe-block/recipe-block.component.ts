@@ -4,7 +4,6 @@ import {UserService} from "../../services/user.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RecipesService} from "../../services/recipes.service";
 import {AuthRequiredComponent} from "../../modals/auth-required/auth-required.component";
-import {imagesUrl} from "../../app.component";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,8 +12,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./recipe-block.component.scss']
 })
 export class RecipeBlockComponent implements OnInit {
-  public imageUrl = imagesUrl;
-
   @Input()
   public recipeObject!: Recipe;
 

@@ -1,5 +1,5 @@
 <div class="recipe-block">
-  <div class="image" style="background-image: url({{imageUrl}}{{recipeObject.imagePath}});" (click)="openRecipePage()">
+  <div class="image" [style.background-image]="recipeObject.imagePath | imageUrl" (click)="openRecipePage()">
     <div class="author-tag">@{{recipeObject.userLogin}}</div>
   </div>
 

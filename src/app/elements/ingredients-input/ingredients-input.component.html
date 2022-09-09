@@ -1,0 +1,5 @@
+<ingredient-edit-block *ngFor="let ingredient of ingredients; let ind = index"
+                       [ingredient]="ingredient"
+                       [number]="ind"
+                       (blockRemove)="remove($event)">
+</ingredient-edit-block>

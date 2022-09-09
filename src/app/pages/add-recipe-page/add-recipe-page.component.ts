@@ -7,7 +7,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Ingredient} from "../../shared/objects/secondary/Ingredient";
 import {Step} from "../../shared/objects/secondary/Step";
 import {Tag} from "../../shared/objects/secondary/Tag";
-import {imagesUrl} from "../../app.component";
 
 @Component({
   selector: 'app-add-recipe-page',
@@ -25,8 +24,8 @@ export class AddRecipePageComponent implements OnInit {
     isCreator: new FormControl<boolean>(true),
     isLiked: new FormControl<boolean>(false),
     isFavorite: new FormControl<boolean>(false),
-    ingredients: new FormControl<Ingredient[]>([]),
-    steps: new FormControl<Step[]>([]),
+    ingredients: new FormControl<Ingredient[]>([ { id: 0, title: "", description: "", recipeId: 0 } ], Validators.required),
+    steps: new FormControl<Step[]>([ { id: 0, description: "", recipeId: 0 } ], Validators.required),
     recipeName: new FormControl<string>("", Validators.required),
     recipeDescription: new FormControl<string>("", Validators.required),
     imagePath: new FormControl<string>("", Validators.required),
@@ -34,13 +33,8 @@ export class AddRecipePageComponent implements OnInit {
     servingsAmount: new FormControl<string>("", Validators.required),
     tags: new FormControl<Tag[]>([]),
   });
-  public imageUrl = imagesUrl;
-
   public availableTimes: number[] = [];
   public availableServings: number[] = [];
-
-  public recipeIngredients: Ingredient[] = [{id: 0, title: "", description: "", recipeId: 0}];
-  public recipeSteps: Step[] = [{id: 0, description: "", recipeId: 0}];
 
   constructor(
     public router: Router,
@@ -57,18 +51,12 @@ export class AddRecipePageComponent implements OnInit {
       if (params["recipeJson"]) {
         let recipeObject : Recipe = JSON.parse(params["recipeJson"]);
         this.form.setValue(recipeObject);
-        this.recipeIngredients = recipeObject.ingredients;
-        this.recipeSteps = recipeObject.steps;
       }
     });
   }
 
   onSubmit() {
     const rec: Recipe = this.form.value;
-
-    rec.ingredients = this.recipeIngredients;
-    rec.steps = this.recipeSteps;
-
     console.warn(rec);
 
     this.recipesService.uploadRecipe(rec).subscribe(res => {
@@ -81,21 +69,4 @@ export class AddRecipePageComponent implements OnInit {
       this.form.controls["imagePath"].setValue( res.imagePath);
     });
   }
-
-  addNewIngredient() {
-    this.recipeIngredients.push({id: 0, title: "", description: "", recipeId: 0})
-  }
-
-  addNewStep() {
-    this.recipeSteps.push({id: 0, description: "", recipeId: 0})
-  }
-
-  removeIngredient(number: number) {
-    this.recipeIngredients.splice(number, 1)
-  }
-
-  removeStep(number: number) {
-    this.recipeSteps.splice(number, 1)
-  }
-
 }

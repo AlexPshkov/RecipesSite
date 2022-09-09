@@ -4,8 +4,6 @@ import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
-let ChooseQuantityComponent;
-
 @Component({
   selector: 'tags-input[formControlName]',
   templateUrl: './tags-input.component.html',
