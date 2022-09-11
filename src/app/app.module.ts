@@ -45,6 +45,9 @@ import {MatChipsModule} from "@angular/material/chips";
 import { IngredientsInputComponent } from './elements/ingredients-input/ingredients-input.component';
 import { StepsInputComponent } from './elements/steps-input/steps-input.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
+import { BestRecipeBlockComponent } from './elements/best-recipe-block/best-recipe-block.component';
+import {MatInputModule} from "@angular/material/input";
+import { BackButtonComponent } from './elements/back-button/back-button.component';
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -90,31 +93,34 @@ export function tokenGetter() {
         IngredientsInputComponent,
         StepsInputComponent,
         ImageUrlPipe,
+        BestRecipeBlockComponent,
+        BackButtonComponent
     ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatSnackBarModule,
-        MatToolbarModule,
-        MatButtonModule,
-        RouterModule.forRoot(routes),
-        JwtModule.forRoot({
-            config: {
-                tokenGetter,
-                allowedDomains: [environment.backendApi]
-            }
-        }),
-        MatRippleModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule,
-        HttpClientModule,
-        MatDialogModule,
-        FormsModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatChipsModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatButtonModule,
+    RouterModule.forRoot(routes),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        allowedDomains: [environment.backendApi]
+      }
+    }),
+    MatRippleModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+    MatDialogModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatInputModule,
+  ],
   providers: [
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,

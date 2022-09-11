@@ -1,6 +1,5 @@
 @use './src/styles' as main-style;
 
-
 //===============[NAV-BAR]====================
 .header-nav-bar {
   display: flex;
@@ -10,6 +9,7 @@
   margin: 0;
   padding: 14px 120px;
   height: 5rem;
+  z-index: 10;
 
   .left-part {
     display: flex;
@@ -38,6 +38,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    z-index: 10;
 
     h3 {
       color: main-style.get-color();
@@ -51,7 +52,7 @@
       cursor: pointer;
 
       custom-svg {
-        color: main-style.get-color("0-contrast");
+        color: main-style.get-color(W);
         padding: 11px;
         display: block;
       }

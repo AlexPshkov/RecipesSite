@@ -47,34 +47,7 @@
 
   </div>
 
-  <div class="best-recipe">
-    <div class="image">
-      <div class="author-tag">@glazest</div>
-    </div>
-
-    <div class="content">
-      <div class="labels">
-        <div class="buttons">
-          <div class="recipe-value-amount">
-            <custom-svg class="favorite-icon" name="heart-icon"></custom-svg>
-            <h4>356</h4>
-          </div>
-          <div class="recipe-value-amount">
-            <custom-svg class="timer-icon" name="timer-icon"></custom-svg>
-            <h4>35 минут</h4>
-          </div>
-        </div>
-        <custom-svg id="recipe-of-the-day-icon" name="recipe-of-the-day"></custom-svg>
-      </div>
-      <div class="about">
-        <h2>Тыквенный супчик на кокосовом молоке</h2>
-        <h4>Если у вас осталась тыква, и вы не знаете что с ней сделать, то это решение для вас! Ароматный, согревающий суп-пюре на кокосовом молоке. Можно даже в Пост!</h4>
-      </div>
-    </div>
-
-  </div>
-
-
+  <best-recipe-block [hidden]="bestRecipe.recipeObject == null" #bestRecipe></best-recipe-block>
 
   <div class="search">
     <h2>Поиск рецептов</h2>

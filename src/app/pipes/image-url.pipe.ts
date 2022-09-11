@@ -6,7 +6,7 @@ import {imagesUrl} from "../app.component";
 })
 export class ImageUrlPipe implements PipeTransform {
 
-  transform(value: string | null): string {
+  transform(value: string | null | undefined): string {
     if (value == null || value?.length == 0) return "none";
     return "url('" + imagesUrl + value + "')";
   }

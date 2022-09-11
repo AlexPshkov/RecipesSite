@@ -19,6 +19,10 @@ export class RecipesService {
     return this.http.get<Recipe>(`${apiUrl}/recipes/${recipeId}`);
   }
 
+  getBestRecipe(): Observable<Recipe> {
+    return this.http.get<Recipe>(`${apiUrl}/recipes/best-recipe/`);
+  }
+
   remove(recipeId: number): Observable<any> {
     return this.http.delete<any>(`${apiUrl}/recipes/${recipeId}`);
   }

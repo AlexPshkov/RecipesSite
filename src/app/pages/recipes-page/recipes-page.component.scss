@@ -49,7 +49,7 @@ header {
       width: 25%;
       max-height: 164px;
       padding: 36px 24px;
-      background: main-style.get-color('0-contrast');
+      background: main-style.get-color(W);
       box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
       border-radius: 24px;
 
@@ -63,6 +63,7 @@ header {
       }
 
       h2 {
+        color: main-style.get-color(100);
         font-size: 24px !important;
         line-height: 30px !important;
         margin-bottom: 0 !important;
@@ -70,7 +71,7 @@ header {
     }
 
     div:hover {
-      box-shadow: -3px -6px 11px 7px rgba(34, 60, 80, 0.17);
+      transform: scale(1.02);
     }
   }
 
@@ -79,6 +80,7 @@ header {
     display: flex;
     gap: 56px;
     align-items: baseline;
+    color: main-style.get-color(100);
 
     search-form {
       width: 100%;

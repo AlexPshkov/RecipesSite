@@ -18,7 +18,9 @@ export class CustomSvgComponent implements OnInit {
   constructor(private externalHtml: ExternalHtmlService) { }
 
   ngOnInit(): void {
-    if (this.name) this.svgIcon = this.externalHtml.getHtml('assets/images/svg/' + this.name + '.svg')
+    if (this.name) {
+      this.svgIcon = this.externalHtml.getSvg(this.name);
+    }
   }
 
 }
