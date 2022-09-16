@@ -8,7 +8,7 @@
   </header>
 
   <div class="data-change">
-    <custom-svg id="make-edit" name="pen-icon" [class.enabled]="!form.invalid && !form.pristine" (click)="onSubmit()"></custom-svg>
+    <custom-svg *ngIf="!editMode" id="make-edit" name="pen-icon" (click)="toggleEditMode()"></custom-svg>
 
     <div class="content" [formGroup]="form">
       <div class="left-part">
@@ -24,14 +24,12 @@
 
         <div class="input-field" [class.invalid-field]="form.controls['password'].invalid">
           <div class="password-field">
-            <input matInput class="mat-h4" [type]="hidePassword ? 'password' : 'text'" placeholder="Введите новый пароль" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <input #passInput matInput class="mat-h4" [type]="hidePassword ? 'password' : 'text'" placeholder="Введите новый пароль" formControlName="password">
+            <button mat-icon-button matSuffix [disabled]="passInput.disabled" (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
               <mat-icon class="hide-password-button">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </div>
         </div>
-
-
 
       </div>
 
@@ -44,11 +42,20 @@
       </div>
 
     </div>
+
+    <div class="buttons-block" *ngIf="editMode">
+      <button mat-flat-button color="primary" id="save-changes-button" class="mat-display-4" (click)="onSubmit()" [disabled]="form.invalid">
+        Применить
+      </button>
+      <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="toggleEditMode()">
+        Отменить
+      </button>
+    </div>
   </div>
 
   <div class="stats-blocks">
 
-    <div class="stat-block" (click)="onBlockButtonClick('Мои избранные')">
+    <div class="stat-block">
       <div class="left-part">
         <custom-svg name="book-icon" class="stats-icon"></custom-svg>
         <h2>Всего рецептов</h2>
@@ -56,7 +63,7 @@
       <h3>{{statistic.createdRecipesAmount}}</h3>
     </div>
 
-    <div class="stat-block" (click)="onBlockButtonClick('Мои лайки')">
+    <div class="stat-block">
       <div class="left-part">
         <custom-svg name="book-icon" class="stats-icon"></custom-svg>
         <h2>Всего лайков</h2>
@@ -64,7 +71,7 @@
       <h3>{{statistic.likedRecipesAmount}}</h3>
     </div>
 
-    <div class="stat-block" (click)="onBlockButtonClick('Мои избранные')">
+    <div class="stat-block">
       <div class="left-part">
         <custom-svg name="book-icon" class="stats-icon"></custom-svg>
         <h2>В избранных</h2>
@@ -75,7 +82,7 @@
   </div>
 
   <div class="recipes-list">
-    <h2 class="title">{{recipesTitle}}</h2>
+    <h2 class="title">Мои рецепты</h2>
 
     <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"></recipe-block>
   </div>

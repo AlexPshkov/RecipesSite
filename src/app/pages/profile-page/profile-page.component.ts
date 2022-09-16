@@ -14,18 +14,19 @@ export class ProfilePageComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({
     id: new FormControl<string>(""),
-    userName: new FormControl<string>("", [
-      Validators.required,
-      Validators.minLength(3)]),
-    login: new FormControl<string>("", [
-      Validators.required,
-      Validators.minLength(3)]),
-    password: new FormControl<string>("", Validators.minLength(8)),
     role: new FormControl<string>(""),
-    description: new FormControl<string>(""),
+    userName: new FormControl<string>({ value: "", disabled: true }, [
+      Validators.required,
+      Validators.minLength(3)]),
+    login: new FormControl<string>({ value: "", disabled: true }, [
+      Validators.required,
+      Validators.minLength(3)]),
+    password: new FormControl<string>({ value: "", disabled: true }, Validators.minLength(8)),
+    description: new FormControl<string>({ value: "", disabled: true }),
   });
+
+  public editMode: boolean = false;
   public hidePassword: boolean = true;
-  public recipesTitle: string = "";
   public recipesList: Recipe[] = [];
   public statistic: UserStatistic = {
     createdRecipesAmount: 0,
@@ -38,19 +39,24 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.userAccount.subscribe(userData => {
-      let changeData: any = userData;
-      changeData.id = "";
-      changeData.password = "";
-      this.form.setValue(userData);
-      this.userService.getUserStatistic().subscribe( statistic => {
-        this.statistic = statistic;
-      });
+    this.loadUser();
+    this.loadUserStatistic();
+    this.userService.getCreatedRecipes().subscribe( createdRecipes => {
+      this.recipesList = createdRecipes;
     });
-
-    this.onBlockButtonClick("Мои рецепты");
   }
 
+  loadUser() {
+    this.userService.userAccount.subscribe(userData => {
+      this.form.patchValue(userData);
+    });
+  }
+
+  loadUserStatistic() {
+    this.userService.getUserStatistic().subscribe( statistic => {
+      this.statistic = statistic;
+    });
+  }
 
   onSubmit() {
     if (this.form.invalid) return;
@@ -58,17 +64,20 @@ export class ProfilePageComponent implements OnInit {
       next: token => {
         this.userService.authService.saveToken(token);
         this.userService.updateProfile();
+        this.toggleEditMode();
       },
       error: err => console.warn(err)
     });
   }
 
-  onBlockButtonClick(text: string) {
-    this.recipesTitle = text;
-    switch (text) {
-      case "Мои рецепты": this.userService.getCreatedRecipes().subscribe( recipes => this.recipesList = recipes); break;
-      case "Мои лайки": this.userService.getLikes().subscribe(recipes => this.recipesList = recipes); break;
-      case "Мои избранные": this.userService.getFavorites().subscribe(recipes => this.recipesList = recipes); break;
+
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+    if (!this.editMode) {
+      this.loadUser();
+      this.form.disable();
+    } else {
+      this.form.enable();
     }
   }
 }
