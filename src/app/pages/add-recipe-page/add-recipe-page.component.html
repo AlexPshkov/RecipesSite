@@ -13,8 +13,8 @@
 
 
   <form class="recipe-edit-block" [formGroup]="form">
-    <div class="image" [style.background-image]="form.controls['imagePath'].value | imageUrl">
-      <image-upload class="download-area" (imageUpload)="onImageChange($event)"></image-upload>
+    <div class="image" [style.background-image]="imgUpload.imagePath | imageUrl">
+      <image-upload #imgUpload class="download-area" (imageChange)="onImageChange($event)" formControlName="imagePath"></image-upload>
     </div>
 
     <div class="content">

@@ -1,5 +1,8 @@
-<step-edit-block *ngFor="let step of steps; let ind = index"
-                 [number]="ind"
-                 [step]="step"
-                 (blockRemove)="remove($event)">
-</step-edit-block>
+<div class="step-edit-blocks">
+  <step-edit-block *ngFor="let step of steps; let ind = index"
+                   [number]="ind"
+                   [step]="step"
+                   (blockRemove)="remove($event)">
+  </step-edit-block>
+</div>
+

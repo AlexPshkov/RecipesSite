@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../services/user.service";
 import {RecipesService} from "../../services/recipes.service";
 import {Recipe} from "../../shared/objects/Recipe";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -35,11 +34,11 @@ export class AddRecipePageComponent implements OnInit {
   });
   public availableTimes: number[] = [];
   public availableServings: number[] = [];
+  public imageFile: File | undefined;
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public usersService: UserService,
     public recipesService: RecipesService) {
   }
 
@@ -48,25 +47,31 @@ export class AddRecipePageComponent implements OnInit {
     for (let i = 1; i <= 5; i++) this.availableServings.push(i);
 
     this.activatedRoute.params.subscribe(params => {
-      if (params["recipeJson"]) {
-        let recipeObject : Recipe = JSON.parse(params["recipeJson"]);
-        this.form.setValue(recipeObject);
-      }
+      const recipeId: number = params['recipeId'];
+      if (recipeId == null) return;
+      this.recipesService.get(recipeId).subscribe(recipe => {
+        this.form.setValue(recipe);
+      });
     });
   }
 
   onSubmit() {
     const rec: Recipe = this.form.value;
-    console.warn(rec);
 
-    this.recipesService.uploadRecipe(rec).subscribe(res => {
-      this.router.navigate(['recipe', { recipeId: res.recipeId }])
+    if (this.imageFile == undefined) {
+      this.form.updateValueAndValidity();
+      return;
+    }
+
+    this.recipesService.uploadImage(this.imageFile).subscribe(res => {
+      rec.imagePath = res.imagePath;
+      this.recipesService.uploadRecipe(rec).subscribe(res => {
+        this.router.navigate(['recipe', { recipeId: res.recipeId }])
+      });
     });
   }
 
-  onImageChange(image: File) {
-    this.recipesService.uploadImage(image).subscribe(res => {
-      this.form.controls["imagePath"].setValue( res.imagePath);
-    });
+  onImageChange(image : File) {
+    this.imageFile = image;
   }
 }

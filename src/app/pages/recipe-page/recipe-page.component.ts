@@ -48,7 +48,7 @@ export class RecipePageComponent implements OnInit {
   }
 
   editRecipe() {
-    this.router.navigate(['add-recipe', {"recipeJson": JSON.stringify(this.recipeObject) }]);
+    this.router.navigate(['add-recipe', {"recipeId": this.recipeObject.id }]);
   }
 
   removeRecipe() {

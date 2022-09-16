@@ -111,7 +111,7 @@ $theme: "light";
 //================[MIXINS && FUNCTIONS]============================
 
 
-@include set-theme("dark");
+@include set-theme();
 
 html, body { height: 100%; }
 * {
