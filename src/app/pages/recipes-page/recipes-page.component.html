@@ -14,19 +14,19 @@
 
     <!--Second block [Filters]-->
     <div class="filters-block">
-      <div>
+      <div (click)="makeSearch('Простые блюда')">
         <custom-svg name="book-icon" class="filter-icon"></custom-svg>
         <h2>Простые блюда</h2>
       </div>
-      <div>
+      <div (click)="makeSearch('Детское')">
         <custom-svg name="toy-icon" class="filter-icon"></custom-svg>
         <h2>Детское</h2>
       </div>
-      <div>
+      <div (click)="makeSearch('От шеф-поваров')">
         <custom-svg name="hat-icon" class="filter-icon"></custom-svg>
         <h2>От шеф-поваров</h2>
       </div>
-      <div>
+      <div (click)="makeSearch('На праздник')">
         <custom-svg name="firework-icon" class="filter-icon"></custom-svg>
         <h2>На праздник</h2>
       </div>
@@ -34,7 +34,7 @@
 
     <div class="search-block">
       <h2>Поиск рецепта</h2>
-      <search-form></search-form>
+      <search-form (searchEvent)="makeSearch($event)" (textChange)="makeSearch($event)" [formControl]="searchControl"></search-form>
     </div>
 
 
@@ -42,7 +42,7 @@
 
 
   <div class="recipes-list">
-    <recipe-block *ngFor="let recipe of availableRecipes | async" [recipeObject]="recipe"></recipe-block>
+    <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"></recipe-block>
   </div>
 
   <button mat-flat-button id="load-more-button" class="mat-display-4">Загрузить еще</button>

@@ -11,7 +11,9 @@
           <custom-svg class="label" name="plus-icon"></custom-svg>
           Добавить рецепт
         </button>
-        <button mat-flat-button id="join-profile-button" class="mat-display-4" (click)="openRegisterDialog()">Войти</button>
+        <button *ngIf="!userService.isAuthed" mat-flat-button id="join-profile-button" class="mat-display-4" (click)="openRegisterDialog()">
+          Войти
+        </button>
       </div>
 
     </div>
@@ -23,22 +25,22 @@
     <h4>Добавляй рецепты и указывай наиболее популярные теги. Это позволит<br>быстро находить любые категории.</h4>
 
     <div class="filters">
-      <div>
+      <div (click)="makeSearch('Простые блюда')">
         <custom-svg name="book-icon" class="filter-icon"></custom-svg>
         <h2>Простые блюда</h2>
         <h4>Время приготвления таких блюд не более 1 часа</h4>
       </div>
-      <div>
+      <div (click)="makeSearch('Детское')">
         <custom-svg name="toy-icon" class="filter-icon"></custom-svg>
         <h2>Детское</h2>
         <h4>Самые полезные блюда которые можно детям любого возраста</h4>
       </div>
-      <div>
+      <div (click)="makeSearch('От шеф-поваров')">
         <custom-svg name="hat-icon" class="filter-icon"></custom-svg>
         <h2>От шеф-поваров</h2>
         <h4>Требуют умения, времени и терпения, зато как в ресторане</h4>
       </div>
-      <div>
+      <div (click)="makeSearch('На праздник')">
         <custom-svg name="firework-icon" class="filter-icon"></custom-svg>
         <h2>На праздник</h2>
         <h4>Чем удивить гостей, чтобы все были сыты за праздничным столом</h4>
@@ -53,7 +55,7 @@
     <h2>Поиск рецептов</h2>
     <h4>Введите примерное название блюда, а мы по тегам найдем его</h4>
 
-    <search-form></search-form>
+    <search-form (searchEvent)="makeSearch($event)" ></search-form>
 
   </div>
 

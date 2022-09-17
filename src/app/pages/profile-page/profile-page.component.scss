@@ -112,12 +112,11 @@ header {
   }
 
   .buttons-block {
-    margin-top: 20px;
     display: flex;
-    gap: 40px;
+    gap: 30px;
 
     #save-changes-button {
-      //color: main-style.get-color();
+      width: 50%;
       padding: 16px 35px;
       border-radius: 16px;
       margin-bottom: 0;
@@ -125,11 +124,20 @@ header {
 
     #cancel-button {
       color: main-style.get-color();
+      width: 50%;
       border: 1px solid;
-      padding: 16px 44px;
+      padding: 16px 35px;
       border-radius: 16px;
       background-color: transparent;
       margin-bottom: 0;
+    }
+
+    #save-changes-button:hover {
+      background-color: rgba(main-style.get-color(), 0.9);
+    }
+
+    #cancel-button:hover {
+      background-color: rgba(main-style.get-color(), 0.05);
     }
   }
 }
@@ -196,5 +204,27 @@ header {
     line-height: 30px !important;
     color: main-style.get-color(100);
     margin-bottom: 20px;
+  }
+
+  recipe-block:hover {
+    transform: scale(1.01);
+  }
+
+  #load-more-button {
+    align-self: center;
+    margin-top: 65px;
+    color: main-style.get-color();
+    border: 1px solid;
+    border-radius: 16px;
+
+    line-height: 22px !important;
+    width: 309px;
+    padding: 22px 65px;
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+  #load-more-button:hover {
+    background-color: rgba(main-style.get-color(), 0.05);
   }
 }

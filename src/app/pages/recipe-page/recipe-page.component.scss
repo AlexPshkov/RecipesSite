@@ -33,6 +33,11 @@ header {
         opacity: 0.7;
       }
 
+      #remove-recipe-button:hover {
+        $color: main-style.get-color("200-contrast");
+        background: rgba($color, 0.05);
+      }
+
       #add-recipe-button {
         margin: 0;
         .label {
@@ -40,6 +45,10 @@ header {
         }
         padding: 16px 35px;
         border-radius: 16px;
+      }
+
+      #add-recipe-button:hover {
+        background: rgba(main-style.get-color(), 0.9);
       }
     }
 
@@ -133,6 +142,16 @@ header {
       color: main-style.get-color(200);
       margin-bottom: 0;
     }
+  }
+
+  #bon-appetit {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px !important;
+    line-height: 30px !important;
+    text-transform: capitalize;
+    color: main-style.get-color();
+    opacity: 0.5;
   }
 }
 

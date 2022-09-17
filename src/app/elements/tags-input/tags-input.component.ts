@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Tag} from "../../shared/objects/secondary/Tag";
-import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
+import {ENTER} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
@@ -16,7 +16,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     }]
 })
 export class TagsInputComponent implements ControlValueAccessor {
-  readonly separatorKeysCodes = [ENTER, COMMA, SPACE] as const;
+  readonly separatorKeysCodes = [ENTER] as const;
 
   tags: Tag[] = [];
 

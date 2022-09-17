@@ -1,6 +1,6 @@
 <div class="best-recipe" *ngIf="recipeObject != null">
   <div class="image" [style.background-image]="recipeObject.imagePath | imageUrl" (click)="openRecipePage()">
-    <div class="author-tag">{{recipeObject.userLogin}}</div>
+    <div class="author-tag">@{{recipeObject.userLogin}}</div>
   </div>
 
   <div class="content">

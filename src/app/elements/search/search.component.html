@@ -1,7 +1,15 @@
 <form class="search-form">
 
   <div class="search-filed">
-    <input id="input-field" class="mat-h4" type="text" placeholder="Название блюда...." [matAutocomplete]="auto">
+    <input id="input-field"
+           class="mat-h4"
+           type="text"
+           autocomplete="off"
+           spellcheck="false"
+           placeholder="Название блюда...."
+           #searchField
+           [value]="searchString"
+           (input)="onValueChange(searchField.value)">
     <div class="search-tags">
       <h4>Мясо</h4>
       <h4>Деликатесы</h4>
@@ -10,9 +18,6 @@
     </div>
   </div>
 
-  <button id="submit-button" class="mat-h3" mat-flat-button color="primary">Поиск</button>
-  <mat-autocomplete #auto="matAutocomplete">
-    <!--        <mat-option *ngFor="let street of filteredStreets | async" [value]="street">{{street}}</mat-option>-->
-  </mat-autocomplete>
+  <button id="submit-button" class="mat-h3" mat-flat-button color="primary" (click)="onSubmit(searchField.value)">Поиск</button>
 </form>
 

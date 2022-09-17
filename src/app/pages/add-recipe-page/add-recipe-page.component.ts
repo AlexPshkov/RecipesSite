@@ -43,9 +43,7 @@ export class AddRecipePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (let i = 5; i <= 120; i += 5) this.availableTimes.push(i);
-    for (let i = 1; i <= 5; i++) this.availableServings.push(i);
-
+    this.generateAvailableSelection();
     this.activatedRoute.params.subscribe(params => {
       const recipeId: number = params['recipeId'];
       if (recipeId == null) return;
@@ -55,21 +53,35 @@ export class AddRecipePageComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    const rec: Recipe = this.form.value;
+  generateAvailableSelection() {
+    for (let i = 5; i <= 120; i += 5) this.availableTimes.push(i);
+    for (let i = 1; i <= 5; i++) this.availableServings.push(i);
+  }
 
+  onSubmit() {
+    const recipe: Recipe = this.form.value;
     if (this.imageFile == undefined) {
-      this.form.updateValueAndValidity();
+      this.uploadRecipe(recipe)
       return;
     }
+    this.uploadImageAndRecipe(recipe);
+  }
 
-    this.recipesService.uploadImage(this.imageFile).subscribe(res => {
-      rec.imagePath = res.imagePath;
-      this.recipesService.uploadRecipe(rec).subscribe(res => {
-        this.router.navigate(['recipe', { recipeId: res.recipeId }])
-      });
+  uploadImageAndRecipe(recipe: Recipe) {
+    if (this.imageFile == undefined) return;
+    this.recipesService.uploadImage(this.imageFile).subscribe(imageResult => {
+      recipe.imagePath = imageResult.imagePath;
+      this.uploadRecipe(recipe);
     });
   }
+
+  uploadRecipe(recipe: Recipe) {
+    this.recipesService.uploadRecipe(recipe).subscribe(recipeResult => {
+      this.router.navigate(['recipe', { recipeId: recipeResult.recipeId }]);
+    });
+  }
+
+
 
   onImageChange(image : File) {
     this.imageFile = image;

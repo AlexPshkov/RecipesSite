@@ -4,8 +4,6 @@ import {LoginDialogComponent} from "../login-dialog/login-dialog.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
-import {ErrorSnackbarComponent} from "../error-snackbar/error-snackbar.component";
-import {ErrorMessages} from "../../utils/ErrorMessages";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {checkPasswordMatch} from "../../validators/CustomValidators";
 
@@ -53,13 +51,10 @@ export class RegisterDialogComponent implements OnInit {
         this.userService.authService.saveToken(token);
         this.userService.updateProfile();
         this.dialogRef.close();
-      },
-      error: err => {
-        this.snack.openFromComponent(ErrorSnackbarComponent, { data: ErrorMessages.getTextMessage(err) })
+        window.location.reload();
       }
     });
   }
-
 
   openLoginDialog() {
     this.dialogRef.close();

@@ -23,6 +23,10 @@ export class RecipesService {
     return this.http.get<Recipe>(`${apiUrl}/recipes/best-recipe/`);
   }
 
+  makeSearch(searchQuery: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${apiUrl}/recipes/search/${searchQuery}`);
+  }
+
   remove(recipeId: number): Observable<any> {
     return this.http.delete<any>(`${apiUrl}/recipes/${recipeId}`);
   }

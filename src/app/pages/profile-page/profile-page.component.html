@@ -31,6 +31,15 @@
           </div>
         </div>
 
+        <div class="buttons-block" *ngIf="editMode">
+          <button mat-flat-button color="primary" id="save-changes-button" class="mat-display-4" (click)="onSubmit()" [disabled]="form.invalid">
+            Применить
+          </button>
+          <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="toggleEditMode()">
+            Отменить
+          </button>
+        </div>
+
       </div>
 
       <div class="input-field">
@@ -43,14 +52,6 @@
 
     </div>
 
-    <div class="buttons-block" *ngIf="editMode">
-      <button mat-flat-button color="primary" id="save-changes-button" class="mat-display-4" (click)="onSubmit()" [disabled]="form.invalid">
-        Применить
-      </button>
-      <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="toggleEditMode()">
-        Отменить
-      </button>
-    </div>
   </div>
 
   <div class="stats-blocks">
@@ -82,9 +83,10 @@
   </div>
 
   <div class="recipes-list">
-    <h2 class="title">Мои рецепты</h2>
+    <h2 class="title" *ngIf="recipesList.length > 0">Мои рецепты</h2>
 
-    <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"></recipe-block>
+    <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe" (recipeChange)="loadUserStatistic()"></recipe-block>
+    <button mat-flat-button id="load-more-button" class="mat-display-4">Загрузить еще</button>
   </div>
 
 </div>

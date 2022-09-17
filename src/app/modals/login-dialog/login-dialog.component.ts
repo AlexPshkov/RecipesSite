@@ -7,7 +7,6 @@ import {UserService} from "../../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ErrorSnackbarComponent} from "../error-snackbar/error-snackbar.component";
 import {HttpErrorResponse} from "@angular/common/http";
-import {ErrorMessages} from "../../utils/ErrorMessages";
 
 @Component({
   selector: 'app-login-dialog',
@@ -40,6 +39,7 @@ export class LoginDialogComponent implements OnInit {
         this.userService.authService.saveToken(token);
         this.userService.updateProfile();
         this.dialogRef.close();
+        window.location.reload();
       },
       error: err => this.handleHttpError(err)
     });
@@ -50,9 +50,10 @@ export class LoginDialogComponent implements OnInit {
   }
 
   handleHttpError(httpError: HttpErrorResponse) {
-    const errorText = ErrorMessages.getTextMessage(httpError);
-    this.snack.openFromComponent(ErrorSnackbarComponent, { data: errorText });
-    if (httpError.status == 401) this.form.setErrors({wrongData: errorText})
+    if (httpError.status == 401) {
+      this.snack.openFromComponent(ErrorSnackbarComponent, { data: "Неправильный логин или пароль" });
+      this.form.setErrors({wrongData: "Wrong auth"});
+    }
   }
 
   openRegisterDialog() {

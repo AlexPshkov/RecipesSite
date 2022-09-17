@@ -13,7 +13,7 @@
       </div>
       <h3 *ngIf="!this.userService.isAuthed" (click)="joinButton()">Войти</h3>
       <div class="logged-info" (click)="profileButton()" *ngIf="this.userService.isAuthed">
-        <h3>Привет, {{(this.userService.userAccount | async)?.userName}}</h3>
+        <h3>Привет, {{userService.userAccount.userName}}</h3>
         <div class="line-separator"></div>
         <custom-svg (click)="logoutButton()" name="logout-icon"></custom-svg>
       </div>
@@ -23,8 +23,6 @@
   <back-button></back-button>
 
   <router-outlet></router-outlet>
-
-<!--  <custom-svg class="background-curve" name="curve"></custom-svg>-->
 </div>
 
 

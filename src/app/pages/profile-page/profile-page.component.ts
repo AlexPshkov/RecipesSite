@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Recipe} from "../../shared/objects/Recipe";
-import {RecipesService} from "../../services/recipes.service";
 import {UserStatistic} from "../../shared/objects/UserStatistic";
 
 @Component({
@@ -34,8 +33,7 @@ export class ProfilePageComponent implements OnInit {
     favoritesRecipesAmount: 0
   };
 
-  constructor(public userService: UserService,
-              public recipesService: RecipesService) {
+  constructor(public userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -47,7 +45,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   loadUser() {
-    this.userService.userAccount.subscribe(userData => {
+    this.userService.getUserData().subscribe(userData => {
       this.form.patchValue(userData);
     });
   }
@@ -65,8 +63,7 @@ export class ProfilePageComponent implements OnInit {
         this.userService.authService.saveToken(token);
         this.userService.updateProfile();
         this.toggleEditMode();
-      },
-      error: err => console.warn(err)
+      }
     });
   }
 

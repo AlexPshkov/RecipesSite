@@ -35,6 +35,10 @@ header {
   gap: 20px;
   width: 100%;
   margin-top: 50px;
+
+  recipe-block:hover {
+    transform: scale(1.01);
+  }
 }
 
 #load-more-button {
@@ -43,11 +47,16 @@ header {
   color: main-style.get-color();
   border: 1px solid;
   border-radius: 16px;
+  margin-bottom: 0;
 
   line-height: 22px !important;
   width: 309px;
   padding: 22px 65px;
   background-color: transparent;
+}
+
+#load-more-button:hover {
+  background-color: rgba(main-style.get-color(), 0.05);
 }
 
 #empty-list-message {

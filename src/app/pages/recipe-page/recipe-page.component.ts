@@ -41,8 +41,13 @@ export class RecipePageComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       const recipeId: number = params['recipeId'];
-      this.recipesService.get(recipeId).subscribe(recipe => {
-        this.recipeObject = recipe;
+      if (recipeId == null) {
+        this.router.navigate(['']);
+        return;
+      }
+      this.recipesService.get(recipeId).subscribe({
+        next: recipe => this.recipeObject = recipe,
+        error: () => this.router.navigate([''])
       });
     });
   }

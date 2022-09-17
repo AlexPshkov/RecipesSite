@@ -26,6 +26,10 @@ export class NavigationService {
     this.router.navigateByUrl('/').then( () => this.history = [])
   }
 
+  reload() {
+    location.reload();
+  }
+
   isEnd(): boolean {
     return this.history.length == 0;
   }

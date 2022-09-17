@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {RecipesService} from "../../services/recipes.service";
 import {Recipe} from "../../shared/objects/Recipe";
-import {Observable} from "rxjs";
 import {UserService} from "../../services/user.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-recipes-page',
@@ -12,22 +12,43 @@ import {Router} from "@angular/router";
 })
 export class RecipesPageComponent implements OnInit {
 
-  public availableRecipes: Observable<Recipe[]> | undefined;
+  public recipesList: Recipe[] = []
+  public searchControl = new FormControl<string>("");
 
   constructor(
     public router: Router,
     public usersService: UserService,
+    public activatedRoute: ActivatedRoute,
     public recipesService: RecipesService) {
 
   }
 
   ngOnInit(): void {
-    this.availableRecipes = this.recipesService.getAllRecipes();
+    this.activatedRoute.params.subscribe(params => {
+      const searchQuery: string = params['search'];
+      if (searchQuery == null) {
+        this.loadRecipes();
+        return;
+      }
+      this.makeSearch(searchQuery);
+    });
   }
 
   addRecipe() {
     this.router.navigate(['add-recipe']);
   }
 
+  makeSearch(value: string) {
+    this.searchControl.setValue(value);
+    this.recipesService.makeSearch(value).subscribe(recipes => {
+      this.recipesList = recipes;
+    });
+  }
+
+  loadRecipes() {
+    this.recipesService.getAllRecipes().subscribe(recipes => {
+      this.recipesList = recipes;
+    });
+  }
 
 }

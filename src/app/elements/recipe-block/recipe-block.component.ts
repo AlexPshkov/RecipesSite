@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Recipe} from "../../shared/objects/Recipe";
-import {UserService} from "../../services/user.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RecipesService} from "../../services/recipes.service";
-import {AuthRequiredComponent} from "../../modals/auth-required/auth-required.component";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
+import {AuthRequiredComponent} from "../../modals/auth-required/auth-required.component";
 
 @Component({
   selector: 'recipe-block[recipeObject]',
@@ -15,32 +15,45 @@ export class RecipeBlockComponent implements OnInit {
   @Input()
   public recipeObject!: Recipe;
 
+  @Output()
+  public recipeChange = new EventEmitter<Recipe>();
+
   constructor(
     public recipesService: RecipesService,
     public router: Router,
-    public userService: UserService,
     public dialog: MatDialog) {
-
   }
 
   ngOnInit(): void {
   }
 
   openRecipePage() {
-    this.router.navigate(['/recipe', { recipeId: this.recipeObject.id }])
+    this.router.navigate(['/recipe', {recipeId: this.recipeObject.id}])
   }
 
   likeButton() {
     this.recipesService.putLike(this.recipeObject.id).subscribe({
-      next: recipe => this.recipeObject = recipe,
-      error: err => this.dialog.open(AuthRequiredComponent, {data: "Ставить лайки могут только авторизованные пользователи."})
-    });
+        next: recipe => {
+          this.recipeObject = recipe;
+          this.recipeChange.emit(recipe);
+        },
+        error: err => this.handleError(err, "Ставить лайки могут только авторизованны пользователи")
+      }
+    );
   }
 
   favoriteButton() {
     this.recipesService.makeFavorite(this.recipeObject.id).subscribe({
-      next: recipe => this.recipeObject = recipe,
-      error: err => this.dialog.open(AuthRequiredComponent, {data: "Добавлять в избранное могут только авторизованные пользователи."})
+      next: recipe => {
+        this.recipeObject = recipe;
+        this.recipeChange.emit(recipe);
+      },
+      error: err => this.handleError(err, "Добавлять в избранное могут только авторизованны пользователи")
     });
+  }
+
+  handleError(error: HttpErrorResponse, message: string) {
+    if (error.status != 401) return;
+    this.dialog.open(AuthRequiredComponent, { data: message })
   }
 }

@@ -5,6 +5,7 @@ import {RegisterDialogComponent} from "./modals/register-dialog/register-dialog.
 import {MatDialog} from "@angular/material/dialog";
 import {UserService} from "./services/user.service";
 import {ExternalHtmlService} from "./services/external-html.service";
+import {ImageUrlPipe} from "./pipes/image-url.pipe";
 
 /**
  * Api url. (Backend IP)
@@ -33,10 +34,14 @@ export class AppComponent implements OnInit {
     public externalHtmlService : ExternalHtmlService) {
   }
 
-  ngOnInit(): void { //TODO: Do it in a more correct way.
-    this.externalHtmlService.getSvgRaw("curve").subscribe( svg => {
-      let svgImageData: string = "url('" + this.externalHtmlService.encodeSVG(svg) + "')";
+  ngOnInit(): void {
+    this.userService.updateProfile();
+    this.loadBackground();
+  }
 
+  loadBackground() {
+    this.externalHtmlService.getSvgRaw("curve").subscribe( svg => {
+      let svgImageData: string = new ImageUrlPipe().transform(this.externalHtmlService.encodeSVG(svg));
       let css: CSSStyleDeclaration = window.getComputedStyle(this.siteContent.nativeElement);
       let color: string = css.getPropertyValue("color");
 
@@ -44,7 +49,6 @@ export class AppComponent implements OnInit {
       this.renderer.setStyle(this.siteContent.nativeElement, "background-image", svgImageData);
     } );
   }
-
 
   joinButton() {
     this.dialog.open(RegisterDialogComponent, {
@@ -58,7 +62,10 @@ export class AppComponent implements OnInit {
   }
 
   profileButton() {
-    if (!this.userService.isAuthed) this.joinButton();
+    if (!this.userService.isAuthed) {
+      this.joinButton();
+      return;
+    }
     this.router.navigate(['profile']);
   }
 

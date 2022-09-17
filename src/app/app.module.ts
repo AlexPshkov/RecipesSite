@@ -18,7 +18,7 @@ import { RecipeBlockComponent } from './elements/recipe-block/recipe-block.compo
 import { TagBlockComponent } from './elements/tag-block/tag-block.component';
 import {JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RegisterDialogComponent } from './modals/register-dialog/register-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { LoginDialogComponent } from './modals/login-dialog/login-dialog.component';
@@ -48,6 +48,7 @@ import { ImageUrlPipe } from './pipes/image-url.pipe';
 import { BestRecipeBlockComponent } from './elements/best-recipe-block/best-recipe-block.component';
 import {MatInputModule} from "@angular/material/input";
 import { BackButtonComponent } from './elements/back-button/back-button.component';
+import {HttpErrorsInterceptor} from "./intercepters/http-errors.interceptor";
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -127,7 +128,12 @@ export function tokenGetter() {
       useValue: {
         duration: 5000
       }
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorsInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

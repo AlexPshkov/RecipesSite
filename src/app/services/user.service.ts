@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../shared/objects/User";
@@ -15,16 +15,23 @@ import {Token} from "../shared/objects/Token";
 export class UserService {
 
   public isAuthed: boolean = this.authService.isAuthenticated();
-  public userAccount: Observable<User> = this.getUserData();
+  public userAccount: User = {
+    userName: "",
+    login: "",
+    role: "",
+    description: ""
+  };
 
-  constructor(
-    public authService: AuthService,
-    private http: HttpClient) {
+  constructor(public authService: AuthService,
+              private http: HttpClient) {
+
   }
 
   public updateProfile() {
     this.isAuthed = this.authService.isAuthenticated();
-    this.userAccount = this.getUserData();
+    this.getUserData().subscribe(user => {
+      this.userAccount = user;
+    })
   }
 
   saveUserData( userData: ChangeUserDataRequest ): Observable<Token> {

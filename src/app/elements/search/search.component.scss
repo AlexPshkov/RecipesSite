@@ -32,6 +32,10 @@
     text-transform: capitalize !important;
   }
 
+  #submit-button:hover {
+    background-color: rgba(main-style.get-color(), 0.9);
+  }
+
   #input-field {
     width: 100%;
     padding: 28px 32px;
@@ -41,6 +45,10 @@
     box-shadow: 0 8px 42px rgba(34, 39, 47, 0.04);
     color: rgba(main-style.get-color(100), 0.5);
     border-radius: 16px;
+  }
+
+  #input-field:not(:placeholder-shown) {
+    color: rgba(main-style.get-color(100), 1);
   }
 }
 
