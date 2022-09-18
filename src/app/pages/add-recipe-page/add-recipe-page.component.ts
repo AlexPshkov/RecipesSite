@@ -6,6 +6,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Ingredient} from "../../shared/objects/secondary/Ingredient";
 import {Step} from "../../shared/objects/secondary/Step";
 import {Tag} from "../../shared/objects/secondary/Tag";
+import {checkIngredients, checkSteps} from "../../validators/RecipesValidators";
 
 @Component({
   selector: 'app-add-recipe-page',
@@ -23,8 +24,14 @@ export class AddRecipePageComponent implements OnInit {
     isCreator: new FormControl<boolean>(true),
     isLiked: new FormControl<boolean>(false),
     isFavorite: new FormControl<boolean>(false),
-    ingredients: new FormControl<Ingredient[]>([ { id: 0, title: "", description: "", recipeId: 0 } ], Validators.required),
-    steps: new FormControl<Step[]>([ { id: 0, description: "", recipeId: 0 } ], Validators.required),
+    ingredients: new FormControl<Ingredient[]>([ { id: 0, title: "", description: "", recipeId: 0 } ], [
+      Validators.required,
+      checkIngredients()
+    ]),
+    steps: new FormControl<Step[]>([ { id: 0, description: "", recipeId: 0 } ], [
+      Validators.required,
+      checkSteps()
+    ]),
     recipeName: new FormControl<string>("", Validators.required),
     recipeDescription: new FormControl<string>("", Validators.required),
     imagePath: new FormControl<string>("", Validators.required),
@@ -51,6 +58,10 @@ export class AddRecipePageComponent implements OnInit {
         this.form.setValue(recipe);
       });
     });
+  }
+
+  isImageExists(): boolean {
+    return this.form.controls["imagePath"].value != "";
   }
 
   generateAvailableSelection() {

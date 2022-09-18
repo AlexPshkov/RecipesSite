@@ -31,6 +31,10 @@ export class StepsInputComponent implements ControlValueAccessor {
     this.onChange(this.steps);
   }
 
+  onAnyChange() {
+    this.onChange(this.steps);
+  }
+
   writeValue(steps: Step[]) {
     this.steps = steps;
   }

@@ -6,7 +6,7 @@
   <div class="content">
     <div class="upper-part">
       <div class="tags-list">
-        <h4 *ngFor="let tag of recipeObject.tags">{{tag.tagName}}</h4>
+        <h4 *ngFor="let tag of recipeObject.tags" (click)="makeSearch(tag.tagName)">{{tag.tagName}}</h4>
       </div>
 
       <div class="buttons">

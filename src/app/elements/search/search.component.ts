@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Tag} from "../../shared/objects/secondary/Tag";
 
 @Component({
   selector: 'search-form',
@@ -14,6 +15,13 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 })
 export class SearchComponent implements ControlValueAccessor {
   searchString: string = "";
+
+  public tags: Tag[] = [
+    {id: 0, tagName: "Мясо"},
+    {id: 0, tagName: "Деликатесы"},
+    {id: 0, tagName: "Пироги"},
+    {id: 0, tagName: "Рыба"}
+  ];
 
   onChange = (searchString: string) => {};
   onTouched = () => {};

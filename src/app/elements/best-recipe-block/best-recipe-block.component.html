@@ -18,7 +18,7 @@
       <custom-svg id="recipe-of-the-day-icon" name="recipe-of-the-day"></custom-svg>
     </div>
     <div class="about">
-      <h2>{{recipeObject.recipeName}}</h2>
+      <h2 class="recipe-name" (click)="openRecipePage()">{{recipeObject.recipeName}}</h2>
       <h4>{{recipeObject.recipeDescription}}</h4>
     </div>
   </div>

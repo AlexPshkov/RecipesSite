@@ -35,6 +35,10 @@ header {
       padding: 16px 35px;
       border-radius: 16px;
     }
+
+    #add-recipe-button:enabled:hover {
+      background-color: rgba(main-style.get-color(), 0.9);
+    }
   }
 }
 
@@ -56,8 +60,6 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: main-style.get-color(400);
-
-    //background-image: url("../../../assets/images/svg/download-zone.svg");
     resize: both;
 
     border-radius: 72px 0;
@@ -70,6 +72,22 @@ header {
 
     .download-area:hover {
       color: main-style.get-color();
+      transition: all 100ms;
+    }
+  }
+
+  .not-empty {
+    .download-area {
+      opacity: 0;
+    }
+  }
+
+  .not-empty.image:hover {
+    background-color: main-style.get-color(100);
+    background-blend-mode: multiply;
+
+    .download-area {
+      opacity: 1;
     }
   }
 
@@ -206,6 +224,10 @@ header {
   .add-button {
     margin-top: 40px;
   }
+
+  .add-button:hover {
+    background-color: rgba(main-style.get-color(), 0.05);
+  }
 }
 
 .steps-column {
@@ -213,4 +235,8 @@ header {
   display: flex;
   flex-direction: column;
   gap: 40px;
+
+  .add-button:hover {
+    background-color: rgba(main-style.get-color(), 0.05);
+  }
 }

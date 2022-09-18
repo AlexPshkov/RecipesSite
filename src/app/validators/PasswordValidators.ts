@@ -1,6 +1,5 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 
-
 /**
  * Checks if current filed value matches with 'password' field value
  */
@@ -13,6 +12,3 @@ export function checkPasswordMatch(): ValidatorFn {
     return forbidden ? {checkPasswordMatch: true} : null;
   };
 }
-
-
-

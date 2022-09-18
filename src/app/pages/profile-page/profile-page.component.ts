@@ -66,6 +66,7 @@ export class ProfilePageComponent implements OnInit {
       next: token => {
         this.userService.authService.saveToken(token);
         this.userService.updateProfile();
+        this.loadCreatedRecipes();
         this.toggleEditMode();
       }
     });

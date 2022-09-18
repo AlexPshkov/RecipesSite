@@ -14,12 +14,13 @@ import {Ingredient} from "../../shared/objects/secondary/Ingredient";
     }]
 })
 export class IngredientsInputComponent implements ControlValueAccessor {
-  ingredients: Ingredient[] = [];
+  public ingredients: Ingredient[] = [];
 
   onChange = (ingredients: Ingredient[]) => {};
   onTouched = () => {};
   touched = false;
   disabled = false;
+
 
   add(): void {
     this.ingredients.push({id: 0, title: "", description: "", recipeId: 0})
@@ -27,7 +28,11 @@ export class IngredientsInputComponent implements ControlValueAccessor {
   }
 
   remove(number: number): void {
-    this.ingredients.splice(number, 1)
+    this.ingredients.splice(number, 1);
+    this.onChange(this.ingredients);
+  }
+
+  onAnyChange() {
     this.onChange(this.ingredients);
   }
 

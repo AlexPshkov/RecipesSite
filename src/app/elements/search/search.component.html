@@ -11,10 +11,7 @@
            [value]="searchString"
            (input)="onValueChange(searchField.value)">
     <div class="search-tags">
-      <h4>Мясо</h4>
-      <h4>Деликатесы</h4>
-      <h4>Пироги</h4>
-      <h4>Рыба</h4>
+      <h4 *ngFor="let tag of tags" (click)="onSubmit(tag.tagName)">{{tag.tagName}}</h4>
     </div>
   </div>
 

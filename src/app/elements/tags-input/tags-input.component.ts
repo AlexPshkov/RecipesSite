@@ -28,10 +28,15 @@ export class TagsInputComponent implements ControlValueAccessor {
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
     if (value) {
-      this.tags.push({ id: 0, tagName: event.value });
+      if (this.isTagsLimit()) return;
+      this.tags.push({ id: 0, tagName: event.value })
     }
     event.chipInput!.clear();
     this.onChange(this.tags);
+  }
+
+  isTagsLimit(): boolean {
+    return (this.tags.length > 10);
   }
 
   remove(fruit: Tag): void {

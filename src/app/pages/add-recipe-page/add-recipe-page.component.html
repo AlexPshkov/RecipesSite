@@ -13,13 +13,13 @@
 
 
   <form class="recipe-edit-block" [formGroup]="form">
-    <div class="image" [style.background-image]="imgUpload.imagePath | imageUrl">
+    <div class="image" [class.not-empty]="isImageExists()" [style.background-image]="imgUpload.imagePath | imageUrl">
       <image-upload #imgUpload class="download-area" (imageChange)="onImageChange($event)" formControlName="imagePath"></image-upload>
     </div>
 
     <div class="content">
       <div class="input-field">
-        <input class="mat-h4" type="text" placeholder="Название рецепта" formControlName="recipeName">
+        <input [maxLength]="70" class="mat-h4" type="text" placeholder="Название рецепта" formControlName="recipeName">
       </div>
       <div class="input-field no-resize">
         <textarea [maxLength]="149" rows="4" class="mat-h4 big" placeholder="Краткое описание рецепта (150 символов)"

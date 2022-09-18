@@ -15,7 +15,6 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
 import { SearchComponent } from './elements/search/search.component';
 import { RecipeBlockComponent } from './elements/recipe-block/recipe-block.component';
-import { TagBlockComponent } from './elements/tag-block/tag-block.component';
 import {JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -75,7 +74,6 @@ export function tokenGetter() {
         FavoritesPageComponent,
         SearchComponent,
         RecipeBlockComponent,
-        TagBlockComponent,
         RegisterDialogComponent,
         LoginDialogComponent,
         ProfilePageComponent,

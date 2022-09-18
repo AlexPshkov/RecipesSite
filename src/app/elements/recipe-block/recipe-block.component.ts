@@ -56,4 +56,8 @@ export class RecipeBlockComponent implements OnInit {
     if (error.status != 401) return;
     this.dialog.open(AuthRequiredComponent, { data: message })
   }
+
+  makeSearch(value: string) {
+    this.router.navigate(['recipes', {search: value}])
+  }
 }

@@ -7,14 +7,16 @@ import {Ingredient} from "../../shared/objects/secondary/Ingredient";
   styleUrls: ['./ingredient-edit-block.component.scss']
 })
 export class IngredientEditBlockComponent {
+
   @Input()
   number: number = 0;
 
   @Input()
-  public ingredient: Ingredient | undefined;
+  public ingredient!: Ingredient;
 
   @Output()
   blockRemove = new EventEmitter<number>();
+
   constructor() { }
 
   removeBlock() {

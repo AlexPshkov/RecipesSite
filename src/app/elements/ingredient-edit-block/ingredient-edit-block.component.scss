@@ -15,7 +15,7 @@
     opacity: 0.4;
     position: absolute;
     margin-top: -60px;
-    margin-left: 20px;
+    margin-right: -20px;
     align-self: flex-end;
   }
 
@@ -57,6 +57,7 @@
       opacity: 0.5;
       color: main-style.get-color(100);
       min-height: 229px;
+      max-height: 700px;
       font-size: 16px !important;
       line-height: 28px !important;
       margin: 0;

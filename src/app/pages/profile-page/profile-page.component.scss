@@ -132,7 +132,7 @@ header {
       margin-bottom: 0;
     }
 
-    #save-changes-button:hover {
+    #save-changes-button:enabled:hover {
       background-color: rgba(main-style.get-color(), 0.9);
     }
 

@@ -33,7 +33,6 @@ export class RecipesPageComponent implements OnInit {
         this.makeSearch("");
         return;
       }
-      this.setValueToSearchField(searchQuery);
       this.makeSearch(searchQuery);
     });
   }
@@ -51,6 +50,7 @@ export class RecipesPageComponent implements OnInit {
     this.endIndex = loadRecipesAmount;
 
     this.recipesService.makeSearch(value, this.startIndex, this.endIndex).subscribe(recipes => {
+      this.setValueToSearchField(value);
       this.recipesList = recipes;
       this.isMore = recipes.length == loadRecipesAmount;
     });
