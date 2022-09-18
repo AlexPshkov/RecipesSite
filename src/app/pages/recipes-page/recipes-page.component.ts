@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {RecipesService} from "../../services/recipes.service";
 import {Recipe} from "../../shared/objects/Recipe";
-import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
+import {loadRecipesAmount} from "../../app.component";
 
 @Component({
   selector: 'app-recipes-page',
@@ -14,10 +14,13 @@ export class RecipesPageComponent implements OnInit {
 
   public recipesList: Recipe[] = []
   public searchControl = new FormControl<string>("");
+  public isMore: boolean = false;
+  public startIndex: number = 1;
+  public endIndex: number = loadRecipesAmount;
+
 
   constructor(
     public router: Router,
-    public usersService: UserService,
     public activatedRoute: ActivatedRoute,
     public recipesService: RecipesService) {
 
@@ -27,9 +30,10 @@ export class RecipesPageComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const searchQuery: string = params['search'];
       if (searchQuery == null) {
-        this.loadRecipes();
+        this.makeSearch("");
         return;
       }
+      this.setValueToSearchField(searchQuery);
       this.makeSearch(searchQuery);
     });
   }
@@ -38,16 +42,30 @@ export class RecipesPageComponent implements OnInit {
     this.router.navigate(['add-recipe']);
   }
 
-  makeSearch(value: string) {
+  setValueToSearchField(value: string) {
     this.searchControl.setValue(value);
-    this.recipesService.makeSearch(value).subscribe(recipes => {
+  }
+
+  makeSearch(value: string) {
+    this.startIndex = 1;
+    this.endIndex = loadRecipesAmount;
+
+    this.recipesService.makeSearch(value, this.startIndex, this.endIndex).subscribe(recipes => {
       this.recipesList = recipes;
+      this.isMore = recipes.length == loadRecipesAmount;
     });
   }
 
-  loadRecipes() {
-    this.recipesService.getAllRecipes().subscribe(recipes => {
-      this.recipesList = recipes;
+
+  loadMore() {
+    this.startIndex += loadRecipesAmount;
+    this.endIndex += loadRecipesAmount;
+    let searchQuery = this.searchControl.value;
+    if (searchQuery == null) return;
+
+    this.recipesService.makeSearch(searchQuery, this.startIndex , this.endIndex ).subscribe(recipes => {
+      recipes.forEach(recipe => this.recipesList.push(recipe));
+      this.isMore = recipes.length == loadRecipesAmount;
     });
   }
 

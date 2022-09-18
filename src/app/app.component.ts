@@ -15,6 +15,11 @@ export const apiUrl: string = domainUrl + "api"
 export const imagesUrl: string = domainUrl + "images/"
 
 
+/**
+ * How many recipes are loaded at a time
+ */
+export const loadRecipesAmount: number = 4;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

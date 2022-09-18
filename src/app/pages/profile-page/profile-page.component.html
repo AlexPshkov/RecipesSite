@@ -86,7 +86,7 @@
     <h2 class="title" *ngIf="recipesList.length > 0">Мои рецепты</h2>
 
     <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe" (recipeChange)="loadUserStatistic()"></recipe-block>
-    <button mat-flat-button id="load-more-button" class="mat-display-4">Загрузить еще</button>
+    <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить еще</button>
   </div>
 
 </div>

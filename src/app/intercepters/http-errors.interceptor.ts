@@ -27,7 +27,9 @@ export class HttpErrorsInterceptor implements HttpInterceptor {
             const errorText = ErrorMessages.getTextMessage(error);
             this.snackBar.openFromComponent(ErrorSnackbarComponent, {data: errorText});
           }
-          if (error.status == 401) this.authService.logout();
+          if (error.status == 401 && this.authService.isAuthenticated()) {
+            this.authService.logout();
+          }
           return throwError(() => error);
         })
       )

@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Recipe} from "../../shared/objects/Recipe";
 import {UserStatistic} from "../../shared/objects/UserStatistic";
+import {loadRecipesAmount} from "../../app.component";
 
 @Component({
   selector: 'app-profile-page',
@@ -26,6 +27,11 @@ export class ProfilePageComponent implements OnInit {
 
   public editMode: boolean = false;
   public hidePassword: boolean = true;
+
+  public isMore: boolean = false;
+  public startIndex: number = 1;
+  public endIndex: number = loadRecipesAmount;
+
   public recipesList: Recipe[] = [];
   public statistic: UserStatistic = {
     createdRecipesAmount: 0,
@@ -39,9 +45,7 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.loadUser();
     this.loadUserStatistic();
-    this.userService.getCreatedRecipes().subscribe( createdRecipes => {
-      this.recipesList = createdRecipes;
-    });
+    this.loadCreatedRecipes();
   }
 
   loadUser() {
@@ -67,7 +71,6 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
-
   toggleEditMode() {
     this.editMode = !this.editMode;
     if (!this.editMode) {
@@ -76,5 +79,25 @@ export class ProfilePageComponent implements OnInit {
     } else {
       this.form.enable();
     }
+  }
+
+  loadCreatedRecipes() {
+    this.startIndex = 1;
+    this.endIndex = loadRecipesAmount;
+
+    this.userService.getCreatedRecipes(this.startIndex , this.endIndex).subscribe( createdRecipes => {
+      this.recipesList = createdRecipes;
+      this.isMore = createdRecipes.length == loadRecipesAmount;
+    });
+  }
+
+  loadMore() {
+    this.startIndex += loadRecipesAmount;
+    this.endIndex += loadRecipesAmount;
+
+    this.userService.getCreatedRecipes(this.startIndex , this.endIndex).subscribe( createdRecipes => {
+      createdRecipes.forEach(recipe => this.recipesList.push(recipe));
+      this.isMore = createdRecipes.length == loadRecipesAmount;
+    });
   }
 }

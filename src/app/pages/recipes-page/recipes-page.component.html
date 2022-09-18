@@ -45,6 +45,6 @@
     <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"></recipe-block>
   </div>
 
-  <button mat-flat-button id="load-more-button" class="mat-display-4">Загрузить еще</button>
+  <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить еще</button>
 
 </div>

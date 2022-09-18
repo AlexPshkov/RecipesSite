@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Recipe} from "../shared/objects/Recipe";
 import {apiUrl} from "../app.component";
@@ -23,16 +23,15 @@ export class RecipesService {
     return this.http.get<Recipe>(`${apiUrl}/recipes/best-recipe/`);
   }
 
-  makeSearch(searchQuery: string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes/search/${searchQuery}`);
+  makeSearch(searchQuery: string, start: number, end: number): Observable<Recipe[]> {
+    let params = new HttpParams();
+    params = params.append('start', start);
+    params = params.append('end', end);
+    return this.http.get<Recipe[]>(`${apiUrl}/recipes/search/${searchQuery}`, { params: params });
   }
 
   remove(recipeId: number): Observable<any> {
     return this.http.delete<any>(`${apiUrl}/recipes/${recipeId}`);
-  }
-
-  getAllRecipes(): Observable<Array<Recipe>> {
-    return this.http.get<Array<Recipe>>(`${apiUrl}/recipes`);
   }
 
   uploadImage(image: File): Observable<ImageLoaded> {

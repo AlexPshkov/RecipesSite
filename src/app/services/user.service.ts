@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../shared/objects/User";
 import {apiUrl} from "../app.component";
@@ -42,16 +42,18 @@ export class UserService {
     return this.http.get<User>(`${apiUrl}/user`);
   }
 
-  getFavorites(): Observable<Array<Recipe>> {
-    return this.http.get<Array<Recipe>>(`${apiUrl}/user/favorites`);
+  getFavorites(start: number, end: number): Observable<Array<Recipe>> {
+    let params = new HttpParams();
+    params = params.append('start', start);
+    params = params.append('end', end);
+    return this.http.get<Array<Recipe>>(`${apiUrl}/user/favorites`, { params: params });
   }
 
-  getLikes(): Observable<Array<Recipe>> {
-    return this.http.get<Array<Recipe>>(`${apiUrl}/user/likes`);
-  }
-
-  getCreatedRecipes(): Observable<Array<Recipe>> {
-    return this.http.get<Array<Recipe>>(`${apiUrl}/user/created`);
+  getCreatedRecipes(start: number, end: number): Observable<Array<Recipe>> {
+    let params = new HttpParams();
+    params = params.append('start', start);
+    params = params.append('end', end);
+    return this.http.get<Array<Recipe>>(`${apiUrl}/user/created`, { params: params });
   }
 
   getUserStatistic(): Observable<UserStatistic> {
