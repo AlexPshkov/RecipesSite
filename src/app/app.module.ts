@@ -48,6 +48,7 @@ import { BestRecipeBlockComponent } from './elements/best-recipe-block/best-reci
 import {MatInputModule} from "@angular/material/input";
 import { BackButtonComponent } from './elements/back-button/back-button.component';
 import {HttpErrorsInterceptor} from "./intercepters/http-errors.interceptor";
+import { UserLogoutComponent } from './modals/user-logout/user-logout.component';
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -93,7 +94,8 @@ export function tokenGetter() {
         StepsInputComponent,
         ImageUrlPipe,
         BestRecipeBlockComponent,
-        BackButtonComponent
+        BackButtonComponent,
+        UserLogoutComponent
     ],
   imports: [
     BrowserModule,

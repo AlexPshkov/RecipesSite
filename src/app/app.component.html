@@ -12,8 +12,8 @@
         <custom-svg name="one-person-icon" (click)="profileButton()"></custom-svg>
       </div>
       <h3 *ngIf="!this.userService.isAuthed" (click)="joinButton()">Войти</h3>
-      <div class="logged-info" (click)="profileButton()" *ngIf="this.userService.isAuthed">
-        <h3>Привет, {{userService.userAccount.userName}}</h3>
+      <div class="logged-info" *ngIf="this.userService.isAuthed">
+        <h3 (click)="profileButton()">Привет, {{userService.userAccount.userName}}</h3>
         <div class="line-separator"></div>
         <custom-svg (click)="logoutButton()" name="logout-icon"></custom-svg>
       </div>

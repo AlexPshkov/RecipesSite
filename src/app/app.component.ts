@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {UserService} from "./services/user.service";
 import {ExternalHtmlService} from "./services/external-html.service";
 import {ImageUrlPipe} from "./pipes/image-url.pipe";
+import {UserLogoutComponent} from "./modals/user-logout/user-logout.component";
 
 /**
  * Api url. (Backend IP)
@@ -44,6 +45,7 @@ export class AppComponent implements OnInit {
     this.loadBackground();
   }
 
+
   loadBackground() {
     this.externalHtmlService.getSvgRaw("curve").subscribe( svg => {
       let svgImageData: string = new ImageUrlPipe().transform(this.externalHtmlService.encodeSVG(svg));
@@ -56,14 +58,11 @@ export class AppComponent implements OnInit {
   }
 
   joinButton() {
-    this.dialog.open(RegisterDialogComponent, {
-      data: {}
-    });
+    this.dialog.open(RegisterDialogComponent);
   }
 
   logoutButton() {
-    this.userService.authService.logout();
-    this.userService.updateProfile();
+    this.dialog.open(UserLogoutComponent);
   }
 
   profileButton() {
