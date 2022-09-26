@@ -7,14 +7,13 @@ import {UserService} from "./services/user.service";
 import {ExternalHtmlService} from "./services/external-html.service";
 import {ImageUrlPipe} from "./pipes/image-url.pipe";
 import {UserLogoutComponent} from "./modals/user-logout/user-logout.component";
-import {environment} from "../environments/environment";
 
 /**
  * Api url. (Backend IP)
  */
 
-export const apiUrl: string = environment.backendApi +"/api"
-export const imagesUrl: string = environment.backendApi + "/images/"
+export const apiUrl: string = "/api"
+export const imagesUrl: string = "/images/"
 
 
 /**

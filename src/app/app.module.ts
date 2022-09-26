@@ -48,7 +48,6 @@ import { BackButtonComponent } from './elements/blocks/back-button/back-button.c
 import {HttpErrorsInterceptor} from "./intercepters/http-errors.interceptor";
 import { UserLogoutComponent } from './modals/user-logout/user-logout.component';
 import { SearchBlockComponent } from './elements/blocks/search-block/search-block.component';
-import {environment} from "../environments/environment";
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -107,8 +106,7 @@ export function tokenGetter() {
     RouterModule.forRoot(routes),
     JwtModule.forRoot({
       config: {
-        tokenGetter,
-        allowedDomains: [/\w+/gm]
+        tokenGetter
       }
     }),
     MatRippleModule,
