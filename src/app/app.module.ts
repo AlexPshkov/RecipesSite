@@ -13,10 +13,8 @@ import {MatRippleModule} from "@angular/material/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
-import { SearchComponent } from './elements/search/search.component';
-import { RecipeBlockComponent } from './elements/recipe-block/recipe-block.component';
+import { RecipeBlockComponent } from './elements/blocks/recipe-block/recipe-block.component';
 import {JwtModule} from "@auth0/angular-jwt";
-import {environment} from "../environments/environment";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RegisterDialogComponent } from './modals/register-dialog/register-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
@@ -33,22 +31,24 @@ import { AddRecipePageComponent } from './pages/add-recipe-page/add-recipe-page.
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { CustomSvgComponent } from './elements/custom-svg/custom-svg.component';
-import { ImageUploadComponent } from './elements/image-upload/image-upload.component';
-import { StepEditBlockComponent } from './elements/step-edit-block/step-edit-block.component';
-import { IngredientEditBlockComponent } from './elements/ingredient-edit-block/ingredient-edit-block.component';
+import { ImageUploadComponent } from './elements/inputs/image-upload/image-upload.component';
+import { StepEditBlockComponent } from './elements/blocks/step-edit-block/step-edit-block.component';
+import { IngredientEditBlockComponent } from './elements/blocks/ingredient-edit-block/ingredient-edit-block.component';
 import { RecipePageComponent } from './pages/recipe-page/recipe-page.component';
 import { NlToBrPipe } from './pipes/nl-to-br.pipe';
 import { RecipeDeleteDialogComponent } from './modals/recipe-delete-dialog/recipe-delete-dialog.component';
-import { TagsInputComponent } from './elements/tags-input/tags-input.component';
+import { TagsInputComponent } from './elements/inputs/tags-input/tags-input.component';
 import {MatChipsModule} from "@angular/material/chips";
-import { IngredientsInputComponent } from './elements/ingredients-input/ingredients-input.component';
-import { StepsInputComponent } from './elements/steps-input/steps-input.component';
+import { IngredientsInputComponent } from './elements/inputs/ingredients-input/ingredients-input.component';
+import { StepsInputComponent } from './elements/inputs/steps-input/steps-input.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
-import { BestRecipeBlockComponent } from './elements/best-recipe-block/best-recipe-block.component';
+import { BestRecipeBlockComponent } from './elements/blocks/best-recipe-block/best-recipe-block.component';
 import {MatInputModule} from "@angular/material/input";
-import { BackButtonComponent } from './elements/back-button/back-button.component';
+import { BackButtonComponent } from './elements/blocks/back-button/back-button.component';
 import {HttpErrorsInterceptor} from "./intercepters/http-errors.interceptor";
 import { UserLogoutComponent } from './modals/user-logout/user-logout.component';
+import { SearchBlockComponent } from './elements/blocks/search-block/search-block.component';
+import {environment} from "../environments/environment";
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -73,7 +73,6 @@ export function tokenGetter() {
         MainPageComponent,
         RecipesPageComponent,
         FavoritesPageComponent,
-        SearchComponent,
         RecipeBlockComponent,
         RegisterDialogComponent,
         LoginDialogComponent,
@@ -95,7 +94,8 @@ export function tokenGetter() {
         ImageUrlPipe,
         BestRecipeBlockComponent,
         BackButtonComponent,
-        UserLogoutComponent
+        UserLogoutComponent,
+        SearchBlockComponent
     ],
   imports: [
     BrowserModule,
@@ -108,7 +108,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: [environment.backendApi]
+        allowedDomains: [/\w+/gm]
       }
     }),
     MatRippleModule,

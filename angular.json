@@ -32,13 +32,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "100kb",
+                  "maximumError": "150kb"
                 }
               ],
               "fileReplacements": [
@@ -62,17 +62,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "proxyConfig": "src/proxy.conf.json"
-          },
           "configurations": {
             "production": {
-              "browserTarget": "RecipesSite:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "RecipesSite:build:production"
             },
             "development": {
-              "browserTarget": "RecipesSite:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "RecipesSite:build:development"
             }
           },
           "defaultConfiguration": "development"

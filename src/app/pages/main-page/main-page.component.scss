@@ -15,8 +15,8 @@ header {
     position: relative;
     top: -220px;
     right: -90px;
-    max-width: 602px;
-    max-height: 800px;
+    width: 602px;
+    height: 800px;
   }
 
   #landing-image {
@@ -146,7 +146,7 @@ header {
     font-feature-settings: 'case' on !important;
   }
 
-  search-form {
+  search-block {
     width: 100%;
     margin-top: 64px;
   }

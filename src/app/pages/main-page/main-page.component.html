@@ -25,7 +25,7 @@
     <h4>Добавляй рецепты и указывай наиболее популярные теги. Это позволит<br>быстро находить любые категории.</h4>
 
     <div class="filters">
-      <div (click)="makeSearch('Простые блюда')">
+      <div (click)="makeSearch('Просто')">
         <custom-svg name="book-icon" class="filter-icon"></custom-svg>
         <h2>Простые блюда</h2>
         <h4>Время приготвления таких блюд не более 1 часа</h4>
@@ -55,7 +55,7 @@
     <h2>Поиск рецептов</h2>
     <h4>Введите примерное название блюда, а мы по тегам найдем его</h4>
 
-    <search-form (searchEvent)="makeSearch($event)" ></search-form>
+    <search-block (searchEvent)="makeSearch($event)" ></search-block>
 
   </div>
 

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {map, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
-import {domainUrl} from "../app.component";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +29,7 @@ export class ExternalHtmlService {
   }
 
   public getText(url: string): Observable<string> {
-    return this.http.get(domainUrl + url, { responseType: 'text'});
+    return this.http.get( url, { responseType: 'text'});
   }
 
   /**

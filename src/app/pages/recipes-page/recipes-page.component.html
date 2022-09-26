@@ -14,7 +14,7 @@
 
     <!--Second block [Filters]-->
     <div class="filters-block">
-      <div (click)="makeSearch('Простые блюда')">
+      <div (click)="makeSearch('Просто')">
         <custom-svg name="book-icon" class="filter-icon"></custom-svg>
         <h2>Простые блюда</h2>
       </div>
@@ -34,7 +34,7 @@
 
     <div class="search-block">
       <h2>Поиск рецепта</h2>
-      <search-form (searchEvent)="makeSearch($event)" (textChange)="makeSearch($event)" [formControl]="searchControl"></search-form>
+      <search-block (searchEvent)="makeSearch($event)" (textChange)="makeSearch($event)" [formControl]="searchControl"></search-block>
     </div>
 
 
