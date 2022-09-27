@@ -48,6 +48,7 @@ import { BackButtonComponent } from './elements/blocks/back-button/back-button.c
 import {HttpErrorsInterceptor} from "./intercepters/http-errors.interceptor";
 import { UserLogoutComponent } from './modals/user-logout/user-logout.component';
 import { SearchBlockComponent } from './elements/blocks/search-block/search-block.component';
+import {AutosizeModule} from "ngx-autosize";
 
 export const routes: Routes = [
   {path: "main-page", component: MainPageComponent, title: "Главная"},
@@ -119,6 +120,7 @@ export function tokenGetter() {
     MatSelectModule,
     MatChipsModule,
     MatInputModule,
+    AutosizeModule,
   ],
   providers: [
     {

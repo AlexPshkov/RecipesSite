@@ -5,6 +5,7 @@ import {Recipe} from "../shared/objects/Recipe";
 import {apiUrl} from "../app.component";
 import {ImageLoaded} from "../shared/responses/ImageLoaded";
 import {RecipeCreated} from "../shared/responses/RecipeCreated";
+import {Tag} from "../shared/objects/secondary/Tag";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,12 @@ export class RecipesService {
 
   getBestRecipe(): Observable<Recipe> {
     return this.http.get<Recipe>(`${apiUrl}/recipes/best-recipe/`);
+  }
+
+  getBestTags(amount: number = 5): Observable<Tag[]> {
+    let params = new HttpParams();
+    params = params.append('amount', amount);
+    return this.http.get<Tag[]>(`${apiUrl}/recipes/best-tags/`, { params: params });
   }
 
   makeSearch(searchQuery: string, start: number, end: number): Observable<Recipe[]> {

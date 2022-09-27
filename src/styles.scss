@@ -166,10 +166,10 @@ mat-dialog-container {
 }
 
 textarea, .input {
-  overflow: auto;
+  overflow: hidden;
   outline: none;
   border: none;
-  resize: vertical;
+  resize: none;
   background-color: transparent;
 }
 

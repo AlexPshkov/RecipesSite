@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Tag} from "../../../shared/objects/secondary/Tag";
+import {RecipesService} from "../../../services/recipes.service";
 
 @Component({
   selector: 'search-block',
@@ -13,15 +14,10 @@ import {Tag} from "../../../shared/objects/secondary/Tag";
       useExisting: SearchBlockComponent
     }]
 })
-export class SearchBlockComponent implements ControlValueAccessor {
+export class SearchBlockComponent implements ControlValueAccessor, OnInit {
   searchString: string = "";
 
-  public tags: Tag[] = [
-    {id: 0, tagName: "Мясо"},
-    {id: 0, tagName: "Деликатесы"},
-    {id: 0, tagName: "Пироги"},
-    {id: 0, tagName: "Рыба"}
-  ];
+  public tags: Tag[] = [];
 
   onChange = (searchString: string) => {};
   onTouched = () => {};
@@ -35,7 +31,13 @@ export class SearchBlockComponent implements ControlValueAccessor {
   @Output()
   public textChange = new EventEmitter<string>();
 
-  constructor() {
+  constructor(public recipesService: RecipesService) {
+  }
+
+  ngOnInit(): void {
+    this.recipesService.getBestTags().subscribe(tags => {
+      this.tags = tags;
+    });
   }
 
   public onSubmit(value: string) {

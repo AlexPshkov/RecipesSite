@@ -4,6 +4,6 @@
     <input [maxLength]="50" class="mat-h4" type="text" placeholder="Заголовок для ингридиентов" [(ngModel)]="ingredient!.title">
   </div>
   <div class="input-ingredients-list">
-    <textarea [maxLength]="300" class="mat-h4" placeholder="Список подуктов для категории" [(ngModel)]="ingredient!.description"></textarea>
+    <textarea autosize [maxLength]="300" class="mat-h4" placeholder="Список подуктов для категории" [(ngModel)]="ingredient!.description"></textarea>
   </div>
 </div>
