@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import {NavigationService} from "../../../services/navigation-service.service";
+import {NavigationService} from "../../services/navigation-service.service";
 
 @Component({
   selector: 'back-button',

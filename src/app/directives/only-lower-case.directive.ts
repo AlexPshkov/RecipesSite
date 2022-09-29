@@ -14,10 +14,12 @@ export class OnlyLowerCaseDirective {
   ) { }
 
   ngOnInit() {
-    this.sub = this.ngControl.valueChanges?.subscribe(value =>
-      this.ngControl.control?.setValue((value.toLowerCase() || ''), {
+    this.sub = this.ngControl.valueChanges?.subscribe(value => {
+      let newValue = value.toLowerCase();
+      this.ngControl.control?.setValue((newValue || ''), {
         emitEvent: false
-      }));
+      })
+    });
   }
   ngOnDestroy() {
     this.sub?.unsubscribe();

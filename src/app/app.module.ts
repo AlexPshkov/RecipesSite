@@ -44,7 +44,7 @@ import { StepsInputComponent } from './elements/inputs/steps-input/steps-input.c
 import { ImageUrlPipe } from './pipes/image-url.pipe';
 import { BestRecipeBlockComponent } from './elements/blocks/best-recipe-block/best-recipe-block.component';
 import {MatInputModule} from "@angular/material/input";
-import { BackButtonComponent } from './elements/blocks/back-button/back-button.component';
+import { BackButtonComponent } from './elements/back-button/back-button.component';
 import {HttpErrorsInterceptor} from "./intercepters/http-errors.interceptor";
 import { UserLogoutComponent } from './modals/user-logout/user-logout.component';
 import { SearchBlockComponent } from './elements/blocks/search-block/search-block.component';

@@ -5,22 +5,22 @@
   <form [formGroup]="form" (submit)="onSubmit()">
     <div mat-dialog-content class="content">
       <div class="input-field">
-        <input class="mat-h4" type="text" placeholder="Имя" formControlName="name">
+        <input [maxlength]="20"  class="mat-h4" type="text" placeholder="Имя" formControlName="name">
         <!--      <h4>Подпись снизу</h4>-->
       </div>
 
       <div class="input-field">
-        <input onlyLowerCase class="mat-h4" type="text" placeholder="Логин" formControlName="login">
+        <input [maxlength]="100" onlyLowerCase class="mat-h4" type="text" placeholder="Логин" formControlName="login">
         <!--      <h4>Подпись снизу</h4>-->
       </div>
 
       <div class="passes-block">
         <div class="input-field" [class.invalid-field]="isSuchErrors('password', ['minlength'])">
-          <input class="mat-h4" type="password" placeholder="Пароль" formControlName="password" (ngModelChange)="form.controls['password_repeat'].updateValueAndValidity()">
+          <input [maxlength]="400" class="mat-h4" type="password" placeholder="Пароль" formControlName="password" (ngModelChange)="form.controls['password_repeat'].updateValueAndValidity()">
           <h4>Минимум 8 символов</h4>
         </div>
         <div class="input-field"  [class.invalid-field]="isSuchErrors('password_repeat', ['checkPasswordMatch'])">
-          <input class="mat-h4" type="password" placeholder="Повторите пароль" formControlName="password_repeat">
+          <input [maxlength]="400" class="mat-h4" type="password" placeholder="Повторите пароль" formControlName="password_repeat">
           <!--        <h4 class="warn">Подпись снизу</h4>-->
         </div>
       </div>
