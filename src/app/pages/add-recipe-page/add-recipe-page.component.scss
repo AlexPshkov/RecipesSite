@@ -35,6 +35,10 @@ header {
       padding: 16px 35px;
       border-radius: 16px;
     }
+
+    #add-recipe-button:enabled:hover {
+      background-color: rgba(main-style.get-color(), 0.9);
+    }
   }
 }
 
@@ -47,21 +51,45 @@ header {
 
   .image {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     width: 35.83%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: main-style.get-color(400);
-
-    background-image: url("../../../assets/images/svg/download-zone.svg");
-
     resize: both;
+
     border-radius: 72px 0;
     z-index: 5;
+
+    .download-area {
+      color: main-style.get-color(800);
+      width: 62.56%;
+    }
+
+    .download-area:hover {
+      color: main-style.get-color();
+      transition: all 100ms;
+    }
   }
 
+  .not-empty {
+    .download-area {
+      opacity: 0;
+    }
+  }
+
+  .not-empty.image:hover {
+    background-color: main-style.get-color(100);
+    background-blend-mode: multiply;
+
+    .download-area {
+      opacity: 1;
+    }
+  }
 
 
   .content {
@@ -69,11 +97,15 @@ header {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: main-style.get-color("0-contrast");
+    background-color: main-style.get-color(W);
     box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
     border-radius: 24px;
     padding: 36px 70px 53px 200px;
     margin-left: -146px;
+
+    .no-resize > * {
+      resize: none;
+    }
 
     .input-field {
       width: 100%;
@@ -82,7 +114,7 @@ header {
       border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
       border-radius: 16px;
 
-      input, textarea {
+      input, textarea, .input {
         width: 100%;
         opacity: 0.5;
         font-size: 16px !important;
@@ -91,21 +123,33 @@ header {
         margin: 0;
       }
 
-      textarea {
+      textarea.big {
         min-height: 117px;
       }
+
+      .editable {
+        opacity: 1;
+      }
+
+      .editable > * {
+        padding: 5px;
+        color: main-style.get-color(800);
+        background-color: rgba(main-style.get-color(), 0.2);
+      }
+
+      .editable:empty:before {
+        opacity: 0.5;
+        content: attr(data-placeholder);
+      }
+
 
       input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
         opacity: 1;
       }
     }
 
-    .input-field.big {
-
-
-      input {
-        padding: 11px 24px 78px 24px;
-      }
+    .big {
+      min-height: 90px;
     }
 
     .select-buttons {
@@ -140,33 +184,6 @@ header {
   }
 }
 
-
-.input-field {
-  width: 100%;
-  padding: 11px 24px;
-  box-sizing: border-box;
-  border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
-  border-radius: 16px;
-
-  input, textarea {
-    width: 100%;
-    opacity: 0.5;
-    font-size: 16px !important;
-    line-height: 28px !important;
-    color: main-style.get-color(100);
-    margin: 0;
-  }
-
-  textarea {
-    min-height: 117px;
-  }
-
-  input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
-    opacity: 1;
-  }
-}
-
-
 .main-content {
   display: flex;
   gap: 30px;
@@ -195,77 +212,20 @@ header {
   width: 47%;
   display: flex;
   flex-direction: column;
-  gap: 40px;
 
   .column-title {
     font-size: 20px !important;
     line-height: 30px !important;
     color: main-style.get-color(200);
+    margin-bottom: 0;
   }
 
-  .ingredient-block {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 36px 30px;
-    background: main-style.get-color("0-contrast");
-    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
-    border-radius: 24px;
-    margin-top: 25px;
+  .add-button {
+    margin-top: 40px;
+  }
 
-    .cross-remove {
-      position: absolute;
-      margin-top: -60px;
-      margin-left: 20px;
-      align-self: flex-end;
-    }
-
-    .cross-remove:hover {
-      transform: rotate(5deg);
-    }
-
-    .input-title {
-      width: 100%;
-      padding: 11px 24px;
-      box-sizing: border-box;
-      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
-      border-radius: 16px;
-
-      input {
-        width: 100%;
-        opacity: 0.5;
-        font-size: 16px !important;
-        line-height: 28px !important;
-        color: main-style.get-color(100);
-        margin: 0;
-      }
-
-      input:not(:placeholder-shown) {
-        opacity: 1;
-      }
-    }
-
-    .input-ingredients-list {
-      width: 100%;
-      padding: 11px 15px 10px 24px;
-      box-sizing: border-box;
-      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
-      border-radius: 16px;
-
-      textarea {
-        width: 100%;
-        opacity: 0.5;
-        min-height: 229px;
-        font-size: 16px !important;
-        line-height: 28px !important;
-        color: main-style.get-color(100);
-        margin: 0;
-      }
-
-      textarea:not(:placeholder-shown) {
-        opacity: 1;
-      }
-    }
+  .add-button:hover {
+    background-color: rgba(main-style.get-color(), 0.05);
   }
 }
 
@@ -275,42 +235,7 @@ header {
   flex-direction: column;
   gap: 40px;
 
-  .step-block {
-    padding: 50px 70px 70px 70px;
-    background: main-style.get-color("0-contrast");
-    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
-    border-radius: 24px;
-
-    .title {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      color: main-style.get-color(200);
-      font-size: 18px !important;
-      line-height: 30px !important;
-    }
-
-    .cross-remove:hover {
-      transform: rotate(5deg);
-    }
-
-    .step-description {
-      padding: 11px 10px 0 24px;
-      border: 1px solid rgba(main-style.get-color("200-contrast"), 0.4);
-      border-radius: 16px;
-
-      textarea {
-        min-height: 127px;
-        width: 100%;
-        font-size: 16px;
-        line-height: 28px;
-        opacity: 0.5;
-      }
-
-      textarea:not(:placeholder-shown) {
-        opacity: 1;
-      }
-    }
-
+  .add-button:hover {
+    background-color: rgba(main-style.get-color(), 0.05);
   }
 }

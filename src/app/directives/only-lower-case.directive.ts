@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import {Directive} from '@angular/core';
 import {Subscription} from "rxjs";
 import {NgControl} from "@angular/forms";
 
@@ -11,14 +11,18 @@ export class OnlyLowerCaseDirective {
 
   constructor(
     private ngControl: NgControl
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    this.sub = this.ngControl.valueChanges?.subscribe(value =>
-      this.ngControl.control?.setValue((value.toLowerCase() || ''), {
+    this.sub = this.ngControl.valueChanges?.subscribe(value => {
+      let newValue = value.toLowerCase();
+      this.ngControl.control?.setValue((newValue || ''), {
         emitEvent: false
-      }));
+      })
+    });
   }
+
   ngOnDestroy() {
     this.sub?.unsubscribe();
   }

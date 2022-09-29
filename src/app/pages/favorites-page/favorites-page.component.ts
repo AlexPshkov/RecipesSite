@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {RecipesService} from "../../services/recipes.service";
+import {Component, OnInit} from '@angular/core';
 import {Recipe} from "../../shared/objects/Recipe";
-import {Observable} from "rxjs";
+import {UserService} from "../../services/user.service";
+import {loadRecipesAmount} from "../../app.component";
 
 @Component({
   selector: 'app-favorites-page',
@@ -10,14 +10,37 @@ import {Observable} from "rxjs";
 })
 export class FavoritesPageComponent implements OnInit {
 
-  public favorites: Observable<Recipe[]> | undefined;
+  public isMore: boolean = false;
+  public startIndex: number = 1;
+  public endIndex: number = loadRecipesAmount;
+  public favorites: Recipe[] = [];
 
   constructor(
-    public recipeService: RecipesService
-  ) { }
+    public userService: UserService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.favorites = this.recipeService.getFavorites();
+    this.loadFavorites();
+  }
+
+  loadFavorites() {
+    this.startIndex = 1;
+    this.endIndex = loadRecipesAmount;
+    this.userService.getFavorites(this.startIndex, this.endIndex).subscribe(recipes => {
+      this.favorites = recipes;
+      this.isMore = recipes.length == loadRecipesAmount;
+    });
+  }
+
+  loadMore() {
+    this.startIndex += loadRecipesAmount;
+    this.endIndex += loadRecipesAmount;
+
+    this.userService.getFavorites(this.startIndex, this.endIndex).subscribe(recipes => {
+      recipes.forEach(recipe => this.favorites.push(recipe));
+      this.isMore = recipes.length == loadRecipesAmount;
+    });
   }
 
 }

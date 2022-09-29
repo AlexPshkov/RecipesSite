@@ -21,7 +21,7 @@ export class AddRecipeGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (!this.authService.isAuthenticated()) {
-      this.dialog.open(AuthRequiredComponent, { data: "Добавлять рецепты могут только зарегистрированные пользователи." });
+      this.dialog.open(AuthRequiredComponent, {data: "Добавлять рецепты могут только зарегистрированные пользователи."});
       return false;
     }
     return true;

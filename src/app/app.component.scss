@@ -1,6 +1,5 @@
 @use './src/styles' as main-style;
 
-
 //===============[NAV-BAR]====================
 .header-nav-bar {
   display: flex;
@@ -10,6 +9,7 @@
   margin: 0;
   padding: 14px 120px;
   height: 5rem;
+  z-index: 10;
 
   .left-part {
     display: flex;
@@ -38,6 +38,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    z-index: 10;
 
     h3 {
       color: main-style.get-color();
@@ -50,7 +51,8 @@
       background-color: main-style.get-color();
       cursor: pointer;
 
-      img {
+      custom-svg {
+        color: main-style.get-color(W);
         padding: 11px;
         display: block;
       }
@@ -73,8 +75,12 @@
         opacity: 0.72;
       }
 
-      img:hover {
-        transform: scale(1.1);
+      custom-svg {
+        color: main-style.get-color("200-contrast");
+      }
+
+      custom-svg:hover {
+        color: main-style.get-color("300-contrast");
       }
     }
   }
@@ -84,8 +90,8 @@
 .active-tab {
   color: main-style.get-color('300-contrast') !important;
 }
-//===============[NAV-BAR]====================
 
+//===============[NAV-BAR]====================
 
 
 //===============[FOOTER]====================
@@ -96,7 +102,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   background-color: main-style.get-color(300);
-  height: 7.85%;
+  height: 113px;
 
   h1 {
     margin-bottom: 0 !important;
@@ -105,6 +111,7 @@ footer {
     font-size: 32px !important;
     line-height: 39px !important;
   }
+
   span {
     padding: 0 120px;
     margin-left: auto;
@@ -112,4 +119,5 @@ footer {
     margin-bottom: 0 !important;
   }
 }
+
 //===============[FOOTER]====================
