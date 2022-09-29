@@ -104,7 +104,9 @@ export function tokenGetter() {
     MatSnackBarModule,
     MatToolbarModule,
     MatButtonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(
+      routes,
+      { scrollPositionRestoration: 'enabled' }),
     JwtModule.forRoot({
       config: {
         tokenGetter

@@ -12,7 +12,7 @@ export function checkIngredients(): ValidatorFn {
       if (ingredient.title.length == 0 || ingredient.description.length == 0) continue;
       counter++
     }
-    if (counter == 0) return {emptyIngredients: true};
+    if (counter != ingredientsArray.length) return {emptyIngredients: true};
 
     return null;
   };
