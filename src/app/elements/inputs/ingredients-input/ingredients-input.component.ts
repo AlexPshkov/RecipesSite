@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Ingredient} from "../../../shared/objects/secondary/Ingredient";
 
@@ -16,8 +16,10 @@ import {Ingredient} from "../../../shared/objects/secondary/Ingredient";
 export class IngredientsInputComponent implements ControlValueAccessor {
   public ingredients: Ingredient[] = [];
 
-  onChange = (ingredients: Ingredient[]) => {};
-  onTouched = () => {};
+  onChange = (ingredients: Ingredient[]) => {
+  };
+  onTouched = () => {
+  };
   touched = false;
   disabled = false;
 

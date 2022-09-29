@@ -36,13 +36,12 @@ export class RegisterDialogComponent implements OnInit {
 
   }
 
-  isSuchErrors(controlName: string, errorNames: string[]) : boolean {
+  isSuchErrors(controlName: string, errorNames: string[]): boolean {
     const control = this.form.controls[controlName];
     for (let errorName of errorNames)
       if (control.errors?.[errorName] != null) return true;
     return false;
   }
-
 
 
   onSubmit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterDialogComponent} from "../../modals/register-dialog/register-dialog.component";
 import {Router} from "@angular/router";

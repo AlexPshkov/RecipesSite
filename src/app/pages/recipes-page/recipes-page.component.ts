@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RecipesService} from "../../services/recipes.service";
 import {Recipe} from "../../shared/objects/Recipe";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -63,7 +63,7 @@ export class RecipesPageComponent implements OnInit {
     let searchQuery = this.searchControl.value;
     if (searchQuery == null) return;
 
-    this.recipesService.makeSearch(searchQuery, this.startIndex , this.endIndex ).subscribe(recipes => {
+    this.recipesService.makeSearch(searchQuery, this.startIndex, this.endIndex).subscribe(recipes => {
       recipes.forEach(recipe => this.recipesList.push(recipe));
       this.isMore = recipes.length == loadRecipesAmount;
     });

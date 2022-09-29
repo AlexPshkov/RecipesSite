@@ -11,43 +11,43 @@
 
 //================[INIT]============================
 
-$mat-typography: mat.define-typography-config( //Typography config
-  $headline: mat.define-typography-level( //<h1>
+$mat-typography: mat.define-typography-config(//Typography config
+  $headline: mat.define-typography-level(//<h1>
     $font-family: Montserrat,
     $font-weight: 700,
     $font-size: 24px,
     $line-height: 29.26px,
     $letter-spacing: normal,
   ),
-  $title: mat.define-typography-level( //<h2>
+  $title: mat.define-typography-level(//<h2>
     $font-family: Montserrat,
     $font-weight: 700,
     $font-size: 24px,
     $line-height: 29.26px,
     $letter-spacing: normal,
   ),
-  $subheading-2: mat.define-typography-level( //<h3>
+  $subheading-2: mat.define-typography-level(//<h3>
     $font-family: Montserrat,
     $font-weight: 600,
     $font-size: 18px,
     $line-height: 21.94px,
     $letter-spacing: normal,
   ),
-  $subheading-1: mat.define-typography-level( //<h4>
+  $subheading-1: mat.define-typography-level(//<h4>
     $font-family: Montserrat,
     $font-weight: 400,
     $font-size: 18px,
     $line-height: 26px,
     $letter-spacing: normal,
   ),
-  $display-4: mat.define-typography-level( //For any others
+  $display-4: mat.define-typography-level(//For any others
     $font-family: Montserrat,
     $font-weight: 600,
     $font-size: 18px,
     $line-height: 28px,
     $letter-spacing: normal,
   ),
-  $display-3: mat.define-typography-level( //For any others
+  $display-3: mat.define-typography-level(//For any others
     $font-family: Montserrat,
     $font-weight: 500,
     $font-size: 20px,
@@ -58,7 +58,7 @@ $mat-typography: mat.define-typography-config( //Typography config
 
 $light-primary: mat.define-palette(default-palette.$light-palette, 600);
 $light-accent: mat.define-palette(default-palette.$light-palette, 100);
-$light-theme: mat.define-light-theme(( //Define theme
+$light-theme: mat.define-light-theme((//Define theme
   color: (
     primary: $light-primary,
     accent: $light-accent
@@ -69,7 +69,7 @@ $light-theme: mat.define-light-theme(( //Define theme
 // Define a dark theme
 $dark-primary: mat.define-palette(default-palette.$dark-palette, 600);
 $dark-accent: mat.define-palette(default-palette.$dark-palette, 100);
-$dark-theme: mat.define-dark-theme(( //Define dark theme
+$dark-theme: mat.define-dark-theme((//Define dark theme
   color: (
     primary: $dark-primary,
     accent: $dark-accent
@@ -79,7 +79,6 @@ $dark-theme: mat.define-dark-theme(( //Define dark theme
 
 @include mat.all-component-typographies($dark-theme); //Set typography
 //================[INIT]============================
-
 
 
 //================[MIXINS && FUNCTIONS]============================
@@ -93,7 +92,7 @@ $theme: "light";
 @mixin set-theme($theme-name: "light") {
   $theme: $theme-name !global;
 
-  @if(is-dark-theme()) {
+  @if (is-dark-theme()) {
     @include mat.all-component-colors($dark-theme);
   } @else {
     @include mat.all-component-colors($light-theme);
@@ -101,7 +100,7 @@ $theme: "light";
 }
 
 @function get-color($number: 600) {
-  @if(is-dark-theme()) {
+  @if (is-dark-theme()) {
     @return mat.get-color-from-palette($dark-primary, $number);
   } @else {
     @return mat.get-color-from-palette($light-primary, $number);
@@ -113,7 +112,10 @@ $theme: "light";
 
 @include set-theme();
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;

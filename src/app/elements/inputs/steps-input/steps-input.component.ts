@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Step} from "../../../shared/objects/secondary/Step";
 
@@ -16,8 +16,10 @@ import {Step} from "../../../shared/objects/secondary/Step";
 export class StepsInputComponent implements ControlValueAccessor {
   steps: Step[] = [];
 
-  onChange = (steps: Step[]) => {};
-  onTouched = () => {};
+  onChange = (steps: Step[]) => {
+  };
+  onTouched = () => {
+  };
   touched = false;
   disabled = false;
 

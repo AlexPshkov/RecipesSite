@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {Router} from "@angular/router";
@@ -27,7 +27,7 @@ export class AuthService {
     return this.http.post<Token>(`${apiUrl}/auth/login`, loginRequest);
   }
 
-  register(registerRequest : RegisterRequest): Observable<Token> {
+  register(registerRequest: RegisterRequest): Observable<Token> {
     return this.http.post<Token>(`${apiUrl}/auth/register`, registerRequest);
   }
 

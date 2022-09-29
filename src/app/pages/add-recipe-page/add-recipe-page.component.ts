@@ -24,11 +24,11 @@ export class AddRecipePageComponent implements OnInit {
     isCreator: new FormControl<boolean>(true),
     isLiked: new FormControl<boolean>(false),
     isFavorite: new FormControl<boolean>(false),
-    ingredients: new FormControl<Ingredient[]>([ { id: 0, title: "", description: "", recipeId: 0 } ], [
+    ingredients: new FormControl<Ingredient[]>([{id: 0, title: "", description: "", recipeId: 0}], [
       Validators.required,
       checkIngredients()
     ]),
-    steps: new FormControl<Step[]>([ { id: 0, description: "", recipeId: 0 } ], [
+    steps: new FormControl<Step[]>([{id: 0, description: "", recipeId: 0}], [
       Validators.required,
       checkSteps()
     ]),
@@ -88,13 +88,12 @@ export class AddRecipePageComponent implements OnInit {
 
   uploadRecipe(recipe: Recipe) {
     this.recipesService.uploadRecipe(recipe).subscribe(recipeResult => {
-      this.router.navigate(['recipe', { recipeId: recipeResult.recipeId }]);
+      this.router.navigate(['recipe', {recipeId: recipeResult.recipeId}]);
     });
   }
 
 
-
-  onImageChange(image : File) {
+  onImageChange(image: File) {
     this.imageFile = image;
   }
 }

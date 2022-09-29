@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Step} from "../../../shared/objects/secondary/Step";
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'step-edit-block[number][step]',
@@ -9,8 +9,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   animations: [
     trigger('fadeAnimation', [
       transition('void => *', [
-        style({ opacity: 0 }),
-        animate('0.15s', style({ opacity: 1 })),
+        style({opacity: 0}),
+        animate('0.15s', style({opacity: 1})),
       ])
     ]),
   ],
@@ -25,7 +25,9 @@ export class StepEditBlockComponent {
 
   @Output()
   blockRemove = new EventEmitter<number>();
-  constructor() { }
+
+  constructor() {
+  }
 
   removeBlock() {
     this.blockRemove.emit(this.number);

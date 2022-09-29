@@ -12,22 +12,24 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
       useExisting: ImageUploadComponent
     }]
 })
-export class ImageUploadComponent implements ControlValueAccessor{
+export class ImageUploadComponent implements ControlValueAccessor {
   public imagePath: string = "";
 
   @Output()
   imageChange = new EventEmitter<File>();
 
-  onChange = (imagePath: string) => {};
-  onTouched = () => {};
+  onChange = (imagePath: string) => {
+  };
+  onTouched = () => {
+  };
   touched = false;
   disabled = false;
 
   constructor(
-    private host: ElementRef<HTMLInputElement> ) {
+    private host: ElementRef<HTMLInputElement>) {
   }
 
-  @HostListener('change', ['$event.target.files']) emitFiles( event: FileList ) {
+  @HostListener('change', ['$event.target.files']) emitFiles(event: FileList) {
     const file = event && event.item(0);
     if (file) {
       this.convertFileToURL(file);
@@ -36,7 +38,7 @@ export class ImageUploadComponent implements ControlValueAccessor{
     }
   }
 
-  convertFileToURL(file: File)  {
+  convertFileToURL(file: File) {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePath = reader.result as string;

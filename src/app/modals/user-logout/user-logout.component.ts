@@ -8,11 +8,12 @@ import {UserService} from "../../services/user.service";
   templateUrl: './user-logout.component.html',
   styleUrls: ['./user-logout.component.scss']
 })
-export class UserLogoutComponent  {
+export class UserLogoutComponent {
 
   constructor(public dialogRef: MatDialogRef<UserLogoutComponent>,
               public userService: UserService,
-              @Inject(MAT_DIALOG_DATA) public data: Recipe) { }
+              @Inject(MAT_DIALOG_DATA) public data: Recipe) {
+  }
 
 
   exit() {

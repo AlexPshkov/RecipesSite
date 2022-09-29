@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {NavigationService} from "../../services/navigation-service.service";
 
 @Component({
@@ -8,5 +8,6 @@ import {NavigationService} from "../../services/navigation-service.service";
 })
 export class BackButtonComponent {
 
-  constructor(public navigationService : NavigationService) { }
+  constructor(public navigationService: NavigationService) {
+  }
 }

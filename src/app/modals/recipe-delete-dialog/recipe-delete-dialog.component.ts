@@ -14,7 +14,8 @@ export class RecipeDeleteDialogComponent {
   constructor(public dialogRef: MatDialogRef<RecipeDeleteDialogComponent>,
               public router: Router,
               public recipesService: RecipesService,
-              @Inject(MAT_DIALOG_DATA) public data: Recipe) { }
+              @Inject(MAT_DIALOG_DATA) public data: Recipe) {
+  }
 
 
   removeRecipe() {

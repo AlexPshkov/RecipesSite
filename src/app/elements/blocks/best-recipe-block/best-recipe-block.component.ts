@@ -19,7 +19,8 @@ export class BestRecipeBlockComponent implements OnInit {
   ngOnInit(): void {
     this.recipesService.getBestRecipe().subscribe({
       next: recipe => this.recipeObject = recipe,
-      error: () => {}
+      error: () => {
+      }
     });
   }
 

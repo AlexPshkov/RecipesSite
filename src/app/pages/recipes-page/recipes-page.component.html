@@ -34,7 +34,8 @@
 
     <div class="search-block">
       <h2>Поиск рецепта</h2>
-      <search-block (searchEvent)="makeSearch($event)" (textChange)="makeSearch($event)" [formControl]="searchControl"></search-block>
+      <search-block (searchEvent)="makeSearch($event)" (textChange)="makeSearch($event)"
+                    [formControl]="searchControl"></search-block>
     </div>
 
 
@@ -45,6 +46,8 @@
     <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"></recipe-block>
   </div>
 
-  <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить еще</button>
+  <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить
+    еще
+  </button>
 
 </div>

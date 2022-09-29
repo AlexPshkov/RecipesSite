@@ -15,7 +15,8 @@ export class CustomSvgComponent implements OnInit {
 
   public svgIcon: Observable<SafeHtml> | undefined;
 
-  constructor(private externalHtml: ExternalHtmlService) { }
+  constructor(private externalHtml: ExternalHtmlService) {
+  }
 
   ngOnInit(): void {
     if (this.name) {

@@ -1,6 +1,6 @@
 @use '../../styles' as main-style;
 
-.ng-valid[required], .ng-valid.required  {
+.ng-valid[required], .ng-valid.required {
   border-left: 5px solid #42A948; /* green */
 }
 
@@ -49,6 +49,7 @@ h4.simple-text {
 
   .input-field {
     width: 100%;
+
     h4 {
       color: main-style.get-color(100);
       opacity: 0.3;

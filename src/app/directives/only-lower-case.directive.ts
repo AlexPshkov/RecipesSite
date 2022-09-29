@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import {Directive} from '@angular/core';
 import {Subscription} from "rxjs";
 import {NgControl} from "@angular/forms";
 
@@ -11,7 +11,8 @@ export class OnlyLowerCaseDirective {
 
   constructor(
     private ngControl: NgControl
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.sub = this.ngControl.valueChanges?.subscribe(value => {
@@ -21,6 +22,7 @@ export class OnlyLowerCaseDirective {
       })
     });
   }
+
   ngOnDestroy() {
     this.sub?.unsubscribe();
   }

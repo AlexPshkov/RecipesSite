@@ -11,7 +11,8 @@
           <custom-svg class="label" name="plus-icon"></custom-svg>
           Добавить рецепт
         </button>
-        <button *ngIf="!userService.isAuthed" mat-flat-button id="join-profile-button" class="mat-display-4" (click)="openRegisterDialog()">
+        <button *ngIf="!userService.isAuthed" mat-flat-button id="join-profile-button" class="mat-display-4"
+                (click)="openRegisterDialog()">
           Войти
         </button>
       </div>
@@ -55,7 +56,7 @@
     <h2>Поиск рецептов</h2>
     <h4>Введите примерное название блюда, а мы по тегам найдем его</h4>
 
-    <search-block (searchEvent)="makeSearch($event)" ></search-block>
+    <search-block (searchEvent)="makeSearch($event)"></search-block>
 
   </div>
 

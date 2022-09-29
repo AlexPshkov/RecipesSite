@@ -36,7 +36,8 @@ export class RecipePageComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public recipesService: RecipesService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -53,11 +54,11 @@ export class RecipePageComponent implements OnInit {
   }
 
   editRecipe() {
-    this.router.navigate(['add-recipe', {"recipeId": this.recipeObject.id }]);
+    this.router.navigate(['add-recipe', {"recipeId": this.recipeObject.id}]);
   }
 
   removeRecipe() {
-    this.dialog.open(RecipeDeleteDialogComponent, { data: this.recipeObject })
+    this.dialog.open(RecipeDeleteDialogComponent, {data: this.recipeObject})
   }
 
 

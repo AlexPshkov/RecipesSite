@@ -24,15 +24,18 @@
 
         <div class="input-field" [class.invalid-field]="form.controls['password'].invalid">
           <div class="password-field">
-            <input #passInput matInput class="mat-h4" [type]="hidePassword ? 'password' : 'text'" placeholder="Введите новый пароль" formControlName="password">
-            <button mat-icon-button matSuffix [disabled]="passInput.disabled" (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <input #passInput matInput class="mat-h4" [type]="hidePassword ? 'password' : 'text'"
+                   placeholder="Введите новый пароль" formControlName="password">
+            <button mat-icon-button matSuffix [disabled]="passInput.disabled" (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
               <mat-icon class="hide-password-button">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </div>
         </div>
 
         <div class="buttons-block" *ngIf="editMode">
-          <button mat-flat-button color="primary" id="save-changes-button" class="mat-display-4" (click)="onSubmit()" [disabled]="form.invalid">
+          <button mat-flat-button color="primary" id="save-changes-button" class="mat-display-4" (click)="onSubmit()"
+                  [disabled]="form.invalid">
             Применить
           </button>
           <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="toggleEditMode()">
@@ -85,8 +88,11 @@
   <div class="recipes-list">
     <h2 class="title" *ngIf="recipesList.length > 0">Мои рецепты</h2>
 
-    <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe" (recipeChange)="loadUserStatistic()"></recipe-block>
-    <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить еще</button>
+    <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"
+                  (recipeChange)="loadUserStatistic()"></recipe-block>
+    <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить
+      еще
+    </button>
   </div>
 
 </div>

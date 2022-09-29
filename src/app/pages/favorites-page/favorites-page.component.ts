@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Recipe} from "../../shared/objects/Recipe";
 import {UserService} from "../../services/user.service";
 import {loadRecipesAmount} from "../../app.component";
@@ -17,7 +17,8 @@ export class FavoritesPageComponent implements OnInit {
 
   constructor(
     public userService: UserService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.loadFavorites();
@@ -36,7 +37,7 @@ export class FavoritesPageComponent implements OnInit {
     this.startIndex += loadRecipesAmount;
     this.endIndex += loadRecipesAmount;
 
-    this.userService.getFavorites(this.startIndex , this.endIndex).subscribe(recipes => {
+    this.userService.getFavorites(this.startIndex, this.endIndex).subscribe(recipes => {
       recipes.forEach(recipe => this.favorites.push(recipe));
       this.isMore = recipes.length == loadRecipesAmount;
     });

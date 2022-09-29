@@ -20,7 +20,7 @@ header {
   }
 
   #landing-image {
-    @if(main-style.is-dark-theme()) {
+    @if (main-style.is-dark-theme()) {
       filter: brightness(30%) contrast(150%);
     }
   }
@@ -47,6 +47,7 @@ header {
         .label {
           margin-right: 23px;
         }
+
         padding: 16px 35px;
         border-radius: 16px;
       }

@@ -19,8 +19,10 @@ export class SearchBlockComponent implements ControlValueAccessor, OnInit {
 
   public tags: Tag[] = [];
 
-  onChange = (searchString: string) => {};
-  onTouched = () => {};
+  onChange = (searchString: string) => {
+  };
+  onTouched = () => {
+  };
   touched = false;
   disabled = false;
 

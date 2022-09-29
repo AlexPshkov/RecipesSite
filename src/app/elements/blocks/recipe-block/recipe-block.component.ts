@@ -54,7 +54,7 @@ export class RecipeBlockComponent implements OnInit {
 
   handleError(error: HttpErrorResponse, message: string) {
     if (error.status != 401) return;
-    this.dialog.open(AuthRequiredComponent, { data: message })
+    this.dialog.open(AuthRequiredComponent, {data: message})
   }
 
   makeSearch(value: string) {

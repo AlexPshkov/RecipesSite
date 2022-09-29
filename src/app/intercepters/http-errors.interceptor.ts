@@ -1,10 +1,5 @@
 import {Injectable} from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor, HttpErrorResponse
-} from '@angular/common/http';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ErrorSnackbarComponent} from "../modals/error-snackbar/error-snackbar.component";

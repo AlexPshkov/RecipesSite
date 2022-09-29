@@ -12,14 +12,22 @@
       <div class="buttons">
         <div class="button mat-display-4" id="favorite-button" (click)="favoriteButton()">
           <div *ngIf="recipeObject.isFavorite then favorite else nonFavorite"></div>
-          <ng-template #favorite><custom-svg name="star-filled-icon"></custom-svg></ng-template>
-          <ng-template #nonFavorite><custom-svg name="star-icon"></custom-svg></ng-template>
+          <ng-template #favorite>
+            <custom-svg name="star-filled-icon"></custom-svg>
+          </ng-template>
+          <ng-template #nonFavorite>
+            <custom-svg name="star-icon"></custom-svg>
+          </ng-template>
           {{recipeObject.favoritesAmount}}
         </div>
         <div class="button mat-display-4" id="like-button" (click)="likeButton()">
           <div *ngIf="recipeObject.isLiked then liked else nonLiked"></div>
-          <ng-template #liked><custom-svg name="heart-filled-icon"></custom-svg></ng-template>
-          <ng-template #nonLiked><custom-svg name="heart-icon"></custom-svg></ng-template>
+          <ng-template #liked>
+            <custom-svg name="heart-filled-icon"></custom-svg>
+          </ng-template>
+          <ng-template #nonLiked>
+            <custom-svg name="heart-icon"></custom-svg>
+          </ng-template>
           {{recipeObject.likesAmount}}
         </div>
       </div>

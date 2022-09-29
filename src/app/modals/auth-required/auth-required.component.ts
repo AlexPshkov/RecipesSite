@@ -10,7 +10,8 @@ import {RegisterDialogComponent} from "../register-dialog/register-dialog.compon
 })
 export class AuthRequiredComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<LoginDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<LoginDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: string) {
+  }
 
   ngOnInit(): void {
   }

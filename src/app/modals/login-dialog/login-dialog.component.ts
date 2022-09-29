@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {RegisterDialogComponent} from "../register-dialog/register-dialog.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import { Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ErrorSnackbarComponent} from "../error-snackbar/error-snackbar.component";
@@ -51,7 +51,7 @@ export class LoginDialogComponent implements OnInit {
 
   handleHttpError(httpError: HttpErrorResponse) {
     if (httpError.status == 401) {
-      this.snack.openFromComponent(ErrorSnackbarComponent, { data: "Неправильный логин или пароль" });
+      this.snack.openFromComponent(ErrorSnackbarComponent, {data: "Неправильный логин или пароль"});
       this.form.setErrors({wrongData: "Wrong auth"});
     }
   }

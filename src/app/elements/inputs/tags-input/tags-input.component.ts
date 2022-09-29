@@ -20,8 +20,10 @@ export class TagsInputComponent implements ControlValueAccessor {
 
   tags: Tag[] = [];
 
-  onChange = (tags: Tag[]) => {};
-  onTouched = () => {};
+  onChange = (tags: Tag[]) => {
+  };
+  onTouched = () => {
+  };
   touched = false;
   disabled = false;
 
@@ -29,7 +31,7 @@ export class TagsInputComponent implements ControlValueAccessor {
     const value = (event.value || '').trim();
     if (value) {
       if (this.isTagsLimit()) return;
-      this.tags.push({ id: 0, tagName: event.value })
+      this.tags.push({id: 0, tagName: event.value})
     }
     event.chipInput!.clear();
     this.onChange(this.tags);

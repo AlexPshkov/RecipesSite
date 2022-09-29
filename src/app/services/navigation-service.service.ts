@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Location } from '@angular/common'
+import {Injectable} from '@angular/core';
+import {Location} from '@angular/common'
 import {NavigationEnd, Router} from "@angular/router";
 
 @Injectable({
@@ -23,7 +23,7 @@ export class NavigationService {
       this.location.back();
       return;
     }
-    this.router.navigateByUrl('/').then( () => this.history = [])
+    this.router.navigateByUrl('/').then(() => this.history = [])
   }
 
   reload() {

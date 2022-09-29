@@ -34,7 +34,7 @@ export class UserService {
     })
   }
 
-  saveUserData( userData: ChangeUserDataRequest ): Observable<Token> {
+  saveUserData(userData: ChangeUserDataRequest): Observable<Token> {
     return this.http.post<Token>(`${apiUrl}/user`, userData);
   }
 
@@ -46,14 +46,14 @@ export class UserService {
     let params = new HttpParams();
     params = params.append('start', start);
     params = params.append('end', end);
-    return this.http.get<Array<Recipe>>(`${apiUrl}/user/favorites`, { params: params });
+    return this.http.get<Array<Recipe>>(`${apiUrl}/user/favorites`, {params: params});
   }
 
   getCreatedRecipes(start: number, end: number): Observable<Array<Recipe>> {
     let params = new HttpParams();
     params = params.append('start', start);
     params = params.append('end', end);
-    return this.http.get<Array<Recipe>>(`${apiUrl}/user/created`, { params: params });
+    return this.http.get<Array<Recipe>>(`${apiUrl}/user/created`, {params: params});
   }
 
   getUserStatistic(): Observable<UserStatistic> {

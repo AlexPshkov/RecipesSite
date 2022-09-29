@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Recipe} from "../../shared/objects/Recipe";
@@ -15,14 +15,14 @@ export class ProfilePageComponent implements OnInit {
   public form: FormGroup = new FormGroup({
     id: new FormControl<string>(""),
     role: new FormControl<string>(""),
-    userName: new FormControl<string>({ value: "", disabled: true }, [
+    userName: new FormControl<string>({value: "", disabled: true}, [
       Validators.required,
       Validators.minLength(3)]),
-    login: new FormControl<string>({ value: "", disabled: true }, [
+    login: new FormControl<string>({value: "", disabled: true}, [
       Validators.required,
       Validators.minLength(3)]),
-    password: new FormControl<string>({ value: "", disabled: true }, Validators.minLength(8)),
-    description: new FormControl<string>({ value: "", disabled: true }),
+    password: new FormControl<string>({value: "", disabled: true}, Validators.minLength(8)),
+    description: new FormControl<string>({value: "", disabled: true}),
   });
 
   public editMode: boolean = false;
@@ -55,7 +55,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   loadUserStatistic() {
-    this.userService.getUserStatistic().subscribe( statistic => {
+    this.userService.getUserStatistic().subscribe(statistic => {
       this.statistic = statistic;
     });
   }
@@ -86,7 +86,7 @@ export class ProfilePageComponent implements OnInit {
     this.startIndex = 1;
     this.endIndex = loadRecipesAmount;
 
-    this.userService.getCreatedRecipes(this.startIndex , this.endIndex).subscribe( createdRecipes => {
+    this.userService.getCreatedRecipes(this.startIndex, this.endIndex).subscribe(createdRecipes => {
       this.recipesList = createdRecipes;
       this.isMore = createdRecipes.length == loadRecipesAmount;
     });
@@ -96,7 +96,7 @@ export class ProfilePageComponent implements OnInit {
     this.startIndex += loadRecipesAmount;
     this.endIndex += loadRecipesAmount;
 
-    this.userService.getCreatedRecipes(this.startIndex , this.endIndex).subscribe( createdRecipes => {
+    this.userService.getCreatedRecipes(this.startIndex, this.endIndex).subscribe(createdRecipes => {
       createdRecipes.forEach(recipe => this.recipesList.push(recipe));
       this.isMore = createdRecipes.length == loadRecipesAmount;
     });

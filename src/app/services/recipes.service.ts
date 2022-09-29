@@ -27,14 +27,14 @@ export class RecipesService {
   getBestTags(amount: number = 5): Observable<Tag[]> {
     let params = new HttpParams();
     params = params.append('amount', amount);
-    return this.http.get<Tag[]>(`${apiUrl}/recipes/best-tags/`, { params: params });
+    return this.http.get<Tag[]>(`${apiUrl}/recipes/best-tags/`, {params: params});
   }
 
   makeSearch(searchQuery: string, start: number, end: number): Observable<Recipe[]> {
     let params = new HttpParams();
     params = params.append('start', start);
     params = params.append('end', end);
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes/search/${searchQuery}`, { params: params });
+    return this.http.get<Recipe[]>(`${apiUrl}/recipes/search/${searchQuery}`, {params: params});
   }
 
   remove(recipeId: number): Observable<any> {

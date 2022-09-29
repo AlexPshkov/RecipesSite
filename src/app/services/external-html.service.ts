@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {map, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
@@ -29,14 +29,14 @@ export class ExternalHtmlService {
   }
 
   public getText(url: string): Observable<string> {
-    return this.http.get( url, { responseType: 'text'});
+    return this.http.get(url, {responseType: 'text'});
   }
 
   /**
    * Converts <svg> to "data:image/svg"
    * @param data
    */
-  public encodeSVG (data : string): string {
+  public encodeSVG(data: string): string {
     data = data.replace(/'/g, `"`);
 
     data = data.replace(/>\s+</g, `><`);

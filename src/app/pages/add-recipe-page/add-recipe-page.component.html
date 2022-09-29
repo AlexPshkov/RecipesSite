@@ -4,7 +4,8 @@
 
     <div class="title-block">
       <h2>Добавить новый рецепт</h2>
-      <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="onSubmit()" [disabled]="form.invalid">
+      <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="onSubmit()"
+              [disabled]="form.invalid">
         Опубликовать
       </button>
     </div>
@@ -14,7 +15,8 @@
 
   <form class="recipe-edit-block" [formGroup]="form">
     <div class="image" [class.not-empty]="isImageExists()" [style.background-image]="imgUpload.imagePath | imageUrl">
-      <image-upload #imgUpload class="download-area" (imageChange)="onImageChange($event)" formControlName="imagePath"></image-upload>
+      <image-upload #imgUpload class="download-area" (imageChange)="onImageChange($event)"
+                    formControlName="imagePath"></image-upload>
     </div>
 
     <div class="content">

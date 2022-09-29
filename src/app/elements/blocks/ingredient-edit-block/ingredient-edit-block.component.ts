@@ -9,8 +9,8 @@ import {animate, style, transition, trigger} from "@angular/animations";
   animations: [
     trigger('fadeAnimation', [
       transition('void => *', [
-        style({ opacity: 0 }),
-        animate('0.15s', style({ opacity: 1 })),
+        style({opacity: 0}),
+        animate('0.15s', style({opacity: 1})),
       ])
     ]),
   ],
@@ -26,7 +26,8 @@ export class IngredientEditBlockComponent {
   @Output()
   blockRemove = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {
+  }
 
   removeBlock() {
     this.blockRemove.emit(this.number);

@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     public router: Router,
     public dialog: MatDialog,
     public userService: UserService,
-    public externalHtmlService : ExternalHtmlService) {
+    public externalHtmlService: ExternalHtmlService) {
   }
 
   ngOnInit(): void {
@@ -47,14 +47,14 @@ export class AppComponent implements OnInit {
 
 
   loadBackground() {
-    this.externalHtmlService.getSvgRaw("curve").subscribe( svg => {
+    this.externalHtmlService.getSvgRaw("curve").subscribe(svg => {
       let svgImageData: string = new ImageUrlPipe().transform(this.externalHtmlService.encodeSVG(svg));
       let css: CSSStyleDeclaration = window.getComputedStyle(this.siteContent.nativeElement);
       let color: string = css.getPropertyValue("color");
 
       svgImageData = svgImageData.replace(/currentColor/g, color);
       this.renderer.setStyle(this.siteContent.nativeElement, "background-image", svgImageData);
-    } );
+    });
   }
 
   joinButton() {
