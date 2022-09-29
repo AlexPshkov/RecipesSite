@@ -16,10 +16,8 @@ import {Ingredient} from "../../../shared/objects/secondary/Ingredient";
 export class IngredientsInputComponent implements ControlValueAccessor {
   public ingredients: Ingredient[] = [];
 
-  onChange = (ingredients: Ingredient[]) => {
-  };
-  onTouched = () => {
-  };
+  onChange = (ingredients: Ingredient[]) => {};
+  onTouched = () => {};
   touched = false;
   disabled = false;
 
